@@ -2,12 +2,13 @@ import ReactDOM from 'react-dom';
 import React, { Component, useState, useContext, useRef, useEffect } from 'react';
 import { Grid, Transition, Divider, Header, Icon, Image } from 'semantic-ui-react';
 import { ApolloClient } from "apollo-client";
+import { setContext } from '@apollo/client/link/context';
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from '@apollo/react-hooks';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { FETCH_POSTS_QUERY, FETCH_AREA_QUERY } from './util/graphql';
+import { FETCH_POSTS_QUERY, FETCH_AREA_QUERY, CREATE_AREA_POST_MUTATION } from './util/graphql';
 import PostCard from './components/PostCard';
 import { Card, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import moment from 'moment';
@@ -18,191 +19,140 @@ import Chat from './components/Chat2/Chat';
 
 const HomePageApp = (props) => { 
 
-  console.log("============1================")
-  console.log(props)
-
-  const link = createHttpLink({ uri: 'http://127.0.0.1:5000/' });
-
-  //const link = createHttpLink({ uri: 'http://192.168.1.103:5000/' });
-  const cache = new InMemoryCache();
-  const client = new ApolloClient({ link, cache });
-  const user = "True"
-
   //////////////////////////////////////////////////////////
   //Thought Area
   const [areaValues,setAreaValues] = useState("Self_improvement");
   const [posts,setPosts] = useState([]);
   const [loading,setLoading] = useState(true);
+  const [user_login,setUser_login] = useState("");
 
   console.log("====areaValues=1.0===");
   console.log(areaValues);
   const on_change_for_thought_area = (e, { value }) => 
   {
-    //console.log(value);
+
     setAreaValues(value)
   };
 
+  const useHandleResponse = () => {
 
-  let thoughtArea = "Self_improvement";
-  console.log(thoughtArea);
+      const handleResponse = response => {
+          return response.text().then(text => {
+              const data = text && JSON.parse(text);
+              if (!response.ok) {
+                  if ([401, 403].indexOf(response.status) !== -1) {
+
+                  }
+
+                  const error = (data && data.message) || response.statusText;
+                  return Promise.reject(error);
+              }
+
+              return data;
+          });
+      };
+
+      return handleResponse;
+  };
+
+  const handleResponse = useHandleResponse();
 
 
-const QUERY = gql`
-  query {
-    getAreaPosts(thoughtArea:$thoughtArea,limit:$limit,skip:$skip) {
-      id
-      body
-      createdAt
-      username
-      likeCount
-      likes {
-        username
-      }
-      commentCount
-      comments {
-        id
-        username
-        createdAt
-        body
+  const login = (username, password) => {
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+      };
+
+      console.log(requestOptions)
+
+      return fetch(
+          `http://192.168.10.48:5002/api/users/login`,
+          requestOptions
+      ).then(handleResponse)
+      .then(user => {
+              setUser_login(user)
+              console.log("============2============");
+              console.log(user);
+          })
+
+  };
+
+  const link = createHttpLink({ uri: 'http://localhost:5005/graphql' });
+
+  const authLink = setContext((_, { headers }) => {
+    // get the authentication token from local storage if it exists
+    // return the headers to the context so httpLink can read them
+    const token = user_login.token;
+    console.log("========3===========");
+    console.log(token);
+    return {
+      headers: {
+        ...headers,
+        authorization:  `${token}`,
       }
     }
-  }
-`;
+  });
 
-
-const CREATE_AREA_POST_MUTATION = gql`
-  mutation createAreaPost($body: String!,$thoughtArea: String!) {
-    createAreaPost(body: $body, thoughtArea: $thoughtArea) {
-      id
-      body
-      createdAt
-      username
-      likes {
-        id
-        username
-        createdAt
-      }
-      likeCount
-      comments {
-        id
-        body
-        username
-        createdAt
-      }
-      commentCount
-      thoughtArea
-    }
-  }
-`;
-
-
-
-const useHandleResponse = () => {
-
-    const handleResponse = response => {
-        return response.text().then(text => {
-            const data = text && JSON.parse(text);
-            if (!response.ok) {
-                if ([401, 403].indexOf(response.status) !== -1) {
-
-                }
-
-                const error = (data && data.message) || response.statusText;
-                return Promise.reject(error);
-            }
-
-            return data;
-        });
-    };
-
-    return handleResponse;
-};
-
-    const handleResponse = useHandleResponse();
-
-
-    const login = (username, password) => {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password }),
-        };
-
-        console.log(requestOptions)
-
-        return fetch(
-            `http://192.168.10.48:5002/api/users/login`,
-            requestOptions
-        ).then(handleResponse)
-        .then(user => {
-
-          console.log(user);
-            })
-
-    };
+  const cache = new InMemoryCache();
+  const client = new ApolloClient({ link: authLink.concat(link),cache });
+  const user = "True"
 
   useEffect(() => {
 
-    login(props.name,props.password);
+    login( props.name, props.password );
 	
-	client
-	  .query({
-	    query: FETCH_AREA_QUERY,
+  	client
+  	  .query({
+  	    query: FETCH_AREA_QUERY,
 
-	      variables: {
-		      thoughtArea : areaValues,
-          limit:100,
-          skip:0,
-	    },
-	  }).then(result => {setPosts(result.data.getAreaPosts);setLoading(result.data.loading) } );
-
-/*
-  client.mutate({
-      mutation: CREATE_AREA_POST_MUTATION,
-      variables: { body: "Take pain to do it!", thoughtArea: "Self_improvement" }
-  }).then(() => {
-   console.log("WithStaticCache upvotedPost then");
-  })
-  .catch(err => {
-   console.log("catch 1", err);
-  });;
-//*/
+  	      variables: {
+  		      thoughtArea : areaValues,
+            limit:100,
+            skip:0,
+  	    },
+  	  }).then(result => {setPosts(result.data.getAreaPosts);setLoading(result.data.loading) } );
 
   },[]);
 
-
-
-
   const pathname = window.location.pathname;
-
   const path = pathname === '/' ? 'home' : pathname.substr(1);
-
   const [activeItem, setActiveItem] = useState(path);
-
   const handleItemClick = (name) => {
-
-  setActiveItem(name);
-  
+    setActiveItem(name);
   };
 
 
-  const [texts, setTexts] = useState('');
+  const [texts, setTexts] = useState();
   const [thoughtAreaMutation, setThoughtAreaMutation] = useState('default');
 
 
   const area = "Self_improvement"
 
   const on_change_for_text = (event) => {
-    setTexts({ ...texts, [event.target.name]: event.target.value });
-    console.log("=========for_input_text========");
+    //setTexts([ ["text"] : ...texts, [event.target.name]: event.target.value ]);
+    //console.log("=========for_input_text========");
+    setTexts( event.target.value );
 
-    setThoughtAreaMutation({ ...thoughtAreaMutation, ["thoughtArea"]: area });
-    console.log({ ...thoughtAreaMutation, ["thoughtArea"]: area });
-    //console.log(texts);
+    //setThoughtAreaMutation({ ...thoughtAreaMutation, ["thoughtArea"]: area });
+    //console.log({ ...thoughtAreaMutation, ["thoughtArea"]: area });
+    console.log(texts);
     console.log("=========for_input_text_end========");
   };
 
-
+  const upload_post = () =>{
+    client.mutate({
+        mutation: CREATE_AREA_POST_MUTATION,
+        variables: { body: texts, thoughtArea: "Self_improvement" }
+    }).then(() => {
+     console.log("WithStaticCache upvotedPost then");
+    })
+    .catch(err => {
+     console.log("catch 1", err);
+    });;
+    window.location.reload();
+  }
 
 
 
@@ -226,7 +176,7 @@ const useHandleResponse = () => {
           <Grid.Row centered>
             <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(30px)'}}>
               <div class="input-group-prepend">
-                <button class="btn btn-primary btn-lg" type="button"> 发布 </button>
+                <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 发布 </button>
               </div>
               <input type="text" class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} />
             </div>

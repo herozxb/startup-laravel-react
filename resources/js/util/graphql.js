@@ -72,3 +72,5 @@ export const CREATE_AREA_POST_MUTATION = gql`
     }
   }
 `;
+
+

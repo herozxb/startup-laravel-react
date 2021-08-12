@@ -20,7 +20,7 @@
 <!-- Content
   ============================================= -->
 <!--div id="MenuBar"></div-->
-<div id="HomePage" data-name="chat" data-password="123456" ></div>
+<div id="HomePage" data-name="Thinking" data-password="123456" ></div>
 <!-- Content end -->
 @include('layouts.partials.footer')
 
