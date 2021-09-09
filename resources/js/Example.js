@@ -8,8 +8,6 @@ import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 
-import useChat from './components/Chat/useChat';
-import './components/Chat/ChatRoom.css';
 import Chat from './components/Chat2/Chat';
 
 import { io } from 'socket.io-client';
@@ -21,28 +19,33 @@ const socket = io("http://192.168.1.103:5001");
 
 const useStyles = makeStyles((theme) => ({
   video: {
-    width: '80vw',
-    maxWidth: '600px',
+    width: '100vw',
+    maxWidth: '1200px',
     [theme.breakpoints.down('xs')]: {
-      width: '90vw',
+      width: '100vw',
     },
   },
   root: {
     display: 'flex',
     flexDirection: 'column',
+
   },
   gridContainer: {
     width: '100%',
     [theme.breakpoints.down('xs')]: {
+      width: '100%',
       flexDirection: 'column',
+      justifyContent: 'center',
     },
   },
   container: {
     width: '100%',
     margin: '0px 0',
     padding: 0,
+
     [theme.breakpoints.down('xs')]: {
-      width: '80%',
+      width: '100%',
+      justifyContent: 'center',
     },
   },
   margin: {
@@ -59,8 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Example = () => { 
-
+const Example = (props) => { 
 
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
@@ -144,7 +146,6 @@ const Example = () => {
 
 
   const roomId = 7;
-  const { messages, sendMessage } = useChat(roomId); 
   const [newMessage, setNewMessage] = React.useState(''); // Message to be sent
 
   const handleNewMessageChange = (event) => {
@@ -163,66 +164,58 @@ const Example = () => {
                 <div className="row justify-content-center">
                     <div className="col-md-20">
                         <div className="card">
+                  			    <Grid container className={classes.gridContainer}>
+                        			      {stream && (
+                        				<Paper className={classes.paper}>
+                        				  <Grid item xs={12} md={6}>
+                        				    <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
+                        				    <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
+                        				  </Grid>
+                        				</Paper>
+                        			      )}
+                        			      {callAccepted && !callEnded && (
+                        				<Paper className={classes.paper}>
+                        				  <Grid item xs={12} md={6}>
+                        				    <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
+                        				    <video playsInline ref={userVideo} autoPlay className={classes.video} />
+                        				  </Grid>
+                        				</Paper>
+                        			      )}
+                  			    </Grid>
 
-			    <Grid container className={classes.gridContainer}>
+                  			    <Container className={classes.container}>
+                  			      <Paper elevation={10} className={classes.paper}>
+                        				<form className={classes.root} noValidate autoComplete="off">
+                        				  <Grid container className={classes.gridContainer}>
+                        				    <Grid item xs={12} md={6} className={classes.padding}>
+                        				      <Typography gutterBottom variant="h6">账户信息</Typography>
+                        				      <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
+                        				      <CopyToClipboard text={me} className={classes.margin}>
+                        					<Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
+                        					  拷贝自己的电话ID号码 {me}
+                        					</Button>
+                        				      </CopyToClipboard>
+                        				    </Grid>
+                        				    <Grid item xs={12} md={6} className={classes.padding}>
+                        				      <Typography gutterBottom variant="h6">视频通话</Typography>
+                        				      <TextField label="填写对方的电话ID号码" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
+                        				      {callAccepted && !callEnded ? (
+                        					<Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
+                        					  挂掉电话
+                        					</Button>
+                        				      ) : (
+                        					<Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
+                        					  视频通话
+                        					</Button>
+                        				      )}
+                        				    </Grid>
+                        				  </Grid>
 
-			      {stream && (
-				<Paper className={classes.paper}>
-				  <Grid item xs={12} md={6}>
-				    <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
-				    <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
-				  </Grid>
-				</Paper>
-			      )}
-			      {callAccepted && !callEnded && (
-				<Paper className={classes.paper}>
-				  <Grid item xs={12} md={6}>
-				    <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
-				    <video playsInline ref={userVideo} autoPlay className={classes.video} />
-				  </Grid>
-				</Paper>
-			      )}
-			    </Grid>
+                        				</form>
 
-			    <Container className={classes.container}>
-			      <Paper elevation={10} className={classes.paper}>
-				<form className={classes.root} noValidate autoComplete="off">
-				  <Grid container className={classes.gridContainer}>
-				    <Grid item xs={12} md={6} className={classes.padding}>
-				      <Typography gutterBottom variant="h6">账户信息</Typography>
-				      <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
-				      <CopyToClipboard text={me} className={classes.margin}>
-					<Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
-					  拷贝ID {me}
-					</Button>
-				      </CopyToClipboard>
-				    </Grid>
-				    <Grid item xs={12} md={6} className={classes.padding}>
-				      <Typography gutterBottom variant="h6">视频通话</Typography>
-				      <TextField label="ID to call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
-				      {callAccepted && !callEnded ? (
-					<Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
-					  挂掉电话
-					</Button>
-				      ) : (
-					<Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
-					  视频通话
-					</Button>
-				      )}
-				    </Grid>
-				  </Grid>
-
-				</form>
-
-			      </Paper>
-            <Chat />
-			    </Container>
-          
-        
-
-            
-
-
+                  			      </Paper>
+                              <Chat chat_props={props}/>
+                  			    </Container>
                         </div>
                     </div>
                 </div>
@@ -234,5 +227,16 @@ const Example = () => {
 export default Example
 
 if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+    //ReactDOM.render(<Example />, document.getElementById('example'));
+
+    // find element by id
+    const element = document.getElementById('example')
+      
+    // create new props object with element's data-attributes
+    // result: {tsId: "1241"}
+    const props = Object.assign({}, element.dataset)
+
+    // render element with props (using spread)
+    ReactDOM.render(<Example {...props}/>, element);
 }
+

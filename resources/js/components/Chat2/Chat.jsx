@@ -16,21 +16,35 @@ import Avatar from "@material-ui/core/Avatar";
 import classnames from "classnames";
 import commonUtilites from "../Utilities/common";
 
+
+import { useLogin } from '../Services/authenticationService';
+
+
 //import Header from '../Layout/Header';
 import ChatBox from './ChatBox';
 import Conversations from './Conversations';
 import Users from './Users';
+
+
 
 const useStyles = makeStyles(theme => ({
 
     sidebar: {
         zIndex: 8,
         height: "100%",
+
+        [theme.breakpoints.down('xs')]: {
+          width: '100%',
+          justifyContent: 'center',
+          backgroundColor: theme.palette.primary.dark,
+        },
     },
 
     paper: {
         minHeight: 'calc(100vh - 64px)',
         borderRadius: 0,
+
+
     },
 
     subheader: {
@@ -105,32 +119,8 @@ const useStyles = makeStyles(theme => ({
       },
 }));
 
-const messages = [{
-    "_id":0,
-    "body":"Hello World",
-    "fromObj" : 
-    [{
-        "_id":0,
-        "name" : "John"
-    }]
-},
-{
-    "_id":1,
-    "body":"Hello World 2",
-    "fromObj" : 
-    [{
-        "_id":1,
-        "name" : "Kite"
-    }]
-},]
 
-
-const messages2 ={
-    "id":1,
-    "body":"Hello World 2"
-}
-
-const Chat = () => {
+const Chat = (props) => {
     const [scope, setScope] = useState('Global Chat');
     const [tab, setTab] = useState(0);
     const [user, setUser] = useState(null);
@@ -140,6 +130,10 @@ const Chat = () => {
     const handleChange = (e, newVal) => {
         setTab(newVal);
     };
+
+
+    const login = useLogin();
+    login(props.chat_props.name,"hero2009");
 
     return (
         <React.Fragment>
@@ -158,7 +152,6 @@ const Chat = () => {
                                 <Tab label="Users" />
                             </Tabs>
                         </Paper>
-                        {/*
                         {tab === 0 && (
                             <Conversations
                                 setUser={setUser}
@@ -168,93 +161,10 @@ const Chat = () => {
                         {tab === 1 && (
                             <Users setUser={setUser} setScope={setScope} />
                         )}
-                        */}
                     </Paper>
                 </Grid>
-                <Grid item md={8} container className={classes.text}>
-
-                    <Grid container className={classes.root}>
-                        <Grid item xs={12} className={classes.headerRow}>
-                            <Paper className={classes.paper2} square elevation={2}>
-                            <Typography color="inherit" variant="h6">
-                                "Global Chat"
-                            </Typography>
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                    
-                    
-                        <Grid container className={classes.messageContainer}>    
-                            <Grid item xs={12} className={classes.messagesRow}>
-                            {messages && (
-                                
-                                <List>
-                                    {messages.map((m) => (
-                                    <ListItem
-                                        
-                                        key={m._id}
-                                        className={classnames(classes.listItem, {
-                                        [`${classes.listItemRight}`]:
-                                            m.fromObj[0]._id === 0,
-                                        })}
-                                        alignItems="flex-start"
-                                    >
-
-                                        <ListItemAvatar className={classes.avatar}>
-                                            <Avatar>
-                                                {commonUtilites.getInitialsFromName(m.fromObj[0].name)}
-                                            </Avatar>
-                                        </ListItemAvatar>
-
-                                        <ListItemText
-                                            classes={{
-                                            root: classnames(classes.messageBubble, {
-                                                [`${classes.messageBubbleRight}`]:
-                                                m.fromObj[0]._id === 0,
-                                            }),
-                                            }}
-                                        primary={m.fromObj[0] && m.fromObj[0].name}
-                                        secondary={<React.Fragment>{m.body}</React.Fragment>}
-                                        />
-
-
-                                    </ListItem>
-
-
-
-                                ))}
-                                </List>
-                                
-                            )}
-                            </Grid>
-                            <Grid item xs={12} className={classes.inputRow}>
-                                <form className={classes.form}>
-                                    <Grid
-                                        container
-                                        className={classes.newMessageRow}
-                                        alignItems="flex-end"
-                                    >
-                                        <Grid item xs={11}>
-                                            <TextField
-                                                id="message"
-                                                label="Message"
-                                                variant="outlined"
-                                                margin="dense"
-                                                fullWidth
-                                                value={newMessage}
-                                                onChange={(e) => setNewMessage(e.target.value)}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={1}>
-                                            <IconButton type="submit">
-                                                <SendIcon />
-                                            </IconButton>
-                                        </Grid>
-                                    </Grid>
-                                </form>
-                            </Grid>
-                        </Grid>
-                    
+                <Grid item md={8}>
+                    <ChatBox scope={scope} user={user} />
                 </Grid>
             </Grid>
         </React.Fragment>

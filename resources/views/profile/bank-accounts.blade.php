@@ -18,9 +18,9 @@ $banks = json_decode($banks);
     <div class="container d-flex justify-content-center">
         <ul class="nav secondary-nav">
             <li class="nav-item"> <a class="nav-link"
-                    href="{{ url('profile/edit-profile/'.Auth::user()->uuid) }}">Account 123</a></li>
+                    href="{{ url('profile/edit-profile/'.Auth::user()->uuid) }}">Account</a></li>
             <li class="nav-item"> <a class="nav-link active" href="{{ url('bank-accounts') }}">Bank
-                    Accounts 123</a></li>
+                    Accounts</a></li>
         </ul>
     </div>
 </div>

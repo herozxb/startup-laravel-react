@@ -8,14 +8,21 @@ import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from '@apollo/react-hooks';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { FETCH_POSTS_QUERY, FETCH_AREA_QUERY, CREATE_AREA_POST_MUTATION } from './util/graphql';
+import { FETCH_POSTS_QUERY, FETCH_AREA_QUERY, CREATE_AREA_POST_MUTATION, CREATE_AREA_HONESTY_POST_MUTATION } from './util/graphql';
 import PostCard from './components/PostCard';
-import { Card, Button, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Card, Button, Dropdown, DropdownButton, Form, Row, Col } from 'react-bootstrap';
+
 import moment from 'moment';
 import { useSnackbar } from 'notistack';
-
+import Pagination from 'react-bootstrap/Pagination'
+import PageItem from 'react-bootstrap/PageItem'
+import TextField from "@material-ui/core/TextField";
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
 import Chat from './components/Chat2/Chat';
+import {useSendConversationMessage} from "./components/Services/chatService";
 
 const HomePageApp = (props) => { 
 
@@ -25,14 +32,7 @@ const HomePageApp = (props) => {
   const [posts,setPosts] = useState([]);
   const [loading,setLoading] = useState(true);
   const [user_login,setUser_login] = useState("");
-
-  console.log("====areaValues=1.0===");
-  console.log(areaValues);
-  const on_change_for_thought_area = (e, { value }) => 
-  {
-
-    setAreaValues(value)
-  };
+  const [pagings,setPagings] = useState(0);  
 
   const useHandleResponse = () => {
 
@@ -73,8 +73,6 @@ const HomePageApp = (props) => {
       ).then(handleResponse)
       .then(user => {
               setUser_login(user)
-              console.log("============2============");
-              console.log(user);
           })
 
   };
@@ -85,8 +83,6 @@ const HomePageApp = (props) => {
     // get the authentication token from local storage if it exists
     // return the headers to the context so httpLink can read them
     const token = user_login.token;
-    console.log("========3===========");
-    console.log(token);
     return {
       headers: {
         ...headers,
@@ -99,17 +95,35 @@ const HomePageApp = (props) => {
   const client = new ApolloClient({ link: authLink.concat(link),cache });
   const user = "True"
 
+
+  const on_change_for_thought_area = (value) => 
+  {
+    setAreaValues(value);
+    client
+      .query({
+        query: FETCH_AREA_QUERY,
+
+          variables: {
+            thoughtArea : value,
+            limit:20,
+            skip:0,
+        },
+      }).then(result => {setPosts(result.data.getAreaPosts); console.log("============post_user_id========="); console.log(result.data.getAreaPosts[0].user); } );
+
+  };
+
+
   useEffect(() => {
 
     login( props.name, props.password );
-	
+
   	client
   	  .query({
   	    query: FETCH_AREA_QUERY,
 
   	      variables: {
   		      thoughtArea : areaValues,
-            limit:100,
+            limit:20,
             skip:0,
   	    },
   	  }).then(result => {setPosts(result.data.getAreaPosts);setLoading(result.data.loading) } );
@@ -131,29 +145,85 @@ const HomePageApp = (props) => {
   const area = "Self_improvement"
 
   const on_change_for_text = (event) => {
-    //setTexts([ ["text"] : ...texts, [event.target.name]: event.target.value ]);
-    //console.log("=========for_input_text========");
     setTexts( event.target.value );
-
-    //setThoughtAreaMutation({ ...thoughtAreaMutation, ["thoughtArea"]: area });
-    //console.log({ ...thoughtAreaMutation, ["thoughtArea"]: area });
-    console.log(texts);
-    console.log("=========for_input_text_end========");
   };
+
+
 
   const upload_post = () =>{
     client.mutate({
-        mutation: CREATE_AREA_POST_MUTATION,
-        variables: { body: texts, thoughtArea: "Self_improvement" }
+        mutation: CREATE_AREA_HONESTY_POST_MUTATION,
+        variables: { body: texts, thoughtArea: areaValues, honesty:String(parseFloat(props.honesty)/parseFloat(props.money)), ability:String(parseFloat(props.ability)/parseFloat(props.money)) },
+
+        update(cache, {data:{createAreaHonestyPost}})  {
+
+          try {
+              client.query({
+              query: FETCH_AREA_QUERY,
+              variables:{ thoughtArea : areaValues, limit:20, skip:0,}
+          }).then(result => {
+
+              setPosts([...result.data.getAreaPosts])
+          })
+              
+              } catch (e) {
+
+              }
+        }
+        
+
     }).then(() => {
+      setTexts("");
      console.log("WithStaticCache upvotedPost then");
     })
     .catch(err => {
      console.log("catch 1", err);
     });;
-    window.location.reload();
   }
 
+
+
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const change_paging = (page) =>{
+    setCurrentPage(page+1);
+    client
+      .query({
+        query: FETCH_AREA_QUERY,
+
+          variables: {
+            thoughtArea : areaValues,
+            limit:20,
+            skip:page*20,
+        },
+      }).then(result => {setPosts(result.data.getAreaPosts);} );
+
+    
+  }
+
+  ////////////////////////////////////////////////////////////////////////////
+  //Jump to other user
+  const sendConversationMessage = useSendConversationMessage();
+
+  
+  const on_jump_to_other_user = (user_id) =>{
+
+    if (user_id !== user_login.userId ) 
+    {
+      sendConversationMessage(user_id,"你好");
+    }
+  }
+
+  const valueRef = useRef('') //creating a refernce for TextField Component
+
+  const sendValue = () => {
+      console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+      
+      if(valueRef.current.value>0)
+      {  
+        change_paging(valueRef.current.value-1);
+      }
+  }
 
 
   return (
@@ -161,14 +231,14 @@ const HomePageApp = (props) => {
 		      <Grid.Row centered>
 
     				<DropdownButton id="dropdown-basic-button" title="       搜索行业领域       " size='lg' style={{ width: '300px', transform:' translateX(30px)', zIndex: 100}} >
-    				  <Dropdown.Item href="#/action-1">教育</Dropdown.Item>
-    				  <Dropdown.Item href="#/action-2">医疗</Dropdown.Item>
-    				  <Dropdown.Item href="#/action-3">科学</Dropdown.Item>
-              <Dropdown.Item href="#/action-4">技术</Dropdown.Item>
-              <Dropdown.Item href="#/action-5">服饰</Dropdown.Item>
-              <Dropdown.Item href="#/action-6">美食</Dropdown.Item>
-              <Dropdown.Item href="#/action-7">租房</Dropdown.Item>
-              <Dropdown.Item href="#/action-8">旅游</Dropdown.Item>
+    				  <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Self_improvement")}} href="#/action-1">科学</Dropdown.Item>
+    				  <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Relationship")}} href="#/action-2">技术</Dropdown.Item>
+    				  <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Education")}} href="#/action-3">教育</Dropdown.Item>
+              <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Health")}} href="#/action-4">医疗</Dropdown.Item>
+              <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Cloth")}} href="#/action-5">服饰</Dropdown.Item>
+              <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Eating")}} href="#/action-6">美食</Dropdown.Item>
+              <Dropdown.Item onClick={()=>{ on_change_for_thought_area("House")}} href="#/action-7">租房</Dropdown.Item>
+              <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Travel")}} href="#/action-8">旅游</Dropdown.Item>
     				</DropdownButton>
 
           </Grid.Row>
@@ -178,7 +248,7 @@ const HomePageApp = (props) => {
               <div class="input-group-prepend">
                 <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 发布 </button>
               </div>
-              <input type="text" class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} />
+              <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} />
             </div>
 
 
@@ -195,12 +265,29 @@ const HomePageApp = (props) => {
                   								  <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                   								  <Card.Body>
                   								    <Card.Title>{post.username}</Card.Title>
+                                      <Row style={{  transform:' translateX(50px)' }} >
+                                          <Typography variant="caption" display="block" gutterBottom>
+                                            信誉
+                                          </Typography>
+                                          <Rating name="half-rating-read" value={post.honesty} precision={0.1} size="small" readOnly />
+                                      </Row>
+                                      <Row style={{  transform:' translateX(50px)' }} >
+                                          <Typography variant="caption" display="block" gutterBottom>
+                                            能力
+                                          </Typography>
+                                          <Rating name="half-rating-read" value={post.ability} precision={0.1} size="small" readOnly />
+                                      </Row>
                   								    <Card.Text>
                   								      {post.body}
                   								    </Card.Text>
-                     								    <a href="/dashboard" >
-                  								        <Button variant="primary">联系他</Button>
-                     								    </a>  
+
+                     								  { user_login &&  <a href="/video" >
+                  								          { post.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post.user)}}>联系他</Button>  
+                     								       }
+                                        </a>  
+                                      }
+
+
                                         <Card.Text>
                                           <small className="text-muted">{moment(post.createdAt).fromNow(true)}</small>
                                         </Card.Text>
@@ -211,6 +298,37 @@ const HomePageApp = (props) => {
 
 				              ) 
           }
+          </Grid.Row>
+          <Grid.Row centered>
+            <Pagination>
+              <Pagination.First />
+              <Pagination.Prev />
+              <Pagination.Item active={currentPage == 1} onClick={()=>change_paging(0)} >{1}</Pagination.Item>
+              <Pagination.Item active={currentPage == 2} onClick={()=>change_paging(1)} >{2}</Pagination.Item>
+              <Pagination.Item active={currentPage == 3} onClick={()=>change_paging(2)} >{3}</Pagination.Item>
+              <Pagination.Item active={currentPage == 4} onClick={()=>change_paging(3)} >{4}</Pagination.Item>
+              <Pagination.Item active={currentPage == 5} onClick={()=>change_paging(4)} >{5}</Pagination.Item>
+              <Pagination.Item active={currentPage == 6} onClick={()=>change_paging(5)} >{6}</Pagination.Item>
+              <Pagination.Item active={currentPage == 7} onClick={()=>change_paging(6)} >{7}</Pagination.Item>
+              <Pagination.Item active={currentPage == 8} onClick={()=>change_paging(7)} >{8}</Pagination.Item>
+              <Pagination.Item active={currentPage == 9} onClick={()=>change_paging(8)} >{9}</Pagination.Item>
+              <Pagination.Item active={currentPage == 10} onClick={()=>change_paging(9)} >{10}</Pagination.Item>
+              <Pagination.Next />
+              <Pagination.Last />
+            </Pagination>
+          </Grid.Row>
+          <Grid.Row centered>
+            <TextField
+              label="页数"
+              id="outlined-size-small"
+              defaultValue="1"
+              variant="outlined"
+              size="small"
+              inputRef={valueRef}
+            />
+            <a style={{ marginLeft: '.5rem' }}></a>
+            <Button variant="primary" onClick={sendValue}>搜索</Button> 
+
           </Grid.Row>
 		</Grid>
     );

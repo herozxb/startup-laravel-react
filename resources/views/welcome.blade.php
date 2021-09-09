@@ -20,7 +20,20 @@
 <!-- Content
   ============================================= -->
 <!--div id="MenuBar"></div-->
-<div id="HomePage" data-name="Thinking" data-password="123456" ></div>
+
+
+    
+
+@if(Auth::check())
+<!--div class="info">
+   <a class="d-block">Hello World 3</a>
+   <a class="d-block">{{ Auth::user()->email }}</a>
+</div-->
+<div id="HomePage" data-name="{{ Auth::user()->email }}" data-password="hero2009" data-honesty="{{ Auth::user()->honesty_with_money }}" data-ability="{{ Auth::user()->ability_with_money }}" data-money="{{ Auth::user()->total_money }}" ></div>
+@else
+<div id="HomePage" data-name="None" data-password="None" ></div>
+@endif
+
 <!-- Content end -->
 @include('layouts.partials.footer')
 

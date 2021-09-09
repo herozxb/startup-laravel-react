@@ -25,6 +25,7 @@
                         <ul class="navbar-nav mr-auto">
                             <li class="active"><a style="font-size:200%" class="d-flex" href="{{ url('/') }}" title="Payyed - HTML Template">主页</a> </li>
                             <li><a style="font-size:120%" href="{{ url('profile/'.Auth::user()->uuid) }}">个人主页</a></li>
+                            <li><a style="font-size:120%" href="{{ url('video') }}">视频聊天</a></li>
                             <li><a style="font-size:120%" href="{{ url('dashboard') }}">数据面板</a></li>
                             <li><a style="font-size:120%" href="{{ url('transactions/') }}">转账记录</a></li>
                             <li><a style="font-size:120%" href="{{ url('transactions/transfer') }}">发送钱币</a></li>

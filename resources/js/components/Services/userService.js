@@ -1,9 +1,9 @@
 import useHandleResponse from '../Utilities/handle-response';
 import authHeader from '../Utilities/auth-header';
-import { useSnackbar } from 'notistack';
+
 
 export function useGetUsers() {
-    const { enqueueSnackbar } = useSnackbar();
+
     const handleResponse = useHandleResponse();
     const requestOptions = {
         method: 'GET',
@@ -12,15 +12,37 @@ export function useGetUsers() {
 
     const getUsers = () => {
         return fetch(
-            `${process.env.REACT_APP_API_URL}/api/users`,
+            `http://localhost:5002/api/users`,
             requestOptions
         )
             .then(handleResponse)
-            .catch(() =>
-                enqueueSnackbar('Could not load Users', {
-                    variant: 'error',
-                })
-            );
+
+    };
+
+    return getUsers;
+}
+
+
+
+export function useGetUsersByPage() {
+
+    const handleResponse = useHandleResponse();
+
+
+    const getUsers = (page) => {
+        
+        const requestOptions = {
+            method: 'POST',
+            headers: authHeader(),
+            body: JSON.stringify({"page":page}),
+        };
+
+        return fetch(
+            `http://localhost:5002/api/users`,
+            requestOptions
+        )
+            .then(handleResponse)
+
     };
 
     return getUsers;

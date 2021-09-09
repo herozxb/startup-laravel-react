@@ -11,7 +11,8 @@
         <ul class="navbar-nav mr-auto">
             <li class="active"><a style="font-size:200%" class="d-flex" href="{{ url('/') }}" title="Payyed - HTML Template">主页</a> </li>
             <li><a style="font-size:120%" href="{{ url('profile/'.Auth::user()->uuid) }}">个人主页</a></li>
-            <li><a style="font-size:120%" href="{{ url('dashboard') }}">数据面板</a></li>
+            <li><a style="font-size:120%" href="{{ url('dashboard') }}">视频聊天</a></li>
+            <li><a style="font-size:120%" href="{{ url('video') }}">数据面板</a></li>
             <li><a style="font-size:120%" href="{{ url('transactions/') }}">转账记录</a></li>
             <li><a style="font-size:120%" href="{{ url('transactions/transfer') }}">发送钱币</a></li>
         </ul>
@@ -102,11 +103,11 @@
 
 			    <br/>
 			    <label for="input-1" class="control-label">信誉数值（重要！信誉低于3星警告2次后，仍低于3星，不予提现）</label>
-			    <input id="input-1" name="input-1" class="rating rating-loading" value="5" data-min="0" data-max="5" data-step="0.1" data-size="md">
+			    <input id="input_honesty" name="input_honesty" class="rating rating-loading" value="5" data-min="0" data-max="5" data-step="0.1" data-size="sm">
 
 			    <br/>
-			    <label for="input-1" class="control-label">才能数值（没有星级别限制）</label>
-			    <input id="input-1" name="input-1" class="rating rating-loading" value="5" data-min="0" data-max="5" data-step="0.1" data-size="md">
+			    <label for="input-1" ability="control-label">才能数值（没有星级别限制）</label>
+			    <input id="input_ability" name="input_ability" class="rating rating-loading" value="5" data-min="0" data-max="5" data-step="0.1" data-size="sm">
 			</div>
 
 

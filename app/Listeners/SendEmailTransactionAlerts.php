@@ -23,8 +23,8 @@ class SendEmailTransactionAlerts
     {
         //
 
-        Mail::to($event->recipient->email)->send(new TransactionEmailAlert($event->data));
+        //Mail::to($event->recipient->email)->send(new TransactionEmailAlert($event->data));
 
-        Mail::to(Auth::user()->email)->send(new DebitTransactionEmailAlert($event->data));
+        //Mail::to(Auth::user()->email)->send(new DebitTransactionEmailAlert($event->data));
     }
 }

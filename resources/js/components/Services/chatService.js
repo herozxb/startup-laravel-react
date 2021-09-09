@@ -1,10 +1,10 @@
 import useHandleResponse from '../Utilities/handle-response';
 import authHeader from '../Utilities/auth-header';
-import { useSnackbar } from 'notistack';
+
 
 // Receive global messages
 export function useGetGlobalMessages() {
-    const { enqueueSnackbar } = useSnackbar();
+
     const handleResponse = useHandleResponse();
     const requestOptions = {
         method: 'GET',
@@ -13,14 +13,12 @@ export function useGetGlobalMessages() {
 
     const getGlobalMessages = () => {
         return fetch(
-            `${process.env.REACT_APP_API_URL}/api/messages/global`,
+            `http://localhost:5002/api/messages/global`,
             requestOptions
         )
             .then(handleResponse)
-            .catch(() =>
-                enqueueSnackbar('Could not load Global Chat', {
-                    variant: 'error',
-                })
+            .catch(() => {}
+
             );
     };
 
@@ -29,7 +27,7 @@ export function useGetGlobalMessages() {
 
 // Send a global message
 export function useSendGlobalMessage() {
-    const { enqueueSnackbar } = useSnackbar();
+
     const handleResponse = useHandleResponse();
 
     const sendGlobalMessage = body => {
@@ -40,15 +38,13 @@ export function useSendGlobalMessage() {
         };
 
         return fetch(
-            `${process.env.REACT_APP_API_URL}/api/messages/global`,
+            `http://localhost:5002/api/messages/global`,
             requestOptions
         )
             .then(handleResponse)
             .catch(err => {
                 console.log(err);
-                enqueueSnackbar('Could send message', {
-                    variant: 'error',
-                });
+
             });
     };
 
@@ -57,7 +53,7 @@ export function useSendGlobalMessage() {
 
 // Get list of users conversations
 export function useGetConversations() {
-    const { enqueueSnackbar } = useSnackbar();
+
     const handleResponse = useHandleResponse();
     const requestOptions = {
         method: 'GET',
@@ -66,24 +62,50 @@ export function useGetConversations() {
 
     const getConversations = () => {
         return fetch(
-            `${process.env.REACT_APP_API_URL}/api/messages/conversations`,
+            `http://localhost:5002/api/messages/conversations`,
             requestOptions
         )
             .then(handleResponse)
-            .catch(() =>
-                enqueueSnackbar('Could not load chats', {
-                    variant: 'error',
-                })
+            .catch(() =>{}
+
             );
     };
 
     return getConversations;
 }
 
+// Get list of users conversations
+export function useGetConversationsByPage() {
+
+    const handleResponse = useHandleResponse();
+
+
+    const getConversations = (page) => {
+
+        const requestOptions = {
+            method: 'POST',
+            headers: authHeader(),
+            body: JSON.stringify({"page":page}),
+        };
+
+        return fetch(
+            `http://localhost:5002/api/messages/conversations`,
+            requestOptions
+        )
+            .then(handleResponse)
+            .catch(() =>{}
+
+            );
+    };
+
+    return getConversations;
+}
+
+
 // get conversation messages based on
 // to and from id's
 export function useGetConversationMessages() {
-    const { enqueueSnackbar } = useSnackbar();
+
     const handleResponse = useHandleResponse();
     const requestOptions = {
         method: 'GET',
@@ -92,16 +114,12 @@ export function useGetConversationMessages() {
 
     const getConversationMessages = id => {
         return fetch(
-            `${
-                process.env.REACT_APP_API_URL
-            }/api/messages/conversations/query?userId=${id}`,
+            `http://localhost:5002/api/messages/conversations/query?userId=${id}`,
             requestOptions
         )
             .then(handleResponse)
-            .catch(() =>
-                enqueueSnackbar('Could not load chats', {
-                    variant: 'error',
-                })
+            .catch(() =>{}
+
             );
     };
 
@@ -109,7 +127,7 @@ export function useGetConversationMessages() {
 }
 
 export function useSendConversationMessage() {
-    const { enqueueSnackbar } = useSnackbar();
+
     const handleResponse = useHandleResponse();
 
     const sendConversationMessage = (id, body) => {
@@ -120,15 +138,13 @@ export function useSendConversationMessage() {
         };
 
         return fetch(
-            `${process.env.REACT_APP_API_URL}/api/messages/`,
+            `http://localhost:5002/api/messages/`,
             requestOptions
         )
             .then(handleResponse)
-            .catch(err => {
+            .catch(err => {{}
                 console.log(err);
-                enqueueSnackbar('Could send message', {
-                    variant: 'error',
-                });
+
             });
     };
 

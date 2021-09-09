@@ -30,6 +30,8 @@ class LogSucessfulTransaction
             'user_id' => Auth::user()->uuid,
             'amount' => $event->data->amount,
             'type' => 'Debit',
+            'honesty' => $event->data->honesty,
+            'ability' => $event->data->ability,
             'title' => 'Transfer to ' . $event->data->recipient,
             'narration' => $event->data->narration,
             'status' => 1
@@ -43,6 +45,8 @@ class LogSucessfulTransaction
             'amount'  => $event->data->amount,
             'title' => 'Transfer from ' . $event->data->sender,
             'type'    => 'Credit',
+            'honesty' => $event->data->honesty,
+            'ability' => $event->data->ability,
             'narration' => $event->data->narration,
             'status' => 1
         ]);

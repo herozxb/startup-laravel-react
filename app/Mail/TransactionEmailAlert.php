@@ -22,8 +22,8 @@ class TransactionEmailAlert extends Mailable
     public function __construct($data)
     {
         //
-        $this->data = $data;
-        $this->subject('新的入款交易在虚拟钱包');
+        //$this->data = $data;
+        //$this->subject('新的入款交易在虚拟钱包');
     }
 
     /**
@@ -34,6 +34,6 @@ class TransactionEmailAlert extends Mailable
     public function build()
     {
 
-        return $this->view('emails.credit-transaction')->with(['data' => $this->data]);
+        //return $this->view('emails.credit-transaction')->with(['data' => $this->data]);
     }
 }

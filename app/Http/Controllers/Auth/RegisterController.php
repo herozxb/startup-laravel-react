@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use GuzzleHttp\Client;
 
 class RegisterController extends Controller
 {
@@ -66,12 +67,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        
+
+
+        $for_mysql_user = User::create([
             'first_name' => $data['first_name'],
             'last_name'  => $data['last_name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
+            'honesty_with_money' => 0,
+            'ability_with_money' => 0,
+            'total_money' =>0,
         ]);
+
+
+        $client = new Client();
+
+        $res = $client->request('POST', 'http://192.168.10.48:5002/api/users/register', [
+            'form_params' => [
+                    'username' => $data['email'],
+                    'email' => $data['first_name'],
+                    'password' => "hero2009",
+                    'password2' => "hero2009",
+            ]
+        ]);
+
+
+
+
+        return $for_mysql_user;
     }
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -8,8 +8,10 @@ import LanguageIcon from "@material-ui/icons/Language";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import socketIOClient from "socket.io-client";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
-import { useGetConversations } from "../Services/chatService";
+import { useGetConversations, useGetConversationsByPage } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
 import commonUtilites from "../Utilities/common";
 
@@ -29,6 +31,16 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "calc(100vh - 112px)",
     overflowY: "auto",
   },
+  input_text: {
+    marginLeft: "20px", 
+    marginTop : "5px"
+  },
+  button: {
+    marginLeft: "20px", 
+    color: theme.palette.primary.dark,
+    marginTop : "5px"
+  },
+
 }));
 
 const Conversations = (props) => {
@@ -36,6 +48,7 @@ const Conversations = (props) => {
   const [conversations, setConversations] = useState([]);
   const [newConversation, setNewConversation] = useState(null);
   const getConversations = useGetConversations();
+  const getConversationsByPage = useGetConversationsByPage();
 
   // Returns the recipient name that does not
   // belong to the current user.
@@ -45,6 +58,8 @@ const Conversations = (props) => {
         recipients[i].username !==
         authenticationService.currentUserValue.username
       ) {
+        console.log("=============1==============")
+        console.log(recipients[i])
         return recipients[i];
       }
     }
@@ -52,7 +67,7 @@ const Conversations = (props) => {
   };
 
   useEffect(() => {
-    getConversations().then((res) => setConversations(res));
+    getConversationsByPage(0).then((res) => {setConversations(res)});
   }, [newConversation]);
 
   useEffect(() => {
@@ -63,6 +78,19 @@ const Conversations = (props) => {
       socket.removeListener("messages");
     };
   }, []);
+
+  const valueRef = useRef('') //creating a refernce for TextField Component
+
+  const sendValue = () => {
+      console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+      
+      if(valueRef.current.value>0)
+      {  
+        getConversationsByPage(valueRef.current.value-1).then((res) => setConversations(res));
+      }
+  }
+
+
 
   return (
     <List className={classes.list}>
@@ -90,24 +118,35 @@ const Conversations = (props) => {
               button
               onClick={() => {
                 props.setUser(handleRecipient(c.recipientObj));
-                props.setScope(handleRecipient(c.recipientObj).name);
+                props.setScope(handleRecipient(c.recipientObj).username);
               }}
             >
-              <ListItemAvatar>
-                <Avatar>
+              <ListItemAvatar >
+                <Avatar className={classes.globe} >
                   {commonUtilites.getInitialsFromName(
-                    handleRecipient(c.recipientObj).name
+                    handleRecipient(c.recipientObj).username
                   )}
                 </Avatar>
               </ListItemAvatar>
               <ListItemText
-                primary={handleRecipient(c.recipientObj).name}
+                className={classes.subheaderText}
+                primary={handleRecipient(c.recipientObj).username}
                 secondary={<React.Fragment>{c.lastMessage}</React.Fragment>}
               />
             </ListItem>
           ))}
         </React.Fragment>
       )}
+      <TextField
+        className={classes.input_text}
+        label="页数"
+        id="outlined-size-small"
+        defaultValue="1"
+        variant="outlined"
+        size="small"
+        inputRef={valueRef}
+      />
+      <Button className={classes.button} variant="outlined" onClick={sendValue} >搜索</Button>
     </List>
   );
 };

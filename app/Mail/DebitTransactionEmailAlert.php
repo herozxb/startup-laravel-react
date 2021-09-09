@@ -21,8 +21,8 @@ class DebitTransactionEmailAlert extends Mailable
     public function __construct($data)
     {
         //
-        $this->data = $data;
-        $this->subject('新的出款交易在虚拟钱包');
+        //$this->data = $data;
+        //$this->subject('新的出款交易在虚拟钱包');
     }
 
     /**
@@ -32,6 +32,6 @@ class DebitTransactionEmailAlert extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.debit-transaction')->with(['data' => $this->data]);
+        //return $this->view('emails.debit-transaction')->with(['data' => $this->data]);
     }
 }

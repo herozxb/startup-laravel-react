@@ -20,6 +20,7 @@ use GuzzleHttp\Exception\RequestException;
 use App\Events\WalletCreditFailedValidation;
 use App\Events\SuccessfulUserWalletWithdrawal;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class TransactionController extends Controller
 {
@@ -229,9 +230,13 @@ class TransactionController extends Controller
             $amount = $request->amount;
             $narration = $request->narration;
 
+            $honesty = $request->honesty;
+            $ability = $request->ability;
+
             $recipient_data = User::where('uuid', $recipient_uuid)->first();
 
-            $data = (object) ['recipient' => $recipient, 'recipient_uuid' => $recipient_uuid, 'amount' => $amount, 'narration' => $narration, 'sender' => Auth::user()->first_name . ' ' . Auth::user()->last_name];
+            $data = (object) ['recipient' => $recipient, 'recipient_uuid' => $recipient_uuid, 'amount' => $amount, 'narration' => $narration, 'honesty' => $honesty, 'ability' => $ability , 'sender' => Auth::user()->first_name . ' ' . Auth::user()->last_name];
+
 
             $balance = Auth::user()->wallet->balance;
 
@@ -242,6 +247,12 @@ class TransactionController extends Controller
             if ($balance >= $amount) {
                 # code...
                 DB::transaction(function () use ($balance, $recipient_balance, &$data, &$transfer) {
+
+                    User::where('uuid', $data->recipient_uuid)->update([
+                        'honesty_with_money' => (double)User::findByUUID($data->recipient_uuid)->honesty_with_money + $data->honesty * $data->amount , 
+                        'ability_with_money' => (double)User::findByUUID($data->recipient_uuid)->ability_with_money +  $data->ability * $data->amount , 
+                        'total_money' => (double)User::findByUUID($data->recipient_uuid)->total_money + $data->amount,
+                    ]);
 
                     $debit = Wallet::where('user_id', Auth::user()->uuid)->update([
                         'balance' => $balance - $data->amount
@@ -330,7 +341,10 @@ class TransactionController extends Controller
             "currency" => "NGN",
             "reference" =>  "_PMCKDU_1VWW-" . mt_rand() . "_PMCKDU_1",
             "beneficiary_name" =>  $account_name,
-            "callback_url" => $url
+            "callback_url" => $url,
+            "honesty" => "5",
+            "ability" => "5",
+
         ];
 
         $available_balance = Auth::user()->wallet->balance;

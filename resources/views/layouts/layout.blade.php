@@ -165,6 +165,8 @@
                     const recipient_uuid = $('#recipient_uuid').val();
                     const amount = $('#amount').val();
                     const narration = $('#narration').val();
+                    const honesty = $('#honesty').val();
+                    const ability = $('#ability').val();
 
                     console.log(amount + " " + narration);
 
@@ -178,7 +180,9 @@
                             recipient: recipient,
                             recipient_uuid: recipient_uuid,
                             amount: amount,
-                            narration: narration
+                            narration: narration,
+                            honesty : honesty,
+                            ability : ability,
                         },
                         beforeSend: function () {
                             Swal.fire({

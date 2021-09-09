@@ -15,11 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/user', function (Request $request) {
+ return $request->user(); 
+});
+
 Route::get('/token', 'TokenController@token');
 
 Auth::routes(['verify' => true]);
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
+Route::get('/video', 'VideoController@index')->name('home');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

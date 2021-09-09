@@ -16,7 +16,7 @@ export const authenticationService = {
 };
 
 export function useLogin() {
-    const { enqueueSnackbar } = useSnackbar();
+
     const handleResponse = useHandleResponse();
 
     const login = (username, password) => {
@@ -27,19 +27,19 @@ export function useLogin() {
         };
 
         return fetch(
-            `${process.env.REACT_APP_API_URL}/api/users/login`,
+            `http://localhost:5002/api/users/login`,
             requestOptions
         )
             .then(handleResponse)
             .then(user => {
+                console.log("========5_in_example==============");
+                console.log(user)
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 currentUserSubject.next(user);
                 return user;
             })
             .catch(function() {
-                enqueueSnackbar('Failed to Login', {
-                    variant: 'error',
-                });
+
             });
     };
 
@@ -47,7 +47,7 @@ export function useLogin() {
 }
 
 export function useRegister() {
-    const { enqueueSnackbar } = useSnackbar();
+
     const handleResponse = useHandleResponse();
 
     const register = (name, username, password, password2) => {
@@ -58,7 +58,7 @@ export function useRegister() {
         };
 
         return fetch(
-            `${process.env.REACT_APP_API_URL}/api/users/register`,
+            `http://localhost:5002/api/users/register`,
             requestOptions
         )
             .then(handleResponse)
@@ -70,13 +70,9 @@ export function useRegister() {
             })
             .catch(function(response) {
                 if (response) {
-                    enqueueSnackbar(response, {
-                        variant: 'error',
-                    });
+
                 } else {
-                    enqueueSnackbar('Failed to Register', {
-                        variant: 'error',
-                    });
+
                 }
             });
     };

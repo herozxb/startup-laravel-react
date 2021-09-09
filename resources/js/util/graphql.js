@@ -24,11 +24,12 @@ export const FETCH_POSTS_QUERY = gql`
 
 
 export const FETCH_AREA_QUERY = gql`
-  query($thoughtArea: String!, $limit: Int!, $skip:Int!) {
+  query($thoughtArea: String = "Self_improvement", $limit: Int = 30, $skip:Int = 0) {
     getAreaPosts(thoughtArea: $thoughtArea, limit: $limit , skip:$skip) {
       id
       body
       createdAt
+      user
       username
       likeCount
       likes {
@@ -42,6 +43,8 @@ export const FETCH_AREA_QUERY = gql`
         body
       }
       thoughtArea
+      honesty
+      ability
     }
   }
 `;
@@ -69,6 +72,35 @@ export const CREATE_AREA_POST_MUTATION = gql`
       }
       commentCount
       thoughtArea
+      honesty
+      ability
+    }
+  }
+`;
+
+export const CREATE_AREA_HONESTY_POST_MUTATION = gql`
+  mutation createAreaHonestyPost($body: String!,$thoughtArea: String!,$honesty: String!,$ability: String!) {
+    createAreaHonestyPost(body: $body, thoughtArea: $thoughtArea, honesty: $honesty, ability: $ability) {
+      id
+      body
+      createdAt
+      username
+      likes {
+        id
+        username
+        createdAt
+      }
+      likeCount
+      comments {
+        id
+        body
+        username
+        createdAt
+      }
+      commentCount
+      thoughtArea
+      honesty
+      ability
     }
   }
 `;

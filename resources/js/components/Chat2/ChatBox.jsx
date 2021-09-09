@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useReducer, useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -25,6 +25,7 @@ import { authenticationService } from "../Services/authenticationService";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",
+    minHeight:500,
   },
   headerRow: {
     maxHeight: 60,
@@ -58,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "-3px 4px 4px 0px rgba(0,0,0,0.08)",
     marginTop: 8,
     maxWidth: "40em",
+    color:theme.palette.primary.dark,
   },
   messageBubbleRight: {
     borderRadius: "10px 0 10px 10px",
@@ -71,6 +73,9 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1, 1.5),
+  },
+  globe: {
+    backgroundColor: theme.palette.primary.dark,
   },
   listItem: {
     display: "flex",
@@ -96,14 +101,16 @@ const ChatBox = (props) => {
 
   let chatBottom = useRef(null);
   const classes = useStyles();
+  const mountedRef = useRef(true)                 // ← the "flag"
+
 
   useEffect(() => {
-    //reloadMessages();
-    //scrollToBottom();
+    reloadMessages();
+    scrollToBottom();
   }, [lastMessage, props.scope, props.conversationId]);
 
   useEffect(() => {
-    const socket = socketIOClient(process.env.REACT_APP_API_URL);
+    const socket = socketIOClient("http://localhost:5002");
     socket.on("messages", (data) => setLastMessage(data));
   }, []);
 
@@ -123,7 +130,7 @@ const ChatBox = (props) => {
     chatBottom.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(scrollToBottom, [messages]);
+  useEffect(scrollToBottom);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -132,11 +139,41 @@ const ChatBox = (props) => {
         setNewMessage("");
       });
     } else {
+
       sendConversationMessage(props.user._id, newMessage).then((res) => {
         setNewMessage("");
       });
     }
   };
+
+  const on_change_for_message = () =>{
+    if (props.scope === "Global Chat") {
+      getGlobalMessages().then((res) => {
+        setMessages(res);
+      });
+    } else if (props.scope !== null && props.conversationId !== null) {
+      getConversationMessages(props.user._id).then((res) => setMessages(res));
+    } else {
+      setMessages([]);
+    }
+
+    mountedRef.current = true;
+
+  }
+
+  useEffect(() => {
+
+    if(mountedRef.current === true)
+    {
+      reloadMessages();
+      scrollToBottom();
+
+      setTimeout(
+        function() {
+            mountedRef.current = false;
+        },3000);
+    }
+  }, [messages]);
 
   return (
     <Grid container className={classes.root}>
@@ -161,9 +198,9 @@ const ChatBox = (props) => {
                     })}
                     alignItems="flex-start"
                   >
-                    <ListItemAvatar className={classes.avatar}>
-                      <Avatar>
-                      {/* {commonUtilites.getInitialsFromName(m.fromObj[0].name)} */} 
+                    <ListItemAvatar >
+                      <Avatar className={classes.globe} >
+                        {commonUtilites.getInitialsFromName(m.fromObj[0].username)}
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText
@@ -173,7 +210,7 @@ const ChatBox = (props) => {
                             m.fromObj[0]._id === currentUserId,
                         }),
                       }}
-                      primary={m.fromObj[0] && m.fromObj[0].name}
+                      primary={m.fromObj[0] && m.fromObj[0].username}
                       secondary={<React.Fragment>{m.body}</React.Fragment>}
                     />
                   </ListItem>
@@ -183,7 +220,7 @@ const ChatBox = (props) => {
             <div ref={chatBottom} />
           </Grid>
           <Grid item xs={12} className={classes.inputRow}>
-            <form className={classes.form}>
+            <form onSubmit={handleSubmit} className={classes.form}>
               <Grid
                 container
                 className={classes.newMessageRow}
@@ -201,7 +238,7 @@ const ChatBox = (props) => {
                   />
                 </Grid>
                 <Grid item xs={1}>
-                  <IconButton type="submit">
+                  <IconButton type="submit" onClick={()=>{ on_change_for_message()}}>
                     <SendIcon />
                   </IconButton>
                 </Grid>

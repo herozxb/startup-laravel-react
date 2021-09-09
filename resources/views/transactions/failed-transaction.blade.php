@@ -9,9 +9,9 @@
 <div class="bg-white">
     <div class="container d-flex justify-content-center">
         <ul class="nav secondary-nav alternate">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/deposit') }}">Deposit</a></li>
-            <li class="nav-item"> <a class="nav-link active" href="{{ url('transactions/withdraw') }}">Withdraw</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/transfer') }}">Transfer</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/deposit') }}">存款</a></li>
+            <li class="nav-item"> <a class="nav-link active" href="{{ url('transactions/withdraw') }}">提款</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/transfer') }}">汇款</a></li>
         </ul>
     </div>
 </div>
@@ -30,15 +30,14 @@
                     <div class="text-center my-5">
                         <p class="text-center text-danger text-20 line-height-07"><i class="fas fa-times-circle"></i>
                         </p>
-                        <p class="text-center text-danger text-8 line-height-07">Error!</p>
-                        <p class="text-center text-4">Wallet Deposit Sucessful.</p>
+                        <p class="text-center text-danger text-8 line-height-07">错误!</p>
+                        <p class="text-center text-4">存入钱包成功.</p>
                     </div>
-                    <p class="text-center text-3 mb-4">Wallet Deposit of <span
+                    <p class="text-center text-3 mb-4">钱包存入<span
                             class="text-4 font-weight-500">&#8358;{{ number_format($amount, 2) }}</span>
-                        failed.</p>
-                    <a class="btn btn-primary btn-block" href='{{ url('transactions/deposit') }}'>Deposit Money
-                        Again</a>
-                    <button class="btn btn-link btn-block"><i class="fas fa-print"></i> Print</button>
+                        失败.</p>
+                    <a class="btn btn-primary btn-block" href='{{ url('transactions/deposit') }}'>继续存款</a>
+                    <button class="btn btn-link btn-block"><i class="fas fa-print"></i> 打印</button>
                 </div>
                 <!-- Request Money Success end -->
             </div>

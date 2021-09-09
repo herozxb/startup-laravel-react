@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -6,8 +6,10 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 import socketIOClient from "socket.io-client";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
-import { useGetUsers } from "../Services/userService";
+import { useGetUsers, useGetUsersByPage } from "../Services/userService";
 import commonUtilites from "../Utilities/common";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,7 +30,20 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(0, 3, 0, 1),
+    colorDefault: {
+      backgroundColor: `purple`
+    }
   },
+  input_text: {
+    marginLeft: "20px", 
+    marginTop : "5px"
+  },
+  button: {
+    marginLeft: "20px", 
+    color: theme.palette.primary.dark,
+    marginTop : "5px"
+  },
+
 }));
 
 const Users = (props) => {
@@ -36,17 +51,32 @@ const Users = (props) => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState(null);
   const getUsers = useGetUsers();
+  const getUsersByPage = useGetUsersByPage();
+  
 
   useEffect(() => {
-    getUsers().then((res) => setUsers(res));
+    //getUsers().then((res) => setUsers(res));
+    getUsersByPage(0).then((res) => setUsers(res));
   }, [newUser]);
 
   useEffect(() => {
-    const socket = socketIOClient(process.env.REACT_APP_API_URL);
+    const socket = socketIOClient('http://localhost:5002');
     socket.on("users", (data) => {
       setNewUser(data);
     });
   }, []);
+
+  const valueRef = useRef('') //creating a refernce for TextField Component
+
+  const sendValue = () => {
+      console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+      
+      if(valueRef.current.value>0)
+      {  
+        getUsersByPage(valueRef.current.value-1).then((res) => setUsers(res));
+      }
+  }
+
 
   return (
     <List className={classes.list}>
@@ -58,18 +88,29 @@ const Users = (props) => {
               key={u._id}
               onClick={() => {
                 props.setUser(u);
-                props.setScope(u.name);
+                props.setScope(u.username);
               }}
               button
             >
               <ListItemAvatar className={classes.avatar}>
-                <Avatar>{commonUtilites.getInitialsFromName(u.name)}</Avatar>
+                <Avatar  >{commonUtilites.getInitialsFromName(u.username)}</Avatar>
               </ListItemAvatar>
-              <ListItemText primary={u.name} />
+              <ListItemText primary={u.username} />
             </ListItem>
           ))}
+
         </React.Fragment>
       )}
+      <TextField
+        className={classes.input_text}
+        label="页数"
+        id="outlined-size-small"
+        defaultValue="1"
+        variant="outlined"
+        size="small"
+        inputRef={valueRef}
+      />
+      <Button className={classes.button} variant="outlined" onClick={sendValue} >搜索</Button>
     </List>
   );
 };

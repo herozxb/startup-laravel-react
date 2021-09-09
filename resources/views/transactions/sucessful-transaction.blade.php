@@ -9,9 +9,9 @@
 <div class="bg-white">
     <div class="container d-flex justify-content-center">
         <ul class="nav secondary-nav alternate">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/deposit') }}">Deposit</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/withdraw') }}">Withdraw</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/transfer') }}">Transfer</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/deposit') }}">存款</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/withdraw') }}">提款</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/transfer') }}">汇款</a></li>
         </ul>
     </div>
 </div>
@@ -30,19 +30,16 @@
                     <div class="text-center my-5">
                         <p class="text-center text-success text-20 line-height-07"><i class="fas fa-check-circle"></i>
                         </p>
-                        <p class="text-center text-success text-8 line-height-07">Success!</p>
-                        <p class="text-center text-4">Wallet Deposit Sucessful.</p>
+                        <p class="text-center text-success text-8 line-height-07">成功!</p>
+                        <p class="text-center text-4">成功存入钱包</p>
                     </div>
-                    <p class="text-center text-3 mb-4">You've successfully deposited a sum of <span
+                    <p class="text-center text-3 mb-4">你已经成功的存入<span
                             class="text-4 font-weight-500">&#8358;{{ number_format($transaction->data->amount, 2) }}</span>
-                        in your
-                        wallet.</p>
-                    <small class="text-center text-2 mb-4"><i>This payment was made via
-                            <span class="text-4
-                                font-weight-300">{{ $transaction->data->payment_type }}</span> on
+                        在你的钱包里</p>
+                    <small class="text-center text-2 mb-4"><i>这次付款是通过<span class="text-4
+                                font-weight-300">{{ $transaction->data->payment_type }}</span>在
                             {{ date('Y-m-d H:i:s', strtotime($transaction->data->created_at)) }}</i></small>
-                    <a class="btn btn-primary btn-block" href='{{ url('transactions/deposit') }}'>Deposit Money
-                        Again</a>
+                    <a class="btn btn-primary btn-block" href='{{ url('transactions/deposit') }}'>再次存款</a>
                     <button class="btn btn-link btn-block"><i class="fas fa-print"></i> Print</button>
                 </div>
                 <!-- Request Money Success end -->

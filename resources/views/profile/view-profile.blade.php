@@ -2,21 +2,8 @@
 @section('title', "Profile")
 @section('content')
 
-
-<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
-
-<!-- Fonts -->
-<link rel="dns-prefetch" href="//fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-<!-- Styles -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
 <div id="content" class="py-4">
     <div class="container">
-    <div id="example"></div>
         <div class="row">
 
             @include('layouts.partials.sidebar')

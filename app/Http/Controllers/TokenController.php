@@ -17,12 +17,13 @@ class TokenController extends Controller
      */
     public function token(\Tymon\JWTAuth\JWTAuth $auth)
     {
+                /*
         if (!Auth::check()) {
             return response()->json(['error' => 'not_logged_in'], 401);
         }
 
 
-        /*
+
 
 
           _id: 5fdf32d0d064dd1689ac3b8c,
@@ -75,7 +76,7 @@ class TokenController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
         return response()->json(['token' => $token]);
-//*/
+
         $claims = ['id' => "5fdf32d0d064dd1689ac3b8c", 'email' => "t@email.com", "username" => "Thinking"];
 
         //$payload = JWTFactory::make($claims);
@@ -90,9 +91,10 @@ class TokenController extends Controller
         $payload = $factory->make();
 
         $token = JWTAuth::encode($payload)->get();
+        //*/
+        $user = Auth::user();
 
-
-        return response()->json(['token' => $token]);
+        return response()->json(['user_informantion' => $user->email]);
     }
 
 }

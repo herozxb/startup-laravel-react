@@ -14,4 +14,3 @@ require('./bootstrap');
 
 require('./Example');
 require('./HomePageApp');
-require('./RegisterApp');
