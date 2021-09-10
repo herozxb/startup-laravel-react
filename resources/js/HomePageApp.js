@@ -68,7 +68,7 @@ const HomePageApp = (props) => {
       console.log(requestOptions)
 
       return fetch(
-          `http://192.168.10.48:5002/api/users/login`,
+          `https://120.53.220.237:5002/api/users/login`,
           requestOptions
       ).then(handleResponse)
       .then(user => {
@@ -77,7 +77,7 @@ const HomePageApp = (props) => {
 
   };
 
-  const link = createHttpLink({ uri: 'http://localhost:5005/graphql' });
+  const link = createHttpLink({ uri: 'https://120.53.220.237:5005/graphql' });
 
   const authLink = setContext((_, { headers }) => {
     // get the authentication token from local storage if it exists
