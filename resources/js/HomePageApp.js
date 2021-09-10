@@ -78,9 +78,6 @@ const HomePageApp = (props) => {
 
   };
 
-                console.log("==========address========");
-              console.log("https://120.53.220.237:5002/api/users/login")
-
   const link = createHttpLink({ uri: 'https://120.53.220.237:5005/graphql' });
 
   const authLink = setContext((_, { headers }) => {
