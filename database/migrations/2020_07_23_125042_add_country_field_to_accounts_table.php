@@ -15,8 +15,8 @@ class AddCountryFieldToAccountsTable extends Migration
     {
         Schema::table('accounts', function (Blueprint $table) {
             //
-            $table->string('country')->after('type')->nullable();
-            $table->string('account_name')->after('type')->nullable();
+            $table->string('country')->after('account_number')->nullable();
+            $table->string('account_name')->after('account_number')->nullable();
         });
     }
 
