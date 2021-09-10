@@ -15,9 +15,9 @@ class AddHonestyToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->decimal('honesty_with_money')->after('email');
-            $table->decimal('ability_with_money')->after('email');
-            $table->decimal('total_money')->after('email');
+            $table->decimal('honesty_with_money')->after('email')->nullable();
+            $table->decimal('ability_with_money')->after('email')->nullable();
+            $table->decimal('total_money')->after('email')->nullable();
 
         });
     }
