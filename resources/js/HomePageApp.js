@@ -73,6 +73,7 @@ const HomePageApp = (props) => {
       ).then(handleResponse)
       .then(user => {
               setUser_login(user);
+              
           })
 
   };
