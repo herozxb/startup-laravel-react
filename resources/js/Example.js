@@ -82,7 +82,7 @@ const Example = (props) => {
   const connectionRef = useRef();
 
   useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
         setStream(currentStream);
 
