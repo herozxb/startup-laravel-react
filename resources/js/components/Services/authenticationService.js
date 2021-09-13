@@ -27,7 +27,7 @@ export function useLogin() {
         };
 
         return fetch(
-            `http://localhost:5002/api/users/login`,
+            `https://120.53.220.237:5002/api/users/login`,
             requestOptions
         )
             .then(handleResponse)
@@ -58,7 +58,7 @@ export function useRegister() {
         };
 
         return fetch(
-            `http://localhost:5002/api/users/register`,
+            `https://120.53.220.237:5002/api/users/register`,
             requestOptions
         )
             .then(handleResponse)

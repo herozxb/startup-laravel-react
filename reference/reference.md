@@ -251,3 +251,15 @@ curl -X POST -H "Content-Type: application/json" --data '{ "query": "{ getPosts 
         });
       }
 //*/
+
+
+
+# 7 mysql instructions
+memory is low
+
+# 8 startup-laravel-react
+http to https addresses
+
+authenticationService.js  for login in video
+HomePageApp.js            for login in Home page
+RegisterController.php    for register of Post account
