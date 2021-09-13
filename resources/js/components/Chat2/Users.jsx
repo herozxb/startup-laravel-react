@@ -56,7 +56,7 @@ const Users = (props) => {
 
   useEffect(() => {
     //getUsers().then((res) => setUsers(res));
-    getUsersByPage(0).then((res) => setUsers(res));
+    getUsersByPage(0).then((res) =>{console.log("==2==============");console.log(res); setUsers(res)});
   }, [newUser]);
 
   useEffect(() => {
