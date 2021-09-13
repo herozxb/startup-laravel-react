@@ -92,6 +92,9 @@ const HomePageApp = (props) => {
     }
   });
 
+  console.log("Bearer ${token}");
+  console.log(token);
+
   const cache = new InMemoryCache();
   const client = new ApolloClient({ link: authLink.concat(link),cache });
   const user = "True"
