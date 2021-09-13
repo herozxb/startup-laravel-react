@@ -60,7 +60,7 @@ const Users = (props) => {
   }, [newUser]);
 
   useEffect(() => {
-    const socket = socketIOClient('http://localhost:5002');
+    const socket = socketIOClient('https://120.53.220.237:5002');
     socket.on("users", (data) => {
       setNewUser(data);
     });
