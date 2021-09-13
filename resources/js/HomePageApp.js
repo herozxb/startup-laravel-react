@@ -87,7 +87,7 @@ const HomePageApp = (props) => {
     return {
       headers: {
         ...headers,
-        authorization:  `${token}`,
+        authorization:  `Bearer ${token}`,
       }
     }
   });
