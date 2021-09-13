@@ -32,8 +32,6 @@ export function useLogin() {
         )
             .then(handleResponse)
             .then(user => {
-                console.log("========5_in_example==============");
-                console.log(user)
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 currentUserSubject.next(user);
                 return user;
