@@ -12,7 +12,7 @@ export function useGetUsers() {
 
     const getUsers = () => {
         return fetch(
-            `http://localhost:5002/api/users`,
+            `https://120.53.220.237:5002/api/users`,
             requestOptions
         )
             .then(handleResponse)
@@ -38,7 +38,7 @@ export function useGetUsersByPage() {
         };
 
         return fetch(
-            `http://localhost:5002/api/users`,
+            `https://120.53.220.237:5002/api/users`,
             requestOptions
         )
             .then(handleResponse)

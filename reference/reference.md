@@ -260,6 +260,11 @@ memory is low
 # 8 startup-laravel-react
 http to https addresses
 
-authenticationService.js  for login in video
+
 HomePageApp.js            for login in Home page
 RegisterController.php    for register of Post account
+
+./service/*
+chatService.js            for video chat
+userService.js            for video chat
+authenticationService.js  for login in video

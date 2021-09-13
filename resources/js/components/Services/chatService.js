@@ -13,7 +13,7 @@ export function useGetGlobalMessages() {
 
     const getGlobalMessages = () => {
         return fetch(
-            `http://localhost:5002/api/messages/global`,
+            `https://120.53.220.237:5002/api/messages/global`,
             requestOptions
         )
             .then(handleResponse)
@@ -38,7 +38,7 @@ export function useSendGlobalMessage() {
         };
 
         return fetch(
-            `http://localhost:5002/api/messages/global`,
+            `https://120.53.220.237:5002/api/messages/global`,
             requestOptions
         )
             .then(handleResponse)
@@ -62,7 +62,7 @@ export function useGetConversations() {
 
     const getConversations = () => {
         return fetch(
-            `http://localhost:5002/api/messages/conversations`,
+            `https://120.53.220.237:5002/api/messages/conversations`,
             requestOptions
         )
             .then(handleResponse)
@@ -89,7 +89,7 @@ export function useGetConversationsByPage() {
         };
 
         return fetch(
-            `http://localhost:5002/api/messages/conversations`,
+            `https://120.53.220.237:5002/api/messages/conversations`,
             requestOptions
         )
             .then(handleResponse)
@@ -114,7 +114,7 @@ export function useGetConversationMessages() {
 
     const getConversationMessages = id => {
         return fetch(
-            `http://localhost:5002/api/messages/conversations/query?userId=${id}`,
+            `https://120.53.220.237:5002/api/messages/conversations/query?userId=${id}`,
             requestOptions
         )
             .then(handleResponse)
@@ -138,7 +138,7 @@ export function useSendConversationMessage() {
         };
 
         return fetch(
-            `http://localhost:5002/api/messages/`,
+            `https://120.53.220.237:5002/api/messages/`,
             requestOptions
         )
             .then(handleResponse)
