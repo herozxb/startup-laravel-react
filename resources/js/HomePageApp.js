@@ -73,7 +73,9 @@ const HomePageApp = (props) => {
       ).then(handleResponse)
       .then(user => {
 
-              setUser_login(user)
+              setUser_login(user);
+              console.log("===user===");
+              console.log(user);
           })
 
   };
@@ -87,7 +89,7 @@ const HomePageApp = (props) => {
     return {
       headers: {
         ...headers,
-        authorization:  `Bearer ${token}`,
+        authorization:  `${token}`,
       }
     }
   });
