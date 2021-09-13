@@ -71,7 +71,7 @@ const Conversations = (props) => {
   }, [newConversation]);
 
   useEffect(() => {
-    let socket = socketIOClient(process.env.REACT_APP_API_URL);
+    let socket = socketIOClient("https://120.53.220.237:5002");
     socket.on("messages", (data) => setNewConversation(data));
 
     return () => {
