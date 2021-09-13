@@ -84,7 +84,7 @@ class RegisterController extends Controller
 
         $client = new Client();
 
-        $res = $client->request('POST', 'http://192.168.10.48:5002/api/users/register', [
+        $res = $client->request('POST', 'https://120.53.220.237:5002/api/users/register', [
             'form_params' => [
                     'username' => $data['email'],
                     'email' => $data['first_name'],
