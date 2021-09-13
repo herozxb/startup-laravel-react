@@ -36,7 +36,6 @@ export function useGetUsersByPage() {
             headers: authHeader(),
             body: JSON.stringify({"page":page}),
         };
-
         return fetch(
             `https://120.53.220.237:5002/api/users`,
             requestOptions
