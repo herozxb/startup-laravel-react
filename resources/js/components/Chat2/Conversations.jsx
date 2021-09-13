@@ -67,7 +67,7 @@ const Conversations = (props) => {
   };
 
   useEffect(() => {
-    getConversationsByPage(0).then((res) => {setConversations(res)});
+    getConversationsByPage(0).then((res) => {console.log("==1==============");console.log(res); setConversations(res)});
   }, [newConversation]);
 
   useEffect(() => {
