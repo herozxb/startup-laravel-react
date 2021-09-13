@@ -110,7 +110,7 @@ const ChatBox = (props) => {
   }, [lastMessage, props.scope, props.conversationId]);
 
   useEffect(() => {
-    const socket = socketIOClient("http://localhost:5002");
+    const socket = socketIOClient("https://120.53.220.237:5002");
     socket.on("messages", (data) => setLastMessage(data));
   }, []);
 
