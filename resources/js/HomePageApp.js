@@ -72,10 +72,7 @@ const HomePageApp = (props) => {
           requestOptions
       ).then(handleResponse)
       .then(user => {
-
               setUser_login(user);
-              console.log("===user===");
-              console.log(user);
           })
 
   };
