@@ -133,7 +133,8 @@ const Chat = (props) => {
 
 
     const login = useLogin();
-    login(props.chat_props.name,"hero2009");
+    //login(props.chat_props.name,"hero2009");
+    login("herozxb@gmail.com","hero2009");
 
     return (
         <React.Fragment>
