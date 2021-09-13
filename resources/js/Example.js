@@ -197,16 +197,16 @@ const Example = (props) => {
                         				      </CopyToClipboard>
                         				    </Grid>
 
-    <>
-      {call.isReceivingCall && !callAccepted && (
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          <h1>{call.name} is calling:</h1>
-          <Button variant="contained" color="primary" onClick={answerCall}>
-            Answer
-          </Button>
-        </div>
-      )}
-    </>
+                                    <>
+                                      {call.isReceivingCall && !callAccepted && (
+                                        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                                          <h1>{call.name} 正在呼叫:</h1>
+                                          <Button variant="contained" color="primary" onClick={answerCall}>
+                                            接受电话
+                                          </Button>
+                                        </div>
+                                      )}
+                                    </>
 
                         				    <Grid item xs={12} md={6} className={classes.padding}>
                         				      <Typography gutterBottom variant="h6">视频通话</Typography>
