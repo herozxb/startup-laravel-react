@@ -192,7 +192,7 @@ const Example = (props) => {
                         				      <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
                         				      <CopyToClipboard text={me} className={classes.margin}>
                                 					<Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
-                                					  拷贝自己的电话ID号码 {me}
+                                					  拷贝自己的电话ID号码 {me} 发送给对方
                                 					</Button>
                         				      </CopyToClipboard>
                         				    </Grid>
@@ -207,7 +207,7 @@ const Example = (props) => {
         </div>
       )}
     </>
-                                    
+
                         				    <Grid item xs={12} md={6} className={classes.padding}>
                         				      <Typography gutterBottom variant="h6">视频通话</Typography>
                         				      <TextField label="填写对方的电话ID号码" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
