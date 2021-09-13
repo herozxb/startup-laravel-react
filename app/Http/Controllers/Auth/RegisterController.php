@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 
 class RegisterController extends Controller
 {
@@ -85,7 +86,7 @@ class RegisterController extends Controller
         $client = new Client();
 
         $res = $client->request('POST', 'https://120.53.220.237:5002/api/users/register', [
-            GuzzleHttp\RequestOptions::VERIFY  => false,
+            RequestOptions::VERIFY  => false,
             'form_params' => [
                     'username' => $data['email'],
                     'email' => $data['first_name'],
