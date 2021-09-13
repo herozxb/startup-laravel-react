@@ -44,6 +44,7 @@ export function useGetUsersByPage() {
             .then(user => {
                 console.log("========6_in_example==============");
                 console.log(user)
+                return user;
             })
 
 
