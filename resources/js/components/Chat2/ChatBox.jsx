@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   },
   margin: {
     width: "100%",
-    padding: theme.spacing(0, 2, 1),
+    padding: theme.spacing( 10, 20, 30, 40 ),
   },
 }));
 
