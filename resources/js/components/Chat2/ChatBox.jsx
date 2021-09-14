@@ -248,14 +248,11 @@ const ChatBox = (props) => {
                   />
                 </Grid>
                 <Grid item xs={1}>
- ;                 <IconButton type="submit" onClick={()=>{ on_change_for_message()}}>
+                  <IconButton type="submit" onClick={()=>{ on_change_for_message()}}>
                     <SendIcon />
                   </IconButton>
                 </Grid>
               </Grid>
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={()=>{console.log("click");}} className={classes.margin}>
-                    发起视频通话
-                </Button>
             </form>
           </Grid>
         </Grid>
