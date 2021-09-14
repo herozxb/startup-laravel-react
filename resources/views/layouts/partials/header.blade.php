@@ -59,9 +59,9 @@
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
 
-                        <li class="align-items-center h-auto ml-sm-3"><a class="btn btn-outline-primary shadow-none d-none d-sm-block" href="{{ route('register') }}">注册</a> </li>
+                        <li class="align-items-center h-auto ml-sm-3"><a class="btn btn-outline-primary shadow-none  d-sm-block" href="{{ route('register') }}">注册</a> </li>
                         <li class="align-items-center h-auto ml-sm-3"><a
-                                class="btn btn-outline-primary shadow-none d-none d-sm-block"
+                                class="btn btn-outline-primary shadow-none d-sm-block"
                                 href="{{ route('login') }}">登入</a></li>
                     </ul>
                 </nav>
