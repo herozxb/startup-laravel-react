@@ -38,7 +38,7 @@
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
                         <li class="align-items-center h-auto ml-sm-3 float-right"><button
-                                class="btn btn-outline-primary shadow-none d-none d-sm-block" Onclick="event.preventDefault();
+                                class="btn btn-outline-primary shadow-none d-sm-block" Onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">退出账户</button></li>
                     </ul>
 
