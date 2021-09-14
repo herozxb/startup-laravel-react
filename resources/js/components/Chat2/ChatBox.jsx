@@ -87,7 +87,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row-reverse",
   },
   margin: {
-    marginTop: 20,
+    width: "100%",
+    padding: theme.spacing(0, 2, 1),
   },
 }));
 
