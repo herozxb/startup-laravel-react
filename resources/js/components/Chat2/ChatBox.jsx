@@ -11,6 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
+import { Button } from '@material-ui/core';
 import socketIOClient from "socket.io-client";
 import classnames from "classnames";
 import commonUtilites from "../Utilities/common";
@@ -242,6 +243,9 @@ const ChatBox = (props) => {
                   <IconButton type="submit" onClick={()=>{ on_change_for_message()}}>
                     <SendIcon />
                   </IconButton>
+                  <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
+                    视频通话
+                  </Button>
                 </Grid>
               </Grid>
             </form>
