@@ -70,8 +70,15 @@ const Conversations = (props) => {
     getConversationsByPage(0).then((res) => {console.log("==1==============");console.log(res); setConversations(res)});
   }, [newConversation]);
 
+  var connectionOptions =  {
+          "force new connection" : true,
+          "reconnectionAttempts": "Infinity", //avoid having user reconnect manually in order to prevent dead clients after a server restart
+          "timeout" : 10000,                  //before connect_error and connect_timeout are emitted.
+          "transports" : ["websocket"]
+      };
+
   useEffect(() => {
-    let socket = socketIOClient("https://120.53.220.237:5002");
+    let socket = socketIOClient("https://120.53.220.237:5002",connectionOptions);
     console.log("==1===socket=====newConversation======");
     socket.on("messages", (data) => { setNewConversation(data);console.log("get Conversation from https server "); console.log(data);});
 

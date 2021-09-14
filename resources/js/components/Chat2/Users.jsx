@@ -59,8 +59,16 @@ const Users = (props) => {
     getUsersByPage(0).then((res) =>{console.log("==2==============");console.log(res); setUsers(res)});
   }, [newUser]);
 
+
+  var connectionOptions =  {
+          "force new connection" : true,
+          "reconnectionAttempts": "Infinity", //avoid having user reconnect manually in order to prevent dead clients after a server restart
+          "timeout" : 10000,                  //before connect_error and connect_timeout are emitted.
+          "transports" : ["websocket"]
+      };
+
   useEffect(() => {
-    const socket = socketIOClient('https://120.53.220.237:5002');
+    const socket = socketIOClient('https://120.53.220.237:5002',connectionOptions);
     console.log("==3===socket===users========");
     socket.on("users", (data) => {
       setNewUser(data);
