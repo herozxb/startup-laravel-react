@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "auto",
   },
   newMessageRow: {
-    width: "100%",
+    width: "80%",
     padding: theme.spacing(0, 2, 1),
   },
   messageBubble: {
