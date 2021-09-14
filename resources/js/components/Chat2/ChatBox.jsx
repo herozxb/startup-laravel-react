@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     overflowY: "auto",
   },
   newMessageRow: {
-    width: "80%",
+    width: "100%",
     padding: theme.spacing(0, 2, 1),
   },
   messageBubble: {
@@ -87,8 +87,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row-reverse",
   },
   margin: {
-    width: "80%",
-    margin : theme.spacing( 0, 2, 0, 2 ),
+    width: "100%",
   },
 }));
 
