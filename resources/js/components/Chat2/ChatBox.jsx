@@ -114,15 +114,10 @@ const ChatBox = (props) => {
     scrollToBottom();
   }, [lastMessage, props.scope, props.conversationId]);
 
-  var connectionOptions =  {
-          "force new connection" : true,
-          "reconnectionAttempts": "Infinity", //avoid having user reconnect manually in order to prevent dead clients after a server restart
-          "timeout" : 10000,                  //before connect_error and connect_timeout are emitted.
-          "transports" : ["websocket"]
-      };
+
 
   useEffect(() => {
-    const socket = socketIOClient("https://120.53.220.237:5002",connectionOptions);
+    const socket = socketIOClient("https://120.53.220.237:5002");
     console.log("==2===socket===Message========");
     socket.on("messages", (data) => {setLastMessage(data);console.log("get messages from https server 1"); console.log(data); });
   }, []);
