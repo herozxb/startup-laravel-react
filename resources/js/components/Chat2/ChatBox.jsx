@@ -153,11 +153,12 @@ const ChatBox = (props) => {
       });
     } else if (props.scope !== null && props.conversationId !== null) {
       getConversationMessages(props.user._id).then((res) => setMessages(res));
+      mountedRef.current = true;
     } else {
       setMessages([]);
     }
 
-    mountedRef.current = true;
+    
 
   }
 

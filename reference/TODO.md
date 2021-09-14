@@ -3,8 +3,13 @@
 
 
 # 6 (partly coded) WeChat Pay for laravel 
-# 19 The mobile web page not display the Post
-# 20 the verify email is not working
+# 19 The mobile web page not display the Post in iOS safari
+# 21 change all the words into chinese
+# 22 the immeidate message update for the remote user
+# 23 the calling of the video for one button
+# 24 the withdraw of money for the users
+# 25 solute the auto positioning of the chat page 
+
 
 
 
@@ -26,6 +31,7 @@
 # 16 	(DONE)  update the home page 
 # 17 	(DONE)  area search
 # 18 	(DONE)  fix the bug of calling of self post
+# 20 	(DONE)  the verify email is not working
 
 
 
