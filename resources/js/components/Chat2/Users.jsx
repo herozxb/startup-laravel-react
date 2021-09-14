@@ -63,6 +63,7 @@ const Users = (props) => {
     const socket = socketIOClient('https://120.53.220.237:5002');
     socket.on("users", (data) => {
       setNewUser(data);
+      console.log("get users from https server"); console.log(data);
     });
   }, []);
 
