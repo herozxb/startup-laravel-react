@@ -12,6 +12,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { Button } from '@material-ui/core';
+import { Phone, PhoneDisabled } from '@material-ui/icons';
 import socketIOClient from "socket.io-client";
 import classnames from "classnames";
 import commonUtilites from "../Utilities/common";
@@ -84,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
   },
   listItemRight: {
     flexDirection: "row-reverse",
+  },
+  margin: {
+    marginTop: 20,
   },
 }));
 
@@ -240,10 +244,10 @@ const ChatBox = (props) => {
                   />
                 </Grid>
                 <Grid item xs={1}>
-                  <IconButton type="submit" onClick={()=>{ on_change_for_message()}}>
+ ;                 <IconButton type="submit" onClick={()=>{ on_change_for_message()}}>
                     <SendIcon />
                   </IconButton>
-                  <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
+                  <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={()=>{console.log("click");}} className={classes.margin}>
                     视频通话
                   </Button>
                 </Grid>
