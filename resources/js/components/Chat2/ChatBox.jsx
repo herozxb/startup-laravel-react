@@ -116,6 +116,7 @@ const ChatBox = (props) => {
 
   useEffect(() => {
     const socket = socketIOClient("https://120.53.220.237:5002");
+    console.log("==2===socket===Message========");
     socket.on("messages", (data) => {setLastMessage(data);console.log("get messages from https server 1"); console.log(data); });
   }, []);
 

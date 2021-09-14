@@ -72,6 +72,7 @@ const Conversations = (props) => {
 
   useEffect(() => {
     let socket = socketIOClient("https://120.53.220.237:5002");
+    console.log("==1===socket=====newConversation======");
     socket.on("messages", (data) => { setNewConversation(data);console.log("get Conversation from https server "); console.log(data);});
 
     return () => {
