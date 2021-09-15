@@ -86,9 +86,6 @@ const useStyles = makeStyles((theme) => ({
   listItemRight: {
     flexDirection: "row-reverse",
   },
-  margin: {
-    width: "100%",
-  },
 }));
 
 const ChatBox = (props) => {
