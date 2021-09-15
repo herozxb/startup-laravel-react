@@ -135,7 +135,7 @@ const ChatBox = (props) => {
     chatBottom.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  useEffect(scrollToBottom);
+  //useEffect(scrollToBottom);
 
   const handleSubmit = (e) => {
     e.preventDefault();
