@@ -140,7 +140,7 @@ const ChatBox = (props) => {
   };
 
   const scrollToBottom = () => {
-    //chatBottom.current.scrollIntoView({ behavior: "smooth" });
+    chatBottom.current.scrollIntoView({ behavior: "smooth" });
   };
 
   //useEffect(scrollToBottom);
