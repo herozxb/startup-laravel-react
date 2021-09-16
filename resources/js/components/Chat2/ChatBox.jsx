@@ -133,8 +133,9 @@ const ChatBox = (props) => {
       console.log(data); 
       console.log(String(data).valueOf()); 
       console.log(props.me_id);
-      setTargetID(String(data).substr(7,28))
-      console.log(targetID);
+      console.log(String(data).substr(7,32));
+      setTargetID(String(data).substr(7,32))
+      
       if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
@@ -166,6 +167,7 @@ const ChatBox = (props) => {
   useEffect(() => {
       console.log("AutoMessage is working and the props is");
       console.log(props);
+      console.log(targetID);
       if(autoMessage>0)
       {
         sendConversationMessage(props.user._id, props.me_id).then((res) => {

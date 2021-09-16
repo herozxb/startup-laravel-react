@@ -58,8 +58,8 @@ const Conversations = (props) => {
         recipients[i].username !==
         authenticationService.currentUserValue.username
       ) {
-        console.log("=============1==============")
-        console.log(recipients[i])
+        //console.log("=============1==============")
+        //console.log(recipients[i])
         return recipients[i];
       }
     }
