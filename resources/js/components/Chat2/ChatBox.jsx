@@ -144,7 +144,7 @@ const ChatBox = (props) => {
                 setTargetID(String(data).substr(7,32))
 
       }
-      else if(String(data).substr(0, 5).valueOf() == String("phone").valueOf())
+      else if(String(data).substr(0, 5).valueOf() == String("@@@@@").valueOf())
       {
 
                 //console.log("AutoCallID");
@@ -179,10 +179,10 @@ const ChatBox = (props) => {
       //console.log(String(props.chat_user_id).valueOf());
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
       {
-        //console.log("Auto sending back video id");
-        //console.log(targetID);
-        //console.log( "我的电话号="+String(props.me_id) );
-        sendConversationMessage(targetID, "phone="+String(props.me_id)).then((res) => {
+        console.log("Auto sending back video id");
+        console.log(targetID);
+        console.log( "@@@@@="+String(props.me_id) );
+        sendConversationMessage(targetID, "@@@@@"+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
       }
