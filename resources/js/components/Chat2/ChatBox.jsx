@@ -131,7 +131,6 @@ const ChatBox = (props) => {
       setLastMessage(data);
       console.log("get messages from https server in chatbox"); 
       console.log(data); 
-      console.log(String(data).valueOf()); 
       console.log(props.me_id);
       console.log(String(data).substr(7,32));
       setTargetID(String(data).substr(7,32))
@@ -168,7 +167,7 @@ const ChatBox = (props) => {
       console.log("AutoMessage is working and the props is");
       console.log(props);
       console.log(targetID);
-      if(autoMessage>0)
+      if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
       {
         sendConversationMessage(targetID, props.me_id).then((res) => {
           setNewMessage("");
