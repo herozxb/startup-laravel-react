@@ -170,7 +170,7 @@ const ChatBox = (props) => {
       console.log(targetID);
       if(autoMessage>0)
       {
-        sendConversationMessage(props.user._id, props.me_id).then((res) => {
+        sendConversationMessage(targetID, props.me_id).then((res) => {
           setNewMessage("");
         });
       }
