@@ -136,10 +136,10 @@ const Chat = (props) => {
 
     const login = useLogin();
     login(props.chat_props.name,"hero2009").then((user_login) => {
-        console.log("===user_login==="); 
-        console.log(user_login); 
+        //console.log("===user_login==="); 
+        //console.log(user_login); 
         setUser_ID(user_login.userId)
-        console.log(user_id); 
+        //console.log(user_id); 
       });
 
     return (

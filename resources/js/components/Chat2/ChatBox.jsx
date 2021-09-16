@@ -109,6 +109,8 @@ const ChatBox = (props) => {
   const classes = useStyles();
   const mountedRef = useRef(true)                 // ← the "flag"
 
+  const [targetID, setTargetID] = useState("")
+
 
 
   useEffect(() => {
@@ -116,35 +118,30 @@ const ChatBox = (props) => {
     scrollToBottom();
   }, [lastMessage, props.scope, props.conversationId]);
 
-console.log("props.me_id = ");
-console.log(props.me_id);
+//console.log("props.me_id = ");
+//console.log(props.me_id);
 
-console.log("props.chat_user_id = ");
-console.log(props.chat_user_id);
+//console.log("props.chat_user_id = ");
+//console.log(props.chat_user_id);
 
   useEffect(() => {
     const socket = socketIOClient("https://120.53.220.237:5002");
     console.log("==2===socket===Message========");
     socket.on("messages", (data) => {
       setLastMessage(data);
-      console.log("get messages from https server 1"); 
+      console.log("get messages from https server in chatbox"); 
       console.log(data); 
       console.log(String(data).valueOf()); 
       console.log(props.me_id);
-      if(String(data).valueOf() == String("发起视频通话").valueOf())
+      setTargetID(String(data).substr(7))
+      console.log(targetID);
+      if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
                 console.log("AutoMessage");
                 counter = counter + 1;
                 setAutoMessage(counter)
                 console.log(autoMessage);
-
-                console.log("In Conversation Chat");
-                console.log(props);
-                console.log("props.me_id");
-                console.log(props.me_id);
-                console.log("props.user._id");
-                console.log(props.user._id);
 
       }
     });
