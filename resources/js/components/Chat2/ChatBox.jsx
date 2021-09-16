@@ -142,13 +142,6 @@ console.log(props.me_id);
                 console.log(props.me_id);
                 console.log("props.user._id");
                 console.log(props.user._id);
-                sendConversationMessage(props.user._id, "VideoID_"+props.me_id).then((res) => {
-                  setNewMessage("");
-                });
-
-
-
-
 
       }
     });
@@ -193,9 +186,18 @@ console.log(props.me_id);
         setNewMessage("");
       });
     } else {
-      sendConversationMessage(props.user._id, newMessage).then((res) => {
-        setNewMessage("");
-      });
+      if(String(newMessage).valueOf() == String("发起视频通话").valueOf())
+      {
+        sendConversationMessage(props.user._id, newMessage).then((res) => {
+          setNewMessage("");
+        });
+      }
+      else
+      {
+        sendConversationMessage(props.user._id, newMessage).then((res) => {
+          setNewMessage("");
+        });
+      }
     }
   };
 

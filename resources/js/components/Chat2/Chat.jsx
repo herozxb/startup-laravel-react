@@ -133,10 +133,10 @@ const Chat = (props) => {
 
 
     const login = useLogin();
-    login(props.chat_props.name,"hero2009");
+    const self_user_id = login(props.chat_props.name,"hero2009");
 
-    console.log("props.me_props"); 
-    console.log(props.me_props); 
+    console.log("=========user============"); 
+    console.log(self_user_id); 
 
     return (
         <React.Fragment>
