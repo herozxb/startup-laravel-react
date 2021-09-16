@@ -128,6 +128,8 @@ const ChatBox = (props) => {
                   console.log("In Global Chat");
                   setNewMessage("");
               } else {
+                console.log("In Conversation Chat");
+                console.log(props.me);
                 sendConversationMessage(props.user._id, "VideoID_"+props.me).then((res) => {
                   setNewMessage("");
                 });

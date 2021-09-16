@@ -164,7 +164,7 @@ const Chat = (props) => {
                     </Paper>
                 </Grid>
                 <Grid item md={8}>
-                    <ChatBox scope={scope} user={user} me={props.me_props.me}/>
+                    <ChatBox scope={scope} user={user} me={props.me_props}/>
                 </Grid>
             </Grid>
         </React.Fragment>
