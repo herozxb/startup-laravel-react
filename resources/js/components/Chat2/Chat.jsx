@@ -135,6 +135,9 @@ const Chat = (props) => {
     const login = useLogin();
     login(props.chat_props.name,"hero2009");
 
+    console.log("props.me_props"); 
+    console.log(props.me_props); 
+
     return (
         <React.Fragment>
             <Grid container>

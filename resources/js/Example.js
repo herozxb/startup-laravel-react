@@ -157,7 +157,8 @@ const Example = (props) => {
     setNewMessage('');
   };
 
-
+  console.log("me");
+  console.log(me);
 
         return (
             <div className="container">
