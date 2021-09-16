@@ -127,6 +127,8 @@ const Chat = (props) => {
     const classes = useStyles();
     const [newMessage, setNewMessage] = useState("");
 
+    const [user_id, setUser_ID] = useState('');
+
     const handleChange = (e, newVal) => {
         setTab(newVal);
     };
@@ -134,7 +136,10 @@ const Chat = (props) => {
 
     const login = useLogin();
     login(props.chat_props.name,"hero2009").then((user_login) => {
+        console.log("===user_login==="); 
         console.log(user_login); 
+        setUser_ID(user_login.userId)
+        console.log(user_id); 
       });
 
     return (
@@ -166,7 +171,7 @@ const Chat = (props) => {
                     </Paper>
                 </Grid>
                 <Grid item md={8}>
-                    <ChatBox scope={scope} user={user} me_id={props.me_props}/>
+                    <ChatBox scope={scope} user={user} me_id={props.me_props} chat_user_id={user_id}/>
                 </Grid>
             </Grid>
         </React.Fragment>

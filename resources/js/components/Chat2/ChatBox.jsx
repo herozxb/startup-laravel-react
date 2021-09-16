@@ -119,6 +119,9 @@ const ChatBox = (props) => {
 console.log("props.me_id = ");
 console.log(props.me_id);
 
+console.log("props.chat_user_id = ");
+console.log(props.chat_user_id);
+
   useEffect(() => {
     const socket = socketIOClient("https://120.53.220.237:5002");
     console.log("==2===socket===Message========");
@@ -188,7 +191,7 @@ console.log(props.me_id);
     } else {
       if(String(newMessage).valueOf() == String("发起视频通话").valueOf())
       {
-        sendConversationMessage(props.user._id, newMessage).then((res) => {
+        sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
           setNewMessage("");
         });
       }
