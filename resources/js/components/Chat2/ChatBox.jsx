@@ -152,7 +152,7 @@ const ChatBox = (props) => {
                 //console.log(String(data).substr(6,27));
                 setTargetVideoID(String(data).substr(6,27));
                 props.setIdToCall_props_2(String(data).substr(6,27));
-                props.callUser_props_2(targetVideoID);
+                props.callUser_props_2(String(data).substr(6,27));
 
       }
     });
