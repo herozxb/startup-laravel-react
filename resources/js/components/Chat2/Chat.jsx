@@ -171,7 +171,7 @@ const Chat = (props) => {
                     </Paper>
                 </Grid>
                 <Grid item md={8}>
-                    <ChatBox scope={scope} user={user} me_id={props.me_props} chat_user_id={user_id} setIdToCall_props_2={props.setIdToCall_props} />
+                    <ChatBox scope={scope} user={user} me_id={props.me_props} chat_user_id={user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props}/>
                 </Grid>
             </Grid>
         </React.Fragment>

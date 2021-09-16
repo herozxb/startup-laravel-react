@@ -313,6 +313,11 @@ const ChatBox = (props) => {
                     <SendIcon />
                   </IconButton>
                 </Grid>
+
+                                          <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => props.callUser_props_2(idToCall)} className={classes.margin}>
+                                            视频通话
+                                          </Button>
+
               </Grid>
             </form>
           </Grid>
