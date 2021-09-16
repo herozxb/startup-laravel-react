@@ -166,9 +166,11 @@ const ChatBox = (props) => {
   useEffect(() => {
       console.log("AutoMessage is working and the props is");
       console.log(props);
-      console.log(targetID);
+      console.log(String(targetID).valueOf());
+      console.log(String(props.chat_user_id).valueOf());
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
       {
+        console.log("Auto sending back video id");
         sendConversationMessage(targetID, props.me_id).then((res) => {
           setNewMessage("");
         });
