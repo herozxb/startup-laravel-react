@@ -116,7 +116,15 @@ const ChatBox = (props) => {
   useEffect(() => {
     const socket = socketIOClient("https://120.53.220.237:5002");
     console.log("==2===socket===Message========");
-    socket.on("messages", (data) => {setLastMessage(data);console.log("get messages from https server 1"); console.log(data); });
+    socket.on("messages", (data) => {
+      setLastMessage(data);
+      console.log("get messages from https server 1"); 
+      console.log(data); 
+      if(data == "发起视频通话")
+      {
+          console.log("========发起视频通话==========="); 
+      }
+    });
   }, []);
 
   const reloadMessages = () => {
@@ -144,7 +152,6 @@ const ChatBox = (props) => {
         setNewMessage("");
       });
     } else {
-
       sendConversationMessage(props.user._id, newMessage).then((res) => {
         setNewMessage("");
       });
