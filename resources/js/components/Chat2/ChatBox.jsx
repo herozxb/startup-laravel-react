@@ -132,9 +132,6 @@ const ChatBox = (props) => {
       console.log("get messages from https server in chatbox"); 
       console.log(data); 
       console.log(props.me_id);
-      console.log(String(data).substr(7,32));
-      setTargetID(String(data).substr(7,32))
-      
       if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
@@ -142,6 +139,15 @@ const ChatBox = (props) => {
                 counter = counter + 1;
                 setAutoMessage(counter)
                 console.log(autoMessage);
+                console.log(String(data).substr(7,32));
+                setTargetID(String(data).substr(7,32))
+
+      }
+      elseif(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
+      {
+
+                console.log("AutoCallID");
+                props.setIdToCall_props_2("123")
 
       }
     });
@@ -171,7 +177,7 @@ const ChatBox = (props) => {
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
       {
         console.log("Auto sending back video id");
-        sendConversationMessage(targetID, props.me_id).then((res) => {
+        sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
       }
