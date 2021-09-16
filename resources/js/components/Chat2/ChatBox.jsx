@@ -142,7 +142,7 @@ const ChatBox = (props) => {
                 //console.log(String(data).substr(7,32));
                 setTargetID(String(data).substr(7,32))
                 setAutoMessage(counter)
-                console.log(counter);
+                //console.log(counter);
 
       }
       else if(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
@@ -174,16 +174,16 @@ const ChatBox = (props) => {
   };
 
   useEffect(() => {
-      console.log("AutoMessage is working and the props is");
+      //console.log("AutoMessage is working and the props is");
       //console.log(props);
       //console.log(String(targetID).valueOf());
       //console.log(String(props.chat_user_id).valueOf());
       console.log(autoMessage);
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
       {
-        console.log("Auto sending back video id");
-        console.log(targetID);
-        console.log("我的电话号="+String(props.me_id) );
+        //console.log("Auto sending back video id");
+        //console.log(targetID);
+        //console.log("我的电话号="+String(props.me_id) );
         sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });

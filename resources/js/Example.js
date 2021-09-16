@@ -89,7 +89,7 @@ const Example = (props) => {
         myVideo.current.srcObject = currentStream;
       });
 
-    socket.on('me', (id) =>{ setMe(id); console.log("=======1======="); console.log(id) });
+    socket.on('me', (id) =>{ setMe(id);});
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
