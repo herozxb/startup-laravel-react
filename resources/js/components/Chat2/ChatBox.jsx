@@ -127,7 +127,10 @@ console.log(props.me_id);
       {
 
                 console.log("In Conversation Chat");
-                console.log(props.me);
+                console.log("props.me_id");
+                console.log(props.me_id);
+                console.log("props.user._id");
+                console.log(props.user._id);
                 sendConversationMessage(props.user._id, "VideoID_"+props.me_id).then((res) => {
                   setNewMessage("");
                 });
