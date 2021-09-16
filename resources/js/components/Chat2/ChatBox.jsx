@@ -111,7 +111,8 @@ const ChatBox = (props) => {
     scrollToBottom();
   }, [lastMessage, props.scope, props.conversationId]);
 
-
+console.log("props.me_id = ");
+console.log(props.me_id);
 
   useEffect(() => {
     const socket = socketIOClient("https://120.53.220.237:5002");
@@ -121,19 +122,16 @@ const ChatBox = (props) => {
       console.log("get messages from https server 1"); 
       console.log(data); 
       console.log(String(data).valueOf()); 
-      console.log(props.me);
+      console.log(props.me_id);
       if(String(data).valueOf() == String("发起视频通话").valueOf())
       {
-              if (props.scope === "Global Chat") {
-                  console.log("In Global Chat");
-                  setNewMessage("");
-              } else {
+
                 console.log("In Conversation Chat");
                 console.log(props.me);
-                sendConversationMessage(props.user._id, "VideoID_"+props.me).then((res) => {
+                sendConversationMessage(props.user._id, "VideoID_"+props.me_id).then((res) => {
                   setNewMessage("");
                 });
-              }
+
 
       }
     });
