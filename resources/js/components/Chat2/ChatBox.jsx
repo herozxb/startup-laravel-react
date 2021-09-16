@@ -110,6 +110,7 @@ const ChatBox = (props) => {
   const mountedRef = useRef(true)                 // ← the "flag"
 
   const [targetID, setTargetID] = useState("")
+  const [targetVideoID, setTargetVideoID] = useState("")
 
 
 
@@ -147,7 +148,9 @@ const ChatBox = (props) => {
       {
 
                 console.log("AutoCallID");
-                props.setIdToCall_props_2("123")
+                console.log(String(data).substr(6,27));
+                setTargetVideoID(String(data).substr(6,27))
+                props.setIdToCall_props_2(String(data).substr(6,27))
 
       }
     });
