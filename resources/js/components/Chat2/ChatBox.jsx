@@ -96,6 +96,8 @@ const ChatBox = (props) => {
   const [messages, setMessages] = useState([]);
   const [lastMessage, setLastMessage] = useState(null);
 
+  const [autoMessage, setAutoMessage] = useState(false);
+
   const getGlobalMessages = useGetGlobalMessages();
   const sendGlobalMessage = useSendGlobalMessage();
   const getConversationMessages = useGetConversationMessages();
@@ -137,6 +139,11 @@ console.log(props.me_id);
                 });
 
 
+                console.log("AutoMessage");
+                setAutoMessage(true)
+                console.log(autoMessage);
+
+
       }
     });
   }, []);
@@ -157,7 +164,11 @@ console.log(props.me_id);
     chatBottom.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  //useEffect(scrollToBottom);
+  useEffect(() => {
+      console.log("AutoMessage is working and the props is");
+      console.log(props);
+  }, [autoMessage]);
+
 
   const handleSubmit = (e) => {
 
