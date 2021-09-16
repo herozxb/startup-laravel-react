@@ -160,6 +160,10 @@ console.log(props.me_id);
   //useEffect(scrollToBottom);
 
   const handleSubmit = (e) => {
+
+    console.log("In handleSubmit Chat");
+    console.log(props);
+
     e.preventDefault();
     if (props.scope === "Global Chat") {
       sendGlobalMessage(newMessage).then(() => {
