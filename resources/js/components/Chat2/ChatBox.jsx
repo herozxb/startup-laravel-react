@@ -147,7 +147,7 @@ const ChatBox = (props) => {
       {
 
                 console.log("AutoCallID");
-                props.setIdToCall_props_2("123")
+                //props.setIdToCall_props_2("123")
 
       }
     });
@@ -177,6 +177,8 @@ const ChatBox = (props) => {
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
       {
         console.log("Auto sending back video id");
+        console.log(targetID);
+        console.log( "我的电话号="+String(props.me_id) );
         sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
