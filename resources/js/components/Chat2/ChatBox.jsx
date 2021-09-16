@@ -133,7 +133,7 @@ const ChatBox = (props) => {
       console.log(data); 
       console.log(String(data).valueOf()); 
       console.log(props.me_id);
-      setTargetID(String(data).substr(7))
+      setTargetID(String(data).substr(7,28))
       console.log(targetID);
       if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
