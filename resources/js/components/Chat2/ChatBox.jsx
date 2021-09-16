@@ -143,7 +143,7 @@ const ChatBox = (props) => {
                 setTargetID(String(data).substr(7,32))
 
       }
-      elseif(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
+      else if(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
       {
 
                 console.log("AutoCallID");
