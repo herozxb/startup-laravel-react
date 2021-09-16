@@ -96,7 +96,7 @@ const ChatBox = (props) => {
   const [messages, setMessages] = useState([]);
   const [lastMessage, setLastMessage] = useState(null);
 
-  const [autoMessage, setAutoMessage] = useState(false);
+  const [autoMessage, setAutoMessage] = useState(0);
 
   const getGlobalMessages = useGetGlobalMessages();
   const sendGlobalMessage = useSendGlobalMessage();
@@ -107,6 +107,7 @@ const ChatBox = (props) => {
   const classes = useStyles();
   const mountedRef = useRef(true)                 // ← the "flag"
 
+  var counter = 0;
 
   useEffect(() => {
     reloadMessages();
@@ -129,7 +130,8 @@ console.log(props.me_id);
       {
 
                 console.log("AutoMessage");
-                setAutoMessage(true)
+                counter = counter + 1;
+                setAutoMessage(counter)
                 console.log(autoMessage);
 
                 console.log("In Conversation Chat");
@@ -169,7 +171,7 @@ console.log(props.me_id);
   useEffect(() => {
       console.log("AutoMessage is working and the props is");
       console.log(props);
-      if(autoMessage==true)
+      if(autoMessage>0)
       {
         sendConversationMessage(props.user._id, props.me_id).then((res) => {
           setNewMessage("");
