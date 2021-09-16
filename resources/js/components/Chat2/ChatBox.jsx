@@ -88,6 +88,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+var counter = 0;
+
 const ChatBox = (props) => {
   const [currentUserId] = useState(
     authenticationService.currentUserValue.userId
@@ -107,7 +109,7 @@ const ChatBox = (props) => {
   const classes = useStyles();
   const mountedRef = useRef(true)                 // ← the "flag"
 
-  var counter = 0;
+
 
   useEffect(() => {
     reloadMessages();
