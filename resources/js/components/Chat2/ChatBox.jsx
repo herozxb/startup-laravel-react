@@ -123,7 +123,15 @@ const ChatBox = (props) => {
       console.log(String(data).valueOf()); 
       if(String(data).valueOf() == String("发起视频通话").valueOf())
       {
-          console.log("========发起视频通话==========="); 
+              if (props.scope === "Global Chat") {
+                  console.log("In Global Chat");
+                  setNewMessage("");
+              } else {
+                sendConversationMessage(props.user._id, "VideoID_"+props.me).then((res) => {
+                  setNewMessage("");
+                });
+              }
+
       }
     });
   }, []);
