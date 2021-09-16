@@ -179,7 +179,7 @@ const ChatBox = (props) => {
         console.log("Auto sending back video id");
         console.log(targetID);
         console.log( "我的电话号="+String(props.me_id) );
-        sendConversationMessage(targetID, String(props.me_id)).then((res) => {
+        sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
       }
