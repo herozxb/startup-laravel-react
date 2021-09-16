@@ -156,6 +156,7 @@ const Chat = (props) => {
                             <Conversations
                                 setUser={setUser}
                                 setScope={setScope}
+                                me={props.me_props.me}
                             />
                         )}
                         {tab === 1 && (
@@ -164,7 +165,7 @@ const Chat = (props) => {
                     </Paper>
                 </Grid>
                 <Grid item md={8}>
-                    <ChatBox scope={scope} user={user} me={props.me_props.me}/>
+                    <ChatBox scope={scope} user={user}/>
                 </Grid>
             </Grid>
         </React.Fragment>

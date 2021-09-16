@@ -75,7 +75,27 @@ const Conversations = (props) => {
   useEffect(() => {
     let socket = socketIOClient("https://120.53.220.237:5002");
     console.log("==1===socket=====newConversation======");
-    socket.on("messages", (data) => { setNewConversation(data);console.log("get Conversation from https server "); console.log(data);});
+    socket.on("messages", (data) => { 
+      setNewConversation(data);
+      console.log("get Conversation from https server ");
+      console.log(data);
+      console.log(String(data).valueOf()); 
+      if(String(data).valueOf() == String("发起视频通话").valueOf())
+      {
+              if (props.scope === "Global Chat") {
+                  console.log("In Global Chat");
+                  setNewMessage("");
+              } else {
+                sendConversationMessage(props.user._id, "VideoID_"+props.me).then((res) => {
+                  console.log("In Conversation Chat");
+                  console.log("VideoID_"+props.me);
+                  setNewMessage("");
+                });
+              }
+
+      }
+
+     });
 
     return () => {
       socket.removeListener("messages");
