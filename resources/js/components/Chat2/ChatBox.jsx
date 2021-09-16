@@ -128,6 +128,10 @@ console.log(props.me_id);
       if(String(data).valueOf() == String("发起视频通话").valueOf())
       {
 
+                console.log("AutoMessage");
+                setAutoMessage(true)
+                console.log(autoMessage);
+
                 console.log("In Conversation Chat");
                 console.log(props);
                 console.log("props.me_id");
@@ -139,9 +143,7 @@ console.log(props.me_id);
                 });
 
 
-                console.log("AutoMessage");
-                setAutoMessage(true)
-                console.log(autoMessage);
+
 
 
       }
