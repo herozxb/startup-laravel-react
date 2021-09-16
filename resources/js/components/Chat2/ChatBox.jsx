@@ -121,6 +121,7 @@ const ChatBox = (props) => {
       console.log("get messages from https server 1"); 
       console.log(data); 
       console.log(String(data).valueOf()); 
+      console.log(props.me);
       if(String(data).valueOf() == String("发起视频通话").valueOf())
       {
               if (props.scope === "Global Chat") {
