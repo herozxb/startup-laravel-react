@@ -144,7 +144,7 @@ const ChatBox = (props) => {
                 setTargetID(String(data).substr(7,32))
 
       }
-      else if(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
+      else if(String(data).substr(0, 5).valueOf() == String("phone").valueOf())
       {
 
                 //console.log("AutoCallID");
@@ -182,7 +182,7 @@ const ChatBox = (props) => {
         //console.log("Auto sending back video id");
         //console.log(targetID);
         //console.log( "我的电话号="+String(props.me_id) );
-        sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
+        sendConversationMessage(targetID, "phone="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
       }
@@ -314,9 +314,9 @@ const ChatBox = (props) => {
                   </IconButton>
                 </Grid>
 
-                                          <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => props.callUser_props_2(targetVideoID)} className={classes.margin}>
-                                            视频通话
-                                          </Button>
+                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => props.callUser_props_2(targetVideoID)} className={classes.margin}>
+                  视频通话
+                </Button>
 
               </Grid>
             </form>
