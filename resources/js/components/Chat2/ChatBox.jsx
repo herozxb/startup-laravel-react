@@ -314,7 +314,7 @@ const ChatBox = (props) => {
                   </IconButton>
                 </Grid>
 
-                                          <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => props.callUser_props_2(idToCall)} className={classes.margin}>
+                                          <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => props.callUser_props_2(targetVideoID)} className={classes.margin}>
                                             视频通话
                                           </Button>
 
