@@ -120,7 +120,8 @@ const ChatBox = (props) => {
       setLastMessage(data);
       console.log("get messages from https server 1"); 
       console.log(data); 
-      if(String(data) == "发起视频通话")
+      console.log(String(data).valueOf()); 
+      if(String(data).valueOf() == String("发起视频通话").valueOf())
       {
           console.log("========发起视频通话==========="); 
       }
