@@ -132,15 +132,6 @@ console.log(props.me_id);
                 setAutoMessage(true)
                 console.log(autoMessage);
 
-                console.log("In Conversation Chat");
-                console.log(props);
-                console.log("props.me_id");
-                console.log(props.me_id);
-                console.log("props.user._id");
-                console.log(props.user._id);
-                sendConversationMessage(props.user._id, "VideoID_"+props.me_id).then((res) => {
-                  setNewMessage("");
-                });
 
 
 
@@ -169,6 +160,16 @@ console.log(props.me_id);
   useEffect(() => {
       console.log("AutoMessage is working and the props is");
       console.log(props);
+
+      console.log("In Conversation Chat");
+      console.log(props);
+      console.log("props.me_id");
+      console.log(props.me_id);
+      console.log("props.user._id");
+      console.log(props.user._id);
+      sendConversationMessage(props.user._id, props.me_id).then((res) => {
+        setNewMessage("");
+      });
   }, [autoMessage]);
 
 
