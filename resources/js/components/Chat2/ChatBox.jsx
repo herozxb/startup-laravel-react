@@ -144,13 +144,13 @@ const ChatBox = (props) => {
                 setTargetID(String(data).substr(7,32))
 
       }
-      else if(String(data).substr(22, 27).valueOf() == String("@@@@@").valueOf())
+      else if(String(data).substr(0, 5).valueOf() == String("phone").valueOf())
       {
 
                 //console.log("AutoCallID");
                 //console.log(String(data).substr(6,27));
-                setTargetVideoID(String(data).substr(0,21))
-                props.setIdToCall_props_2(String(data).substr(0,21))
+                setTargetVideoID(String(data).substr(6,27))
+                props.setIdToCall_props_2(String(data).substr(6,27))
 
       }
     });
@@ -181,8 +181,8 @@ const ChatBox = (props) => {
       {
         console.log("Auto sending back video id");
         console.log(targetID);
-        console.log( "@@@@@="+String(props.me_id) );
-        sendConversationMessage(targetID, String(props.me_id)+"=@@@@@").then((res) => {
+        console.log( "phone="+String(props.me_id) );
+        sendConversationMessage(targetID, props.me_id).then((res) => {
           setNewMessage("");
         });
       }
