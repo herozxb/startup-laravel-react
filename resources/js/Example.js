@@ -39,23 +39,23 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   container: {
-    width: '100vw',
+    width: '100%',
     margin: '0px 0',
     padding: 0,
 
     [theme.breakpoints.down('xs')]: {
-      width: '100vw',
+      width: '100%',
       justifyContent: 'center',
     },
   },
   margin: {
-    marginTop: 20,
+    marginTop: 0,
   },
   padding: {
-    padding: 20,
+    padding: 0,
   },
   paper: {
-    padding: '10px 20px',
+    padding: '0px 0px',
     border: '2px solid black',
     background: 'linear-gradient(107.68deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 100%)',
 
@@ -89,7 +89,7 @@ const Example = (props) => {
         myVideo.current.srcObject = currentStream;
       });
 
-    socket.on('me', (id) =>{ setMe(id);});
+    socket.on('me', (id) =>{ setMe(id); console.log("=======1======="); console.log(id) });
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
@@ -157,8 +157,7 @@ const Example = (props) => {
     setNewMessage('');
   };
 
-  console.log("me");
-  console.log(me);
+
 
         return (
             <div className="container">
@@ -227,7 +226,7 @@ const Example = (props) => {
                         				</form>
 
                   			      </Paper>
-                              <Chat chat_props={props} me_props={me} setIdToCall_props={setIdToCall} stream_props={stream} callUser_props={callUser} />
+                              <Chat chat_props={props}/>
                   			    </Container>
                         </div>
                     </div>
