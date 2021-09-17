@@ -6,18 +6,9 @@
 
 @section('content')
 
-<nav class="primary-menu navbar navbar-expand-lg">
-    <div id="header-nav" class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="active"><a style="font-size:200%" class="d-flex" href="{{ url('/') }}" title="Payyed - HTML Template">主页</a> </li>
-            <li><a style="font-size:120%" href="{{ url('profile/'.Auth::user()->uuid) }}">个人主页</a></li>
-            <li><a style="font-size:120%" href="{{ url('dashboard') }}">视频聊天</a></li>
-            <li><a style="font-size:120%" href="{{ url('video') }}">数据面板</a></li>
-            <li><a style="font-size:120%" href="{{ url('transactions/') }}">转账记录</a></li>
-            <li><a style="font-size:120%" href="{{ url('transactions/transfer') }}">发送钱币</a></li>
-        </ul>
-    </div>
-</nav>
+<div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="Payyed - HTML Template"><img
+                            src="{{ asset('images/Photo.jpg') }}" alt="Payyed" style="height:50px"/></a> </div>
+                
 
 
 
