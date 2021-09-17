@@ -49,10 +49,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   margin: {
-    marginTop: 0,
+    marginTop: 20,
   },
   padding: {
-    padding: 0,
+    padding: 20,
   },
   paper: {
     padding: '0px 0px',
