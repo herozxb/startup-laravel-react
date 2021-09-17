@@ -140,8 +140,8 @@ const ChatBox = (props) => {
                 counter = counter + 1;
 
                 //console.log(String(data).substr(7,32));
-                setTargetID(String(data).substr(7,32))
-                setAutoMessage(counter)
+                setTargetID(String(data).substr(7,32));
+                setAutoMessage(counter);
                 //console.log(counter);
 
       }
@@ -150,8 +150,9 @@ const ChatBox = (props) => {
 
                 //console.log("AutoCallID");
                 //console.log(String(data).substr(6,27));
-                setTargetVideoID(String(data).substr(6,27))
-                props.setIdToCall_props_2(String(data).substr(6,27))
+                setTargetVideoID(String(data).substr(6,27));
+                props.setIdToCall_props_2(String(data).substr(6,27));
+                props.callUser_props_2(String(data).substr(6,27));
 
       }
     });
