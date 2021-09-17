@@ -1,14 +1,13 @@
 @extends('layouts.layout')
 @section('header')
+@include('layouts.partials.header')
 @endsection
 
 @section('title', 'Transfer Money')
 
 @section('content')
 
-<div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="Payyed - HTML Template"><img
-                            src="{{ asset('images/Photo.jpg') }}" alt="Payyed" style="height:50px"/></a> </div>
-                
+
 
 
 
