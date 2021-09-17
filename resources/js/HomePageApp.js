@@ -264,17 +264,17 @@ const HomePageApp = (props) => {
 				                (
 
 			  		               posts.map((post) => ( 
-                  								<Card style={{ width: '15rem', transform:' translateX(30px)' }}>
+                  								<Card style={{ width: '15rem', transform:' translateX(0px)' }}>
                   								  <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                   								  <Card.Body>
                   								    <Card.Title>{post.username}</Card.Title>
-                                      <Row style={{  transform:' translateX(50px)' }} >
+                                      <Row style={{  transform:' translateX(0px)' }} >
                                           <Typography variant="caption" display="block" gutterBottom>
                                             信誉
                                           </Typography>
                                           <Rating name="half-rating-read" value={post.honesty} precision={0.1} size="small" readOnly />
                                       </Row>
-                                      <Row style={{  transform:' translateX(50px)' }} >
+                                      <Row style={{  transform:' translateX(0px)' }} >
                                           <Typography variant="caption" display="block" gutterBottom>
                                             能力
                                           </Typography>
