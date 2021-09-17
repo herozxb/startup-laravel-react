@@ -39,12 +39,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   container: {
-    width: '100%',
+    width: '90%',
     margin: '0px 0',
     padding: 0,
 
     [theme.breakpoints.down('xs')]: {
-      width: '100%',
+      width: '90%',
       justifyContent: 'center',
     },
   },
