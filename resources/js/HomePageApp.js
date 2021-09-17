@@ -233,7 +233,7 @@ const HomePageApp = (props) => {
 		<Grid>
 		      <Grid.Row centered>
 
-    				<DropdownButton id="dropdown-basic-button" title="       搜索行业领域       " size='lg' style={{ width: '300px', transform:' translateX(30px)', zIndex: 100}} >
+    				<DropdownButton id="dropdown-basic-button" title="       搜索行业领域       " size='lg' style={{ width: '300px', transform:' translateX(15px)', zIndex: 100}} >
     				  <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Self_improvement")}} href="#/action-1">科学</Dropdown.Item>
     				  <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Relationship")}} href="#/action-2">技术</Dropdown.Item>
     				  <Dropdown.Item onClick={()=>{ on_change_for_thought_area("Education")}} href="#/action-3">教育</Dropdown.Item>
@@ -247,7 +247,7 @@ const HomePageApp = (props) => {
           </Grid.Row>
 
           <Grid.Row centered>
-            <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(30px)'}}>
+            <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(15px)'}}>
               <div class="input-group-prepend">
                 <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 发布 </button>
               </div>
@@ -264,7 +264,7 @@ const HomePageApp = (props) => {
 				                (
 
 			  		               posts.map((post) => ( 
-                  								<Card style={{ width: '15rem', transform:' translateX(30px)' }}>
+                  								<Card style={{ width: '15rem', transform:' translateX(15px)' }}>
                   								  <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                   								  <Card.Body>
                   								    <Card.Title>{post.username}</Card.Title>
