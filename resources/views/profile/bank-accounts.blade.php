@@ -1,16 +1,6 @@
 @extends('layouts.layout') @section('title', 'Bank Accounts') @section('content')
 
-@php
-$status = $fetch_banks->status;
-@endphp
-@if($status != 200)
-$error = $fetch_banks->error;
-@else
-@php
-$banks = $fetch_banks->list;
-$banks = json_decode($banks);
-@endphp
-@endif
+
 
 <!-- Secondary Menu
   ============================================= -->
