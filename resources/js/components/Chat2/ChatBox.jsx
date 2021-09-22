@@ -13,7 +13,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { Button } from '@material-ui/core';
 import { Phone, PhoneDisabled } from '@material-ui/icons';
-import Modal from 'react-bootstrap/Modal'
+//import Modal from 'react-bootstrap/Modal'
 import socketIOClient from "socket.io-client";
 import classnames from "classnames";
 import commonUtilites from "../Utilities/common";
@@ -24,6 +24,13 @@ import {
   useSendConversationMessage,
 } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
+
+
+
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,7 +94,19 @@ const useStyles = makeStyles((theme) => ({
   listItemRight: {
     flexDirection: "row-reverse",
   },
-}));
+  modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+  },
+  paper: {
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+  },
+
+  }));
 
 var counter = 0;
 
@@ -113,9 +132,20 @@ const ChatBox = (props) => {
   const [targetID, setTargetID] = useState("")
   const [targetVideoID, setTargetVideoID] = useState("")
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  //const [show, setShow] = useState(false);
+  //const handleClose = () => setShow(false);
+  //const handleShow = () => setShow(true);
+
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+      setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
 
 
 
@@ -328,25 +358,27 @@ const ChatBox = (props) => {
                   视频通话
                 </Button>
 
+
                 <Modal
-                  show={show}
-                  onHide={handleClose}
-                  backdrop="static"
-                  keyboard={false}
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    className={classes.modal}
+                    open={open}
+                    onClose={handleClose}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                        timeout: 500,
+                    }}
                 >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    I will not close if you click outside me. Don't even try to press
-                    escape key.
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                      Close
-                    </Button>
-                    <Button variant="primary">Understood</Button>
-                  </Modal.Footer>
+                    <Fade in={open}>
+                        <div className={classes.paper}>
+                            <h2>Animated React Modal</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan odio enim.
+                            </p>
+                        </div>
+                    </Fade>
                 </Modal>
 
               </Grid>
