@@ -23,6 +23,7 @@ import {
   useSendConversationMessage,
 } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
+import Modal from 'react-bootstrap/Modal'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -328,10 +329,10 @@ const ChatBox = (props) => {
                 </Button>
 
                 <Modal
-                  show={show}
-                  onHide={handleClose}
-                  backdrop="static"
-                  keyboard={false}
+                    show={show}
+                    onHide={handleClose}
+                    backdrop="static"
+                    keyboard={false}
                 >
                   <Modal.Header closeButton>
                     <Modal.Title>Modal title</Modal.Title>
