@@ -391,7 +391,7 @@ const ChatBox = (props) => {
             Your attention is required
           </Typography>
           <IconButton onClick={handleClose}>
-            <Box component={Clear} color={theme.palette.white.main} />
+            <Box component={Clear} />
           </IconButton>
         </div>
         <DialogContent>
