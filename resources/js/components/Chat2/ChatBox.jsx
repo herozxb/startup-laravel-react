@@ -13,6 +13,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { Button } from '@material-ui/core';
 import { Phone, PhoneDisabled } from '@material-ui/icons';
+import Modal from 'react-bootstrap/Modal'
 import socketIOClient from "socket.io-client";
 import classnames from "classnames";
 import commonUtilites from "../Utilities/common";
@@ -111,6 +112,10 @@ const ChatBox = (props) => {
 
   const [targetID, setTargetID] = useState("")
   const [targetVideoID, setTargetVideoID] = useState("")
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
 
 
@@ -234,6 +239,8 @@ const ChatBox = (props) => {
 
   }
 
+
+
 /*
   useEffect(() => {
 
@@ -317,9 +324,30 @@ const ChatBox = (props) => {
                   </IconButton>
                 </Grid>
 
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => props.callUser_props_2(targetVideoID)} className={classes.margin}>
+                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleShow();props.callUser_props_2(targetVideoID)}} className={classes.margin}>
                   视频通话
                 </Button>
+
+                <Modal
+                  show={show}
+                  onHide={handleClose}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Modal title</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    I will not close if you click outside me. Don't even try to press
+                    escape key.
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Close
+                    </Button>
+                    <Button variant="primary">Understood</Button>
+                  </Modal.Footer>
+                </Modal>
 
               </Grid>
             </form>
