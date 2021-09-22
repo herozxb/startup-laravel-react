@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
       justifyContent: 'center',
   },
-  paper: {
+  paper_modal: {
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
@@ -372,7 +372,7 @@ const ChatBox = (props) => {
                     }}
                 >
                     <Fade in={open}>
-                        <div className={classes.paper}>
+                        <div className={classes.paper_modal}>
                             <h2>Animated React Modal</h2>
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan odio enim.
