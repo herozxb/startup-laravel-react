@@ -13,7 +13,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { Button } from '@material-ui/core';
 import { Phone, PhoneDisabled } from '@material-ui/icons';
-//import Modal from 'react-bootstrap/Modal'
 import socketIOClient from "socket.io-client";
 import classnames from "classnames";
 import commonUtilites from "../Utilities/common";
@@ -24,25 +23,6 @@ import {
   useSendConversationMessage,
 } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
-
-
-
-
-import { useTheme } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import Slide from "@material-ui/core/Slide";
-// @material-ui/icons components
-import Clear from "@material-ui/icons/Clear";
-import Notifications from "@material-ui/icons/Notifications";
-// core components
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="down" ref={ref} {...props} />;
-});
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -106,19 +86,7 @@ const useStyles = makeStyles((theme) => ({
   listItemRight: {
     flexDirection: "row-reverse",
   },
-  modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-  },
-  paper_modal: {
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-  },
-
-  }));
+}));
 
 var counter = 0;
 
@@ -144,24 +112,10 @@ const ChatBox = (props) => {
   const [targetID, setTargetID] = useState("")
   const [targetVideoID, setTargetVideoID] = useState("")
 
-  //const [show, setShow] = useState(false);
-  //const handleClose = () => setShow(false);
-  //const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const dialogClasses = {
-    paper: classes.dialogNotification,
-  };
 
 
   useEffect(() => {
@@ -369,65 +323,30 @@ const ChatBox = (props) => {
                   </IconButton>
                 </Grid>
 
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleClickOpen();props.callUser_props_2(targetVideoID)}} className={classes.margin}>
+                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleShow();props.callUser_props_2(targetVideoID)}} className={classes.margin}>
                   视频通话
                 </Button>
 
-
-      <Dialog
-        open={open}
-        keepMounted
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-        classes={dialogClasses}
-      >
-        <div className={classes.dialogHeader}>
-          <Typography
-            variant="h5"
-            component="h5"
-            className={classes.dialogTitle}
-          >
-            Your attention is required
-          </Typography>
-          <IconButton onClick={handleClose}>
-            <Box component={Clear} />
-          </IconButton>
-        </div>
-        <DialogContent>
-          <Box textAlign="center" paddingTop="1rem" paddingBottom="1rem">
-            <Box
-              component={Notifications}
-              width="3em!important"
-              height="3em!important"
-            ></Box>
-            <Typography
-              variant="h4"
-              component="h4"
-              className={classes.dialogHeading}
-            >
-              You should read this!
-            </Typography>
-            <Typography variant="body2" component="p">
-              A small river named Duden flows by their place and supplies it
-              with the necessary regelialia.
-            </Typography>
-          </Box>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="secondary" variant="contained">
-            Ok, got it
-          </Button>
-          <Button
-            component={Box}
-            onClick={handleClose}
-            color="secondary"
-            marginLeft="auto!important"
-          >
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
+                <Modal
+                  show={show}
+                  onHide={handleClose}
+                  backdrop="static"
+                  keyboard={false}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Modal title</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    I will not close if you click outside me. Don't even try to press
+                    escape key.
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Close
+                    </Button>
+                    <Button variant="primary">Understood</Button>
+                  </Modal.Footer>
+                </Modal>
 
               </Grid>
             </form>
