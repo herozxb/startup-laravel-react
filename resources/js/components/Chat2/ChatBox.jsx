@@ -342,10 +342,10 @@ const ChatBox = (props) => {
                     escape key.
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="secondary" color="primary" style={{color:"#00005c", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={handleClose}>
+                    <Button variant="secondary" color="primary" style={{backgroundColor:"#00005c", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={handleClose}>
                       Close
                     </Button>
-                    <Button variant="primary" color="primary" style={{color:"#00005c", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} >Understood</Button>
+                    <Button variant="primary" color="primary" style={{backgroundColor:"#00005c", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} >Understood</Button>
                   </Modal.Footer>
                 </Modal>
 
