@@ -27,9 +27,21 @@ import { authenticationService } from "../Services/authenticationService";
 
 
 
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+
+import { useTheme } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import Slide from "@material-ui/core/Slide";
+// @material-ui/icons components
+import Clear from "@material-ui/icons/Clear";
+import Notifications from "@material-ui/icons/Notifications";
+// core components
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="down" ref={ref} {...props} />;
+});
 
 
 const useStyles = makeStyles((theme) => ({
@@ -137,16 +149,19 @@ const ChatBox = (props) => {
   //const handleShow = () => setShow(true);
 
 
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const handleOpen = () => {
-      setOpen(true);
+  const handleClickOpen = () => {
+    setOpen(true);
   };
 
   const handleClose = () => {
-      setOpen(false);
+    setOpen(false);
   };
-
+  const dialogClasses = {
+    paper: classes.dialogNotification,
+  };
 
 
   useEffect(() => {
@@ -354,32 +369,65 @@ const ChatBox = (props) => {
                   </IconButton>
                 </Grid>
 
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleOpen();props.callUser_props_2(targetVideoID)}} className={classes.margin}>
+                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleClickOpen();props.callUser_props_2(targetVideoID)}} className={classes.margin}>
                   视频通话
                 </Button>
 
 
-                <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    className={classes.modal}
-                    open={open}
-                    onClose={handleClose}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                        timeout: 500,
-                    }}
-                >
-                    <Fade in={open}>
-                        <div className={classes.paper_modal}>
-                            <h2>Animated React Modal</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi accumsan odio enim.
-                            </p>
-                        </div>
-                    </Fade>
-                </Modal>
+      <Dialog
+        open={open}
+        keepMounted
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description"
+        classes={dialogClasses}
+      >
+        <div className={classes.dialogHeader}>
+          <Typography
+            variant="h5"
+            component="h5"
+            className={classes.dialogTitle}
+          >
+            Your attention is required
+          </Typography>
+          <IconButton onClick={handleClose}>
+            <Box component={Clear} color={theme.palette.white.main} />
+          </IconButton>
+        </div>
+        <DialogContent>
+          <Box textAlign="center" paddingTop="1rem" paddingBottom="1rem">
+            <Box
+              component={Notifications}
+              width="3em!important"
+              height="3em!important"
+            ></Box>
+            <Typography
+              variant="h4"
+              component="h4"
+              className={classes.dialogHeading}
+            >
+              You should read this!
+            </Typography>
+            <Typography variant="body2" component="p">
+              A small river named Duden flows by their place and supplies it
+              with the necessary regelialia.
+            </Typography>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="secondary" variant="contained">
+            Ok, got it
+          </Button>
+          <Button
+            component={Box}
+            onClick={handleClose}
+            color="secondary"
+            marginLeft="auto!important"
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
 
               </Grid>
             </form>
