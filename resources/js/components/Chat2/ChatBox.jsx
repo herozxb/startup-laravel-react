@@ -223,6 +223,12 @@ const ChatBox = (props) => {
     }
   };
 
+  const start_video = (e) => {
+          sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
+          setNewMessage("");
+        }); 
+  }
+
   const on_change_for_message = () =>{
     if (props.scope === "Global Chat") {
       getGlobalMessages().then((res) => {
@@ -234,28 +240,9 @@ const ChatBox = (props) => {
     } else {
       setMessages([]);
     }
-
-    
-
   }
 
 
-
-/*
-  useEffect(() => {
-
-    if(mountedRef.current === true)
-    {
-      reloadMessages();
-      scrollToBottom();
-
-      setTimeout(
-        function() {
-            mountedRef.current = false;
-        },3000);
-    }
-  }, [messages]);
-//*/
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12} className={classes.headerRow}>
@@ -345,7 +332,7 @@ const ChatBox = (props) => {
                     <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={handleClose}>
                       Close
                     </Button>
-                    <Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} >Understood</Button>
+                    <Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={start_video} >Understood</Button>
                   </Modal.Footer>
                 </Modal>
 
