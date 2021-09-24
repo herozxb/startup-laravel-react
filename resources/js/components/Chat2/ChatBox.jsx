@@ -311,7 +311,7 @@ const ChatBox = (props) => {
                   </IconButton>
                 </Grid>
 
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleShow();props.callUser_props_2(targetVideoID)}} className={classes.margin}>
+                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleShow()}} className={classes.margin}>
                   视频通话
                 </Button>
 
@@ -329,10 +329,12 @@ const ChatBox = (props) => {
                     escape key.
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={handleClose}>
-                      Close
+                    <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {handleClose();}}>
+                      停止发起视频
                     </Button>
-                    <Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={start_video} >Understood</Button>
+                    <Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {start_video()}} >检测对方视频</Button>
+                    <Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {props.callUser_props_2(targetVideoID)}} >发起视频通话</Button>
+                  
                   </Modal.Footer>
                 </Modal>
 
