@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Confirm Withdrawal')
+@section('title', '确认提款')
 
 @section('content')
 <!-- Content

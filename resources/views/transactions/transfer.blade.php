@@ -3,7 +3,7 @@
 @include('layouts.partials.header')
 @endsection
 
-@section('title', 'Transfer Money')
+@section('title', '汇款')
 
 @section('content')
 

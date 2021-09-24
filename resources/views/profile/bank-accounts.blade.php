@@ -1,4 +1,4 @@
-@extends('layouts.layout') @section('title', 'Bank Accounts') @section('content')
+@extends('layouts.layout') @section('title', '银行账户') @section('content')
 
 
 

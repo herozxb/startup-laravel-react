@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Confirm Transfer')
+@section('title', '确认汇款')
 
 @section('content')
 

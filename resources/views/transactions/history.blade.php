@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Transactions')
+@section('title', '交易信息')
 
 @section('content')
 <!-- Content

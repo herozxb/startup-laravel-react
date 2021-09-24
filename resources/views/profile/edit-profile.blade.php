@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', 'Edit Profile')
+@section('title', '编辑个人信息')
 
 @section('content')
 

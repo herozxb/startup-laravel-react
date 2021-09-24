@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', "Welcome")
+@section('title', "你好")
 @section('content')
 
 

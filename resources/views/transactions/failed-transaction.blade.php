@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Sucessful Wallet Deposit')
+@section('title', '成功存款')
 
 @section('content')
 

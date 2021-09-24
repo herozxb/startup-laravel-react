@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', "Dashboard")
+@section('title', "视频通话")
 @section('content')
 
 

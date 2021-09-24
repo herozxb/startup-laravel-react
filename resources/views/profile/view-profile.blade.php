@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', "Profile")
+@section('title', "个人信息")
 @section('content')
 
 <div id="content" class="py-4">

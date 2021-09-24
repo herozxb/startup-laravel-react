@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Withdraw')
+@section('title', '提款')
 
 @section('content')
 

@@ -259,7 +259,7 @@ const HomePageApp = (props) => {
 		      <Grid.Row centered>
           {
 			       loading ?   (
-			  		               <h1>loading...</h1> ) 
+			  		               <h1>读取中...</h1> ) 
                         : 
 				                (
 

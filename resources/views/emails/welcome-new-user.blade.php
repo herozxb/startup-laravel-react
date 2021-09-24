@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Welcome to Virtual Wallet</title>
+    <title>欢迎来到天赋网</title>
 </head>
 
 <body>
@@ -13,9 +13,9 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
                     <tr>
                         <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#525252;">
-                            <div style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:56px; color:#000000;">Welcome to Virtual Wallet<span style="color:#478730;">*</span></div>
+                            <div style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:56px; color:#000000;">欢迎来到天赋网<span style="color:#478730;">*</span></div>
                             <div style="font-size:28px;"><br>
-                                We are Delighted to have you onboard.</div>
+                                我们非常高兴在这里遇见你</div>
                             <div> <br>
                                 你好 {{ $user->first_name }}, 我们很荣幸你能加入. 我们用这个系统为你提供无缝的金融交易，希望你拥有愉快的交易体验时光。<br>
                                 <br>

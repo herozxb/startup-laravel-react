@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', "Dashboard")
+@section('title', "数据面板")
 @section('content')
 <!-- Content
   ============================================= -->
