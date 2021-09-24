@@ -116,7 +116,7 @@ const ChatBox = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [show_button, setShow_button] = useState(false);
+  const [show_button, setShow_Button] = useState(false);
 
 
 
@@ -332,8 +332,8 @@ const ChatBox = (props) => {
                   <Modal.Footer>
 
                   {
-                    show_button ? <Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {props.callUser_props_2(targetVideoID)}} >发起视频通话</Button>
-                                : <Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {start_video();setShow_button(true);}} >检测对方视频</Button>
+                    show_button ? (<Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {props.callUser_props_2(targetVideoID)}} >发起视频通话</Button>)
+                                : (<Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {start_video();setShow_Button(true);}} >检测对方视频</Button>)
                   }
                     <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {handleClose();}}>
                       关闭
