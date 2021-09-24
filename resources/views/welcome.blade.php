@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', "你好")
+@section('title', "天赋网")
 @section('content')
 
 
