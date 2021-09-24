@@ -13,6 +13,8 @@ import Chat from './components/Chat2/Chat';
 import { io } from 'socket.io-client';
 import Peer from 'simple-peer';
 
+import Modal from 'react-bootstrap/Modal'
+
 
 //const socket = io("https://www.xhappysearch.com:5001");
 const socket = io("https://120.53.220.237:5001");
@@ -81,6 +83,12 @@ const Example = (props) => {
   const userVideo = useRef();
   const connectionRef = useRef();
 
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
@@ -93,6 +101,7 @@ const Example = (props) => {
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
+      handleShow();
     });
   }, []);
 
@@ -205,6 +214,7 @@ const Example = (props) => {
                                             接受电话
                                           </Button>
                                         </div>
+
                                       )}
                                     </>
 
@@ -222,6 +232,31 @@ const Example = (props) => {
                         				      )}
                         				    </Grid>
                         				  </Grid>
+                                  <Modal
+                                      show={show}
+                                      onHide={handleClose}
+                                      backdrop="static"
+                                      keyboard={false}
+                                  >
+                                    <Modal.Header closeButton>
+                                      <Modal.Title>Modal title</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                      I will not close if you click outside me. Don't even try to press
+                                      escape key.
+                                    </Modal.Body>
+                                    <Modal.Footer>
+
+                                    {
+                                      show_button ? (<Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {props.callUser_props_2(targetVideoID);setShow_Button(false);}} >发起视频通话</Button>)
+                                                  : (<Button variant="primary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {start_video();setShow_Button(true);}} >检测对方视频</Button>)
+                                    }
+                                      <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {handleClose();}}>
+                                        关闭
+                                      </Button>
+                                    </Modal.Footer>
+                                  </Modal>
+
 
                         				</form>
 
