@@ -246,7 +246,7 @@ const Example = (props) => {
                                       escape key.
                                     </Modal.Body>
                                     <Modal.Footer>
-                                      <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {answerCall();}}>
+                                      <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {answerCall();handleClose();}}>
                                         接通视频
                                       </Button>
                                       <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {handleClose();}}>
