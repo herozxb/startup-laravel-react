@@ -226,7 +226,7 @@ const Example = (props) => {
                         				</form>
 
                   			      </Paper>
-                              <Chat chat_props={props} me_props={me} setIdToCall_props={setIdToCall}/>
+                              <Chat chat_props={props} me_props={me} setIdToCall_props={setIdToCall} callUser_props={callUser}/>
                   			    </Container>
                         </div>
                     </div>
