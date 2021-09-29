@@ -4,6 +4,8 @@
 
 # 6 (partly coded) WeChat Pay for laravel 
 # 24 the withdraw of money for the users
+# 26 the notification of the video message
+# 27 add the city and the money per hour
  
 
 
