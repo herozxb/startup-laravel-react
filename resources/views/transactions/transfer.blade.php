@@ -23,8 +23,8 @@
 <!-- Content
   ============================================= -->
 <div id="content" class="py-4">
-
-<!-- Secondary menu
+    <div class="container">
+        <!-- Secondary menu
   ============================================= -->
 <div class="bg-white">
     <div class="container d-flex justify-content-center">
@@ -37,8 +37,6 @@
 </div>
 <!-- Secondary menu end -->
 
-
-    <div class="container">
         <h2 class="font-weight-400 text-center mt-3">汇款</h2>
         <p class="text-4 text-center mb-4">在世界任何地方，发送汇款给任何人</p>
         <div class="row">
