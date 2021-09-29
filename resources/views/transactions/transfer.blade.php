@@ -26,7 +26,7 @@
     <div class="container">
         <!-- Secondary menu
   ============================================= -->
-<div class="bg-white">
+
     <div class="container d-flex justify-content-center">
         <ul class="nav secondary-nav alternate">
             <li class="nav-item"> <a class="nav-link" href="{{ url('transactions/deposit') }}">存款</a></li>
@@ -34,7 +34,7 @@
             <li class="nav-item"> <a class="nav-link active" href="{{ url('transactions/transfer') }}">汇款</a></li>
         </ul>
     </div>
-</div>
+
 <!-- Secondary menu end -->
 
         <h2 class="font-weight-400 text-center mt-3">汇款</h2>
