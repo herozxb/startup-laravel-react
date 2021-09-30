@@ -156,6 +156,7 @@ const ChatBox = (props) => {
                 setToID(String(data).substr(35,60))
                 setAutoMessage(counter);
                 console.log(toID);
+                console.log(props.chat_user_id);
                 setTargetVideoID(String(""));
 
       }
