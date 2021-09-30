@@ -97,7 +97,7 @@ const Example = (props) => {
         myVideo.current.srcObject = currentStream;
       });
 
-    socket.on('me', (id) =>{ setMe(id); console.log("=======1======="); console.log(id) });
+    socket.on('me', (id) =>{ setMe(id); console.log(id) });
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
@@ -198,7 +198,7 @@ const Example = (props) => {
                         				  <Grid container className={classes.gridContainer}>
                         				    <Grid item xs={12} md={6} className={classes.padding}>
                         				      <Typography gutterBottom variant="h6">账户信息</Typography>
-                        				      <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth />
+                        				      <TextField label="Name" value={props.name} onChange={(e) => setName(e.target.value)} fullWidth />
                         				      <CopyToClipboard text={me} className={classes.margin}>
                                 					<Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
                                 					  拷贝自己的电话ID号码 {me} 发送给对方
