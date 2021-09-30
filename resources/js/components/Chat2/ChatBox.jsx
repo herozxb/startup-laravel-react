@@ -343,7 +343,7 @@ const ChatBox = (props) => {
                   <Modal.Footer>
                     <>
                       {(
-                        people_online&&<h3>对方不在线</h3>
+                        people_not_online&&<h3>对方不在线</h3>
                         )}
                     </>
                     <>
