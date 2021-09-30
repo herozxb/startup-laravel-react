@@ -244,13 +244,13 @@ const Example = (props) => {
                                     </Modal.Header>
                                     <Modal.Body>
                                         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                                          <h3>{call.name} 正在呼叫:</h3>
-                                          <Button variant="contained" color="primary" onClick={() => {answerCall();handleClose();}}>
-                                            接受电话
-                                          </Button>
+                                          <h5>{call.name} 正在呼叫:</h5>
                                         </div>
                                     </Modal.Body>
                                     <Modal.Footer>
+                                      <Button variant="contained" color="primary" onClick={() => {answerCall();handleClose();}}>
+                                        接受电话
+                                      </Button>
                                       <Button variant="contained" color="primary"  onClick={() => {handleClose();}}>
                                         关闭
                                       </Button>
