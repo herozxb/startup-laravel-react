@@ -1,3 +1,4 @@
+ 
 import React, { useState, useEffect, useRef, useReducer, useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -114,7 +115,6 @@ const ChatBox = (props) => {
   const mountedRef = useRef(true)                 // ← the "flag"
 
   const [targetID, setTargetID] = useState("")
-  const [toID, setToID] = useState("")
   const [targetVideoID, setTargetVideoID] = useState("")
 
   const [show, setShow] = useState(false);
@@ -147,19 +147,18 @@ const ChatBox = (props) => {
       //console.log(props.me_id);
       if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
-                
+
                 console.log("AutoMessage");
                 counter = counter + 1;
 
                 //console.log(String(data).substr(7,32));
                 setTargetID(String(data).substr(7,32));
-                setToID(String(data).substr(35,60))
                 setAutoMessage(counter);
                 //console.log(counter);
                 setTargetVideoID(String(""));
 
       }
-      else if(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf() )
+      else if(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
       {
 
                 //console.log("AutoCallID");
@@ -220,7 +219,7 @@ const ChatBox = (props) => {
     } else {
       if(String(newMessage).valueOf() == String("发起视频通话").valueOf())
       {
-        sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+String(props.user._id)).then((res) => {
+        sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
           setNewMessage("");
         });
       }
@@ -234,7 +233,7 @@ const ChatBox = (props) => {
   };
 
   const start_video = (e) => {
-          sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+String(props.user._id)).then((res) => {
+          sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
           setNewMessage("");
         }); 
 
