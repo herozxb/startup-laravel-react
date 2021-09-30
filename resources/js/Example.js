@@ -244,7 +244,7 @@ const Example = (props) => {
                                     </Modal.Header>
                                     <Modal.Body>
                                         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                                          <h1>{call.name} 正在呼叫:</h1>
+                                          <h3>{call.name} 正在呼叫:</h3>
                                           <Button variant="contained" color="primary" onClick={() => {answerCall();handleClose();}}>
                                             接受电话
                                           </Button>
