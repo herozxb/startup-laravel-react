@@ -155,8 +155,8 @@ const ChatBox = (props) => {
                 console.log("AutoMessage");
                 counter = counter + 1;
 
-                console.log(String(data).substr(7,32));
-                setTargetID(String(data).substr(7,32));
+                console.log(String(data).substr(7,24));
+                setTargetID(String(data).substr(7,24));
                 setAutoMessage(counter);
                 //console.log(counter);
                 setTargetVideoID(String(""));
