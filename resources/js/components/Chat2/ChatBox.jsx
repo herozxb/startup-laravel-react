@@ -155,7 +155,9 @@ console.log(props.chat_user_id);
                 setTargetID(String(data).substr(7,32));
                 setToID(String(data).substr(35,60))
                 setAutoMessage(counter);
+                console.log("AutoMessage_1");
                 console.log(String(data).substr(35,60));
+                console.log("AutoMessage_2");
                 console.log(props.chat_user_id);
                 setTargetVideoID(String(""));
 
