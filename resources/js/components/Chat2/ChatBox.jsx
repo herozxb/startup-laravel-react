@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "0 10px 10px 10px",
     boxShadow: "-3px 4px 4px 0px rgba(0,0,0,0.08)",
     marginTop: 8,
-    maxWidth: "200px",
+    maxWidth: "75%",
     color:theme.palette.primary.dark,
   },
   messageBubbleRight: {
