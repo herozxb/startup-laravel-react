@@ -98,6 +98,7 @@ const Example = (props) => {
       });
 
     socket.on('me', (id) =>{ setMe(id); console.log(id) });
+    setName(props.name)
 
     socket.on('callUser', ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
