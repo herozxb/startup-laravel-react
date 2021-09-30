@@ -121,6 +121,7 @@ const ChatBox = (props) => {
   const handleShow = () => setShow(true);
   const [show_button, setShow_Button] = useState(false);
   const [loading_video, setLoadingVideo] = useState(false);
+  const [people_not_online, setPeopleNotOnLine] = useState(false);
 
 
 
@@ -236,6 +237,7 @@ const ChatBox = (props) => {
 
           setTimeout(() => {
             setLoadingVideo(false);
+            setPeopleNotOnLine(true);
           }, 10000);
   }
 
@@ -341,12 +343,17 @@ const ChatBox = (props) => {
                   <Modal.Footer>
                     <>
                       {(
+                        people_online&&<h3>对方不在线</h3>
+                        )}
+                    </>
+                    <>
+                      {(
                         loading_video&&!show_button&&<Spinner animation="border" variant="primary" />
                         )}
                     </>
 
                   {
-                    show_button ? (<Button variant="contained" color="info" onClick={() => {props.callUser_props_2(targetVideoID);setShow_Button(false);}} >发起视频通话</Button>)
+                    show_button ? (<Button variant="contained" color="info" onClick={() => {props.callUser_props_2(targetVideoID);handleClose();}} >发起视频通话</Button>)
                                 : (
                                   <Button variant="contained" color="primary" onClick={() => {start_video(); setLoadingVideo(true);}} >检测对方视频</Button>
                                   )
