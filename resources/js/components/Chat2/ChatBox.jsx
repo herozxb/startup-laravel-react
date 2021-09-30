@@ -334,10 +334,13 @@ const ChatBox = (props) => {
                     keyboard={false}
                 >
                   <Modal.Header closeButton>
-                    <Modal.Title>发起通话</Modal.Title>
+                    <Modal.Title>视频通话</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <h3>向{props.scope}发起通话</h3>
+                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                      <h5>向 {props.scope} 发起通话</h5>
+                    </div>
+                    
                   </Modal.Body>
                   <Modal.Footer>
                     <>
