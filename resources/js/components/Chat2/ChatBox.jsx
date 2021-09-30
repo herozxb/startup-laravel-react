@@ -155,7 +155,7 @@ const ChatBox = (props) => {
                 console.log("AutoMessage");
                 counter = counter + 1;
 
-                //console.log(String(data).substr(7,32));
+                console.log(String(data).substr(7,32));
                 setTargetID(String(data).substr(7,32));
                 setAutoMessage(counter);
                 //console.log(counter);
@@ -165,8 +165,8 @@ const ChatBox = (props) => {
       else if(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
       {
 
-                //console.log("AutoCallID");
-                //console.log(String(data).substr(6,27));
+                console.log("AutoCallID");
+                console.log(String(data).substr(6,27));
                 setTargetVideoID(String(data).substr(6,27));
                 setShow_Button(true);
                 //props.setIdToCall_props_2(String(data).substr(6,27));
@@ -200,9 +200,9 @@ const ChatBox = (props) => {
       console.log(autoMessage);
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
       {
-        //console.log("Auto sending back video id");
-        //console.log(targetID);
-        //console.log("我的电话号="+String(props.me_id) );
+        console.log("Auto sending back video id");
+        console.log(targetID);
+        console.log("我的电话号="+String(props.me_id) );
         sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
