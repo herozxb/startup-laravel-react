@@ -17,7 +17,8 @@
 <div id="content" class="py-4">
     <div class="container">
         <br>
-        <h2 class="font-weight-400 text-center mt-3">汇款</h2>
+        <br>
+
 
                 <!-- Secondary menu
   ============================================= -->
@@ -31,7 +32,7 @@
     </div>
 </div>
 <!-- Secondary menu end -->
-
+        <h2 class="font-weight-400 text-center mt-3">汇款</h2>
         <p class="text-4 text-center mb-4">在世界任何地方，发送汇款给任何人</p>
         <div class="row">
             <div class="col-md-8 col-lg-6 col-xl-5 mx-auto">
