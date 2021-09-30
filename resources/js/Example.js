@@ -244,7 +244,7 @@ const Example = (props) => {
                                     </Modal.Header>
                                     <Modal.Body>
                                         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                                          <h5>{call.name} 正在呼叫:</h5>
+                                          <h5>{call.name} 正在呼叫</h5>
                                         </div>
                                     </Modal.Body>
                                     <Modal.Footer>

@@ -24,6 +24,9 @@ import {
 } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
 import Modal from 'react-bootstrap/Modal'
+import Spinner from 'react-bootstrap/Spinner'
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -117,6 +120,7 @@ const ChatBox = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [show_button, setShow_Button] = useState(false);
+  const [loading_video, setLoadingVideo] = useState(false);
 
 
 
@@ -157,7 +161,8 @@ const ChatBox = (props) => {
                 //console.log("AutoCallID");
                 //console.log(String(data).substr(6,27));
                 setTargetVideoID(String(data).substr(6,27));
-                props.setIdToCall_props_2(String(data).substr(6,27));
+                setShow_Button(true);
+                //props.setIdToCall_props_2(String(data).substr(6,27));
                 //props.callUser_props_2(String(data).substr(6,27));
 
       }
@@ -330,10 +335,17 @@ const ChatBox = (props) => {
                     escape key.
                   </Modal.Body>
                   <Modal.Footer>
+                    <>
+                      {(
+                        loading_video&&<Spinner animation="border" />
+                        )}
+                    </>
 
                   {
                     show_button ? (<Button variant="contained" color="primary" onClick={() => {props.callUser_props_2(targetVideoID);setShow_Button(false);}} >发起视频通话</Button>)
-                                : (<Button variant="contained" color="primary" onClick={() => {start_video();setShow_Button(true);}} >检测对方视频</Button>)
+                                : (
+                                  <Button variant="contained" color="primary" onClick={() => {start_video(); setLoadingVideo(true);}} >检测对方视频</Button>
+                                  )
                   }
                     <Button variant="contained" color="primary" onClick={() => {handleClose();}}>
                       关闭

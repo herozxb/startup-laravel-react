@@ -7,6 +7,7 @@
 # 26 the notification of the video message
 # 27 add the city and the money per hour
 # 28 refine the video chat process
+# 29 fix the PC has no video bug
  
 
 
