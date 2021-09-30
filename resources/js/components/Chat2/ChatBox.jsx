@@ -198,13 +198,11 @@ const ChatBox = (props) => {
       //console.log(String(targetID).valueOf());
       //console.log(String(props.chat_user_id).valueOf());
       console.log(autoMessage);
-      if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf())   )
+      if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf())  )
       {
-        console.log("Auto sending back video id");
-        console.log(targetID);
-        console.log("我的电话号="+String(props.me_id) );
-        console.log(String(toID));
-        console.log(String(props.chat_user_id));
+        //console.log("Auto sending back video id");
+        //console.log(targetID);
+        //console.log("我的电话号="+String(props.me_id) );
         sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
