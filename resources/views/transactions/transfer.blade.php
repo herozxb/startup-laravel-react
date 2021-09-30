@@ -17,8 +17,7 @@
 <div id="content" class="py-4">
     <div class="container">
 
-        <h2 class="font-weight-400 text-center mt-3"></h2>
-        <h2 class="font-weight-400 text-center mt-3">汇款</h2>
+        <h2 class="font-weight-300 text-center mt-3">汇款</h2>
 
                 <!-- Secondary menu
   ============================================= -->
