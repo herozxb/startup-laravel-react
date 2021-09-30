@@ -156,7 +156,7 @@ console.log(props.chat_user_id);
                 setToID(String(data).substr(35,60))
                 setAutoMessage(counter);
                 console.log("AutoMessage_1");
-                console.log(String(data).substr(35,60));
+                console.log(String(data).substr(33,58));
                 console.log("AutoMessage_2");
                 console.log(props.chat_user_id);
                 setTargetVideoID(String(""));
@@ -225,6 +225,11 @@ console.log(props.chat_user_id);
       {
         sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+String(props.user._id)).then((res) => {
           setNewMessage("");
+console.log("props.user._id = ");
+console.log(props.user._id);
+console.log("props.chat_user_id = ");
+console.log(props.chat_user_id);
+
         });
       }
       else
