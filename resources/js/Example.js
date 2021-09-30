@@ -245,16 +245,13 @@ const Example = (props) => {
                                     <Modal.Body>
                                         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                                           <h1>{call.name} 正在呼叫:</h1>
-                                          <Button variant="contained" color="primary" onClick={answerCall}>
+                                          <Button variant="contained" color="primary" onClick={() => {answerCall();handleClose();}}>
                                             接受电话
                                           </Button>
                                         </div>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                      <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {answerCall();handleClose();}}>
-                                        接通视频
-                                      </Button>
-                                      <Button variant="secondary" color="primary" style={{backgroundColor:"#3700b3", color:"#ffffff", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}} onClick={() => {handleClose();}}>
+                                      <Button variant="contained" color="primary"  onClick={() => {handleClose();}}>
                                         关闭
                                       </Button>
                                     </Modal.Footer>
