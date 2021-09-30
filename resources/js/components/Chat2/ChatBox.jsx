@@ -334,11 +334,10 @@ const ChatBox = (props) => {
                     keyboard={false}
                 >
                   <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>发起通话</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    I will not close if you click outside me. Don't even try to press
-                    escape key.
+                    <h3>向{props.scope}发起通话</h3>
                   </Modal.Body>
                   <Modal.Footer>
                     <>
