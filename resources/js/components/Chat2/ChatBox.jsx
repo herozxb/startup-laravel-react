@@ -134,8 +134,8 @@ const ChatBox = (props) => {
 //console.log("props.me_id = ");
 //console.log(props.me_id);
 
-//console.log("props.chat_user_id = ");
-//console.log(props.chat_user_id);
+console.log("props.chat_user_id = ");
+console.log(props.chat_user_id);
 
   useEffect(() => {
     const socket = socketIOClient("https://120.53.220.237:5002");
@@ -155,7 +155,7 @@ const ChatBox = (props) => {
                 setTargetID(String(data).substr(7,32));
                 setToID(String(data).substr(35,60))
                 setAutoMessage(counter);
-                console.log(toID);
+                console.log(String(data).substr(35,60));
                 console.log(props.chat_user_id);
                 setTargetVideoID(String(""));
 
