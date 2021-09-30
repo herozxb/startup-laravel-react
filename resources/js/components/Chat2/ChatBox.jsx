@@ -219,7 +219,7 @@ const ChatBox = (props) => {
     } else {
       if(String(newMessage).valueOf() == String("发起视频通话").valueOf())
       {
-        sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
+        sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id)).then((res) => {
           setNewMessage("");
         });
       }
@@ -233,7 +233,7 @@ const ChatBox = (props) => {
   };
 
   const start_video = (e) => {
-          sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
+          sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id)).then((res) => {
           setNewMessage("");
         }); 
 
