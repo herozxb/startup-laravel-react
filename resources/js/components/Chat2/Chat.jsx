@@ -155,8 +155,8 @@ const Chat = (props) => {
                                 indicatorColor="primary"
                                 textColor="primary"
                             >
-                                <Tab label="Chats" />
-                                <Tab label="Users" />
+                                <Tab label="好友" />
+                                <Tab label="用户" />
                             </Tabs>
                         </Paper>
                         {tab === 0 && (
