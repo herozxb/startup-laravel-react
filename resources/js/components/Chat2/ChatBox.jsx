@@ -155,10 +155,7 @@ const ChatBox = (props) => {
                 setTargetID(String(data).substr(7,32));
                 setToID(String(data).substr(35,60))
                 setAutoMessage(counter);
-                //console.log("AutoMessage_1");
-                //console.log(String(data).substr(33,58));
-                //console.log("AutoMessage_2");
-                //console.log(props.chat_user_id);
+                //console.log(counter);
                 setTargetVideoID(String(""));
 
       }
@@ -198,7 +195,7 @@ const ChatBox = (props) => {
       //console.log(String(targetID).valueOf());
       //console.log(String(props.chat_user_id).valueOf());
       console.log(autoMessage);
-      if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf())  )
+      if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
       {
         //console.log("Auto sending back video id");
         //console.log(targetID);
