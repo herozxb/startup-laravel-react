@@ -1,16 +1,6 @@
 @extends('layouts.layout')
 @section('header')
 @include('layouts.partials.header')
-@endsection
-
-
-@section('title', '汇款')
-
-@section('content')
-
-
-
-
 
 
 
