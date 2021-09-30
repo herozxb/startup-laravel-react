@@ -233,6 +233,10 @@ const ChatBox = (props) => {
           sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
           setNewMessage("");
         }); 
+
+          setTimeout(() => {
+            setLoadingVideo(false);
+          }, 10000);
   }
 
   const on_change_for_message = () =>{
@@ -337,12 +341,12 @@ const ChatBox = (props) => {
                   <Modal.Footer>
                     <>
                       {(
-                        loading_video&&<Spinner animation="border" />
+                        loading_video&&!show_button&&<Spinner animation="border" variant="primary" />
                         )}
                     </>
 
                   {
-                    show_button ? (<Button variant="contained" color="primary" onClick={() => {props.callUser_props_2(targetVideoID);setShow_Button(false);}} >发起视频通话</Button>)
+                    show_button ? (<Button variant="contained" color="success" onClick={() => {props.callUser_props_2(targetVideoID);setShow_Button(false);}} >发起视频通话</Button>)
                                 : (
                                   <Button variant="contained" color="primary" onClick={() => {start_video(); setLoadingVideo(true);}} >检测对方视频</Button>
                                   )
