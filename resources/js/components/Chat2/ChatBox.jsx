@@ -352,12 +352,12 @@ const ChatBox = (props) => {
                         )}
                     </>
 
-                  {
-                    show_button ? (<Button variant="contained" color="info" onClick={() => {props.callUser_props_2(targetVideoID);handleClose();}} >发起视频通话</Button>)
-                                : (
-                                  <Button variant="contained" color="primary" onClick={() => {start_video(); setLoadingVideo(true);}} >检测对方视频</Button>
-                                  )
-                  }
+                    {
+                      show_button ? (<Button variant="contained" color="info" onClick={() => {props.callUser_props_2(targetVideoID);handleClose();}} >发起视频通话</Button>)
+                                  : (
+                                    <Button variant="contained" color="primary" onClick={() => {start_video(); setLoadingVideo(true); setPeopleNotOnLine(false);}} >检测对方视频</Button>
+                                    )
+                    }
                     <Button variant="contained" color="primary" onClick={() => {handleClose();}}>
                       关闭
                     </Button>
