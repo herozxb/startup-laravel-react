@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.dark,
 
     [theme.breakpoints.down('xs')]: {
-      maxWidth: "370px",
+      maxWidth: "270px",
     },
 
   },
