@@ -120,6 +120,7 @@ const ChatBox = (props) => {
 
   const [targetID, setTargetID] = useState("")
   const [targetVideoID, setTargetVideoID] = useState("")
+  const [toID, setToID] = useState("")
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -156,7 +157,9 @@ const ChatBox = (props) => {
                 counter = counter + 1;
 
                 console.log(String(data).substr(7,24));
+                console.log(String(data).substr(25,42));
                 setTargetID(String(data).substr(7,24));
+                setToID(String(data).substr(25,42));
                 setAutoMessage(counter);
                 //console.log(counter);
                 setTargetVideoID(String(""));
