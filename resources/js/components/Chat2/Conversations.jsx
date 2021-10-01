@@ -26,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
   },
   subheaderText: {
     color: theme.palette.primary.dark,
+
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: "370px",
+    },
+
   },
   list: {
     maxHeight: "calc(100vh - 112px)",
