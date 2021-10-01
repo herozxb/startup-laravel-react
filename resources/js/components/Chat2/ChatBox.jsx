@@ -153,11 +153,11 @@ const ChatBox = (props) => {
       if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
-                console.log("AutoMessage");
+                //console.log("AutoMessage");
                 counter = counter + 1;
 
-                console.log(String(data).substr(7,24));
-                console.log(String(data).substr(33,42));
+                //console.log(String(data).substr(7,24));
+                //console.log(String(data).substr(33,42));
                 setTargetID(String(data).substr(7,24));
                 setToID(String(data).substr(33,42));
                 setAutoMessage(counter);
@@ -168,8 +168,8 @@ const ChatBox = (props) => {
       else if(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
       {
 
-                console.log("AutoCallID");
-                console.log(String(data).substr(6,27));
+                //console.log("AutoCallID");
+                //console.log(String(data).substr(6,27));
                 setTargetVideoID(String(data).substr(6,27));
                 setShow_Button(true);
                 //props.setIdToCall_props_2(String(data).substr(6,27));
@@ -203,11 +203,13 @@ const ChatBox = (props) => {
       console.log(autoMessage);
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) && (String(toID).valueOf() == String(props.chat_user_id).valueOf()) )
       {
-        console.log("Auto sending back video id");
-        console.log(targetID);
-        console.log(toID);
-        console.log(props.chat_user_id);
-        console.log("我的电话号="+String(props.me_id) );
+        //////////////////
+        //debug for < bug
+        //console.log("Auto sending back video id");
+        //console.log(targetID);
+        //console.log(toID);
+        //console.log(props.chat_user_id);
+        //console.log("我的电话号="+String(props.me_id) );
         sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
@@ -334,7 +336,7 @@ const ChatBox = (props) => {
                   </IconButton>
                 </Grid>
 
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleShow()}} className={classes.margin}>
+                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {setShow_Button(false);handleShow()}} className={classes.margin}>
                   视频通话
                 </Button>
 
