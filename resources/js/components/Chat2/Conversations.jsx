@@ -167,12 +167,10 @@ const Conversations = (props) => {
           keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>视频通话</Modal.Title>
+          <Modal.Title>聊天</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Grid item md={8}>
               <ChatBox scope={props.scope} user={props.user} me_id={props.me_props} chat_user_id={props.user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props}/>
-          </Grid>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="contained" color="primary" onClick={() => {handleClose();}}>
