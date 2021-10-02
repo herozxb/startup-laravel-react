@@ -54,6 +54,12 @@ const Users = (props) => {
   const [newUser, setNewUser] = useState(null);
   const getUsers = useGetUsers();
   const getUsersByPage = useGetUsersByPage();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [show_button, setShow_Button] = useState(false);
+  const [loading_video, setLoadingVideo] = useState(false);
+  const [people_not_online, setPeopleNotOnLine] = useState(false);
   
 
   useEffect(() => {
@@ -96,6 +102,7 @@ const Users = (props) => {
               onClick={() => {
                 props.setUser(u);
                 props.setScope(u.username);
+                handleShow();
               }}
               button
             >
