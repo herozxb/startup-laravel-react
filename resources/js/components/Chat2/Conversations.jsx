@@ -17,6 +17,7 @@ import commonUtilites from "../Utilities/common";
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
 import ChatBox from './ChatBox';
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
