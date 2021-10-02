@@ -16,6 +16,7 @@ import { authenticationService } from "../Services/authenticationService";
 import commonUtilites from "../Utilities/common";
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
+import ChatBox from './ChatBox';
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
@@ -168,7 +169,9 @@ const Conversations = (props) => {
           <Modal.Title>视频通话</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h1>body</h1>
+          <Grid item md={8}>
+              <ChatBox scope={props.scope} user={props.user} me_id={props.me_props} chat_user_id={user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props}/>
+          </Grid>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="contained" color="primary" onClick={() => {handleClose();}}>

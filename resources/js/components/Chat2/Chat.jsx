@@ -163,6 +163,13 @@ const Chat = (props) => {
                             <Conversations
                                 setUser={setUser}
                                 setScope={setScope}
+                                scope={scope} 
+                                user={user} 
+                                me_id={props.me_props} 
+                                chat_user_id={user_id} 
+                                setIdToCall_props_2={props.setIdToCall_props}  
+                                stream_props_2={props.stream_props} 
+                                callUser_props_2={props.callUser_props}
                             />
                         )}
                         {tab === 1 && (
@@ -171,7 +178,7 @@ const Chat = (props) => {
                     </Paper>
                 </Grid>
                 <Grid item md={8}>
-                    <ChatBox scope={scope} user={user} me_id={props.me_props} chat_user_id={user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props}/>
+                    <ChatBox scope={scope} user={user} me_props={props.me_props} user_id={user_id} setIdToCall_props={props.setIdToCall_props}  stream_props={props.stream_props} callUser_props={props.callUser_props}/>
                 </Grid>
             </Grid>
         </React.Fragment>
