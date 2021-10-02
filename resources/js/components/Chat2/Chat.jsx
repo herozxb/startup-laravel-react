@@ -25,6 +25,7 @@ import ChatBox from './ChatBox';
 import Conversations from './Conversations';
 import Users from './Users';
 
+import socketIOClient from "socket.io-client";
 
 
 const useStyles = makeStyles(theme => ({
@@ -128,19 +129,31 @@ const Chat = (props) => {
     const [newMessage, setNewMessage] = useState("");
 
     const [user_id, setUser_ID] = useState('');
+    const socket = useRef();
 
     const handleChange = (e, newVal) => {
         setTab(newVal);
     };
 
+  useEffect(() => {
+    socket.current = socketIOClient("https://120.53.220.237:5002");
+  }, []);
 
     const login = useLogin();
     login(props.chat_props.name,"hero2009").then((user_login) => {
-        //console.log("===user_login==="); 
+        console.log("===user_login==="); 
         //console.log(user_login); 
         setUser_ID(user_login.userId)
-        //console.log(user_id); 
+        console.log(user_id); 
       });
+
+    useEffect(() => {
+        socket.current.emit("addUser", user_id);
+        socket.current.on("getUsers", (users) => {
+            console.log("===all_user===");
+            console.log(users); 
+        });
+    }, [user_id]);
 
     return (
         <React.Fragment>
