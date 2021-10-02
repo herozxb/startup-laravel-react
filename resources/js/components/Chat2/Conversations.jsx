@@ -15,7 +15,6 @@ import { useGetConversations, useGetConversationsByPage } from "../Services/chat
 import { authenticationService } from "../Services/authenticationService";
 import commonUtilites from "../Utilities/common";
 import Modal from 'react-bootstrap/Modal'
-import Spinner from 'react-bootstrap/Spinner'
 import ChatBox from './ChatBox';
 
 const useStyles = makeStyles((theme) => ({

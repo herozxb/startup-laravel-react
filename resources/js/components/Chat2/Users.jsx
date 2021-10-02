@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField";
 
 import { useGetUsers, useGetUsersByPage } from "../Services/userService";
 import commonUtilites from "../Utilities/common";
+import Modal from 'react-bootstrap/Modal'
 import ChatBox from './ChatBox';
 
 const useStyles = makeStyles((theme) => ({
