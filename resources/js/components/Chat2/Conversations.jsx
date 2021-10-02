@@ -226,9 +226,6 @@ const Conversations = (props) => {
           backdrop="static"
           keyboard={false}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>聊天</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
               <ChatBox scope={props.scope} user={props.user} me_id={props.me_props} chat_user_id={props.user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props}/>
         </Modal.Body>
