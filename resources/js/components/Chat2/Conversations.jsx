@@ -17,6 +17,13 @@ import commonUtilites from "../Utilities/common";
 import Modal from 'react-bootstrap/Modal'
 import ChatBox from './ChatBox';
 
+import {
+  useGetGlobalMessages,
+  useSendGlobalMessage,
+  useGetConversationMessages,
+  useSendConversationMessage,
+} from "../Services/chatService";
+
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
@@ -72,6 +79,8 @@ const Conversations = (props) => {
   const [targetID, setTargetID] = useState("")
   const [targetVideoID, setTargetVideoID] = useState("")
   const [toID, setToID] = useState("")
+
+  const sendConversationMessage = useSendConversationMessage();
 
   // Returns the recipient name that does not
   // belong to the current user.
