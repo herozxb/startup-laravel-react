@@ -146,7 +146,7 @@ const ChatBox = (props) => {
 
   useEffect(() => {
     const socket = socketIOClient("https://120.53.220.237:5002");
-    socket.emit("addUser", user._id);
+
     //console.log("==2===socket===Message========");
     socket.on("messages", (data) => {
       setLastMessage(data);
