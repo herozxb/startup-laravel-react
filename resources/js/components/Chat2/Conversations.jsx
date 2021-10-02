@@ -14,6 +14,8 @@ import TextField from "@material-ui/core/TextField";
 import { useGetConversations, useGetConversationsByPage } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
 import commonUtilites from "../Utilities/common";
+import Modal from 'react-bootstrap/Modal'
+import Spinner from 'react-bootstrap/Spinner'
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
@@ -54,6 +56,13 @@ const Conversations = (props) => {
   const [newConversation, setNewConversation] = useState(null);
   const getConversations = useGetConversations();
   const getConversationsByPage = useGetConversationsByPage();
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [show_button, setShow_Button] = useState(false);
+  const [loading_video, setLoadingVideo] = useState(false);
+  const [people_not_online, setPeopleNotOnLine] = useState(false);
 
   // Returns the recipient name that does not
   // belong to the current user.
@@ -127,6 +136,7 @@ const Conversations = (props) => {
               onClick={() => {
                 props.setUser(handleRecipient(c.recipientObj));
                 props.setScope(handleRecipient(c.recipientObj).username);
+                handleShow();
               }}
             >
               <ListItemAvatar >
@@ -142,9 +152,30 @@ const Conversations = (props) => {
                 secondary={<React.Fragment>{c.lastMessage}</React.Fragment>}
               />
             </ListItem>
+
+
+
           ))}
         </React.Fragment>
       )}
+      <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>视频通话</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h1>body</h1>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="contained" color="primary" onClick={() => {handleClose();}}>
+            关闭
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <TextField
         className={classes.input_text}
         label="页数"
