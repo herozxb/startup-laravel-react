@@ -173,7 +173,17 @@ const Chat = (props) => {
                             />
                         )}
                         {tab === 1 && (
-                            <Users setUser={setUser} setScope={setScope} />
+                            <Users 
+                                setUser={setUser} 
+                                setScope={setScope}
+                                scope={scope} 
+                                user={user} 
+                                me_props={props.me_props} 
+                                user_id={user_id} 
+                                setIdToCall_props={props.setIdToCall_props}  
+                                stream_props={props.stream_props} 
+                                callUser_props={props.callUser_props}
+                                 />
                         )}
                     </Paper>
                 </Grid>

@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField";
 
 import { useGetUsers, useGetUsersByPage } from "../Services/userService";
 import commonUtilites from "../Utilities/common";
+import ChatBox from './ChatBox';
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
@@ -106,6 +107,24 @@ const Users = (props) => {
 
         </React.Fragment>
       )}
+      <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>聊天</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+              <ChatBox scope={props.scope} user={props.user} me_id={props.me_props} chat_user_id={props.user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="contained" color="primary" onClick={() => {handleClose();}}>
+            关闭
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <TextField
         className={classes.input_text}
         label="页数"
