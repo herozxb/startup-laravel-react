@@ -26,6 +26,7 @@ import Conversations from './Conversations';
 import Users from './Users';
 
 import socketIOClient from "socket.io-client";
+import Socket from "./Socket";
 
 
 const useStyles = makeStyles(theme => ({
@@ -136,7 +137,7 @@ const Chat = (props) => {
     };
 
   useEffect(() => {
-    socket.current = socketIOClient("https://120.53.220.237:5002");
+    socket.current = Socket;
     socket.current.on("getMessage", (data) => {
       console.log("get messages from https server in chatbox of login []"); 
       console.log(data); 

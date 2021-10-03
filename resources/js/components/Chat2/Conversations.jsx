@@ -105,7 +105,6 @@ const Conversations = (props) => {
 
 
   useEffect(() => {
-    /*
     let socket = socketIOClient("https://120.53.220.237:5002");
     console.log("==1===socket=====newConversation======");
     socket.on("messages", (data) => { setNewConversation(data);console.log("get Conversation from https server "); console.log(data);});
@@ -113,7 +112,6 @@ const Conversations = (props) => {
     return () => {
       socket.removeListener("messages");
     };
-    */
   }, []);
 
   const valueRef = useRef('') //creating a refernce for TextField Component
@@ -128,7 +126,7 @@ const Conversations = (props) => {
   }
 
     useEffect(() => {
-    /*
+    
     const socket = socketIOClient("https://120.53.220.237:5002");
     //console.log("==2===socket===Message========");
     socket.on("messages", (data) => {
@@ -148,11 +146,6 @@ const Conversations = (props) => {
 
       }
 
-    });
-    //*/
-    props.socket.current.on("getMessage", (data) => {
-      console.log("get messages from https server in chatbox of login [] Conversations "); 
-      console.log(data); 
     });
   }, []);
 
