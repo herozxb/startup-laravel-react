@@ -153,10 +153,10 @@ const Chat = (props) => {
             console.log("===all_user===");
             console.log(users); 
         });
-        //socket.current.on("getMessage", (data) => {
-        //      console.log("get messages from https server in chatbox"); 
-        //      console.log(data); 
-        //});
+        socket.current.on("getMessage", (data) => {
+              console.log("get messages from https server in chatbox of login"); 
+              console.log(data); 
+        });
     }, [user_id]);
 
     return (

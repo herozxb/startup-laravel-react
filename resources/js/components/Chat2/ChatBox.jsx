@@ -149,6 +149,11 @@ const ChatBox = (props) => {
     //const socket = socketIOClient("https://120.53.220.237:5002");
     socket.current = socketIOClient("https://120.53.220.237:5002");
 
+        socket.current.on("getMessage", (data) => {
+              console.log("get messages from https server in chatbox of 2"); 
+              console.log(data); 
+        });
+
     socket.current.on("getMessage", (data) => {
       setLastMessage(data.text);
       console.log("get messages from https server in chatbox"); 
