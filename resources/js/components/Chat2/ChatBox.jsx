@@ -192,7 +192,7 @@ const ChatBox = (props) => {
         setMessages(res);
       });
     } else if (props.scope !== null && props.conversationId !== null) {
-      getConversationMessages(props.user._id).then((res) => setMessages(res));
+      getConversationMessages(props.user._id).then((res) => setMessages((prev)=>[...prev,lastMessage]));
     } else {
       setMessages([]);
     }
@@ -246,49 +246,30 @@ const ChatBox = (props) => {
         setNewMessage("");
       });
     } else {
-      if(String(newMessage).valueOf() == String("发起视频通话").valueOf())
-      {
-        sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id)).then((res) => {
-          
-          socket_ref.current.emit("sendMessage", {
-            senderId: props.chat_user_id,
-            receiverId:props.user._id,
-            text: "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id),
-          });
-
-          setNewMessage("");
-
+      sendConversationMessage(props.user._id, newMessage).then((res) => {
+        socket_ref.current.emit("sendMessage", {
+          senderId: props.chat_user_id,
+          receiverId:props.user._id,
+          text: newMessage,
         });
-      }
-      else
-      {
-        sendConversationMessage(props.user._id, newMessage).then((res) => {
-
-          socket_ref.current.emit("sendMessage", {
-            senderId: props.chat_user_id,
-            receiverId:props.user._id,
-            text: newMessage,
-          });
-
-          setNewMessage("");
-
-        });
-      }
+        setNewMessage("");
+      });
     }
   };
 
   const start_video = (e) => {
 
-          socket_ref.current.emit("sendMessage", {
-            senderId: props.chat_user_id,
-            receiverId:props.user._id,
-            text: "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id),
-          });
+    socket_ref.current.emit("sendMessage", {
+      senderId: props.chat_user_id,
+      receiverId:props.user._id,
+      text: "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id),
+    });
 
-          setTimeout(() => {
-            setLoadingVideo(false);
-            setPeopleNotOnLine(true);
-          }, 10000);
+    setTimeout(() => {
+      setLoadingVideo(false);
+      setPeopleNotOnLine(true);
+    }, 10000);
+
   }
 
   const on_change_for_message = () =>{
