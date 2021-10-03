@@ -155,12 +155,10 @@ const Conversations = (props) => {
                 setTargetVideoID(String(""));
 
                 console.log("Auto sending back video id");
-                console.log(targetID);
-                console.log(toID);
-                console.log(props.chat_user_id);
-                console.log("我的电话号="+String(props.me_id) );
+                console.log(props.user_id);
+                console.log("我的电话号="+String(props.me_props) );
                 socket_ref.current.emit("sendMessage", {
-                  senderId: props.chat_user_id,
+                  senderId: props.user_id,
                   receiverId:data.senderId,
                   text: "我的电话号="+String(props.me_props),
                 });
