@@ -301,9 +301,9 @@ const ChatBox = (props) => {
   };
 
   const start_video = (e) => {
-          sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id)).then((res) => {
-          setNewMessage("");
-        }); 
+          //sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id)).then((res) => {
+          //setNewMessage("");
+        //}); 
 
           socket_ref.current.emit("sendMessage", {
             senderId: props.chat_user_id,
