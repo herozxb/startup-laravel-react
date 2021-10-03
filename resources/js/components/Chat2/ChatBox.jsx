@@ -27,6 +27,8 @@ import { authenticationService } from "../Services/authenticationService";
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
 
+import Socket from "./Socket";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -131,6 +133,8 @@ const ChatBox = (props) => {
   const [loading_video, setLoadingVideo] = useState(false);
   const [people_not_online, setPeopleNotOnLine] = useState(false);
 
+  const socket_ref = useRef();
+
 
 
 
@@ -149,14 +153,24 @@ const ChatBox = (props) => {
     //const socket = socketIOClient("https://120.53.220.237:5002");
     //props.socket_2.current = socketIOClient("https://120.53.220.237:5002");
 
-    props.socket_2.current.on("getMessage", (data) => {
+    socket_ref.current = Socket;
+
+    /*
+    socket_ref.current = Socket;
+    socket_ref.current.on("getMessage", (data) => {
+      console.log("get messages from https server in chatbox of login [] Conversations"); 
+      console.log(data); 
+    });
+    //*/
+
+    socket_ref.current.on("getMessage", (data) => {
           console.log("get messages from https server in chatbox of 2"); 
           console.log(data); 
     });
 
-    props.socket_2.current.on("getMessage", (data) => {
+    socket_ref.current.on("getMessage", (data) => {
       setLastMessage(data.text);
-      console.log("get messages from https server in chatbox"); 
+      console.log("get messages from https server in chatbox right"); 
       console.log(data); 
 
       sendConversationMessage(data.senderId, "我的电话号="+String(props.me_id)).then((res) => {
@@ -164,7 +178,7 @@ const ChatBox = (props) => {
       });
 
       console.log("我的电话号="+String(props.me_id) );
-      props.socket_2.current.emit("sendMessage", {
+      socket_ref.current.emit("sendMessage", {
         senderId: props.chat_user_id,
         receiverId:data.senderId,
         text: "我的电话号="+String(props.me_id),
@@ -191,7 +205,7 @@ const ChatBox = (props) => {
                 console.log(toID);
                 console.log(props.chat_user_id);
                 console.log("我的电话号="+String(props.me_id) );
-                props.socket_2.current.emit("sendMessage", {
+                socket_ref.current.emit("sendMessage", {
                   senderId: props.chat_user_id,
                   receiverId:targetID,
                   text: "我的电话号="+String(props.me_id),
@@ -320,7 +334,7 @@ const ChatBox = (props) => {
           setNewMessage("");
         }); 
 
-          props.socket_2.current.emit("sendMessage", {
+          socket_ref.current.emit("sendMessage", {
             senderId: props.chat_user_id,
             receiverId:props.user._id,
             text: "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id),
