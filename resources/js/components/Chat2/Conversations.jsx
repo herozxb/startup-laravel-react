@@ -130,6 +130,54 @@ const Conversations = (props) => {
       }
   }
 
+
+  useEffect(() => {
+      socket_ref.current = Socket;
+      socket_ref.current.on("getMessage", (data) => {
+      setLastMessage(data.text);
+      console.log(String(data));
+
+      if(String(data.text).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
+      {
+
+                console.log("AutoMessage in ChatBox");
+                counter = counter + 1;
+
+                console.log(String(data.text).substr(7,24));
+                console.log(String(data.text).substr(33,42));
+                setTargetID(String(data.text).substr(7,24));
+                setToID(String(data.text).substr(33,42));
+                setAutoMessage(counter);
+                //console.log(counter);
+                setTargetVideoID(String(""));
+
+                console.log("Auto sending back video id");
+                console.log(targetID);
+                console.log(toID);
+                console.log(props.chat_user_id);
+                console.log("我的电话号="+String(props.me_id) );
+                socket_ref.current.emit("sendMessage", {
+                  senderId: props.chat_user_id,
+                  receiverId:targetID,
+                  text: "我的电话号="+String(props.me_id),
+                });
+
+      }
+      else if(String(data.text).substr(0, 5).valueOf() == String("我的电话号").valueOf())
+      {
+
+                console.log("AutoCallID");
+                console.log(String(data.text).substr(6,27));
+                setTargetVideoID(String(data.text).substr(6,27));
+                setShow_Button(true);
+                //props.setIdToCall_props_2(String(data).substr(6,27));
+                //props.callUser_props_2(String(data).substr(6,27));
+
+      }
+      });
+    });
+
+    /*
     useEffect(() => {
 
     socket_ref.current = Socket;
@@ -180,6 +228,7 @@ const Conversations = (props) => {
         });
       }
   }, [autoMessage]);
+  //*/
 
 
 

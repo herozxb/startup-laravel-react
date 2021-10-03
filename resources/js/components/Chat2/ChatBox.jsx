@@ -150,42 +150,10 @@ const ChatBox = (props) => {
 //console.log(props.chat_user_id);
 
   useEffect(() => {
-    //const socket = socketIOClient("https://120.53.220.237:5002");
-    //props.socket_2.current = socketIOClient("https://120.53.220.237:5002");
-
-    socket_ref.current = Socket;
-
-    /*
-    socket_ref.current = Socket;
-    socket_ref.current.on("getMessage", (data) => {
-      console.log("get messages from https server in chatbox of login [] Conversations"); 
-      console.log(data); 
-    });
-    //*/
-
-    socket_ref.current.on("getMessage", (data) => {
-          console.log("get messages from https server in chatbox of 2"); 
-          console.log(data); 
-    });
-
-    socket_ref.current.on("getMessage", (data) => {
+      socket_ref.current = Socket;
+      socket_ref.current.on("getMessage", (data) => {
       setLastMessage(data.text);
-      console.log("get messages from https server in chatbox right"); 
-      console.log(data); 
 
-      sendConversationMessage(data.senderId, "我的电话号="+String(props.me_id)).then((res) => {
-        setNewMessage("");
-      });
-
-      console.log("我的电话号="+String(props.me_id) );
-      socket_ref.current.emit("sendMessage", {
-        senderId: props.chat_user_id,
-        receiverId:data.senderId,
-        text: "我的电话号="+String(props.me_id),
-      });
-
-
-      console.log(String(data.text).substr(0, 6).valueOf() );
       if(String(data.text).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
@@ -278,6 +246,7 @@ const ChatBox = (props) => {
     chatBottom.current.scrollIntoView({ behavior: "smooth" });
   };
 
+/*
   useEffect(() => {
       //console.log("AutoMessage is working and the props is");
       //console.log(props);
@@ -301,6 +270,8 @@ const ChatBox = (props) => {
 
       }
   }, [autoMessage]);
+
+  /*/
 
 
   const handleSubmit = (e) => {
