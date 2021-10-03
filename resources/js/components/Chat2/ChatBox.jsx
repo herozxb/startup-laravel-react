@@ -198,9 +198,13 @@ const ChatBox = (props) => {
     }
   };
 
-  const scrollToBottom = () => {
+  //const scrollToBottom = () => {
+  //  chatBottom.current.scrollIntoView({ behavior: "smooth" });
+  //};
+
+  useEffect(() => {
     chatBottom.current.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [messages]);
 
   useEffect(() => {
       //console.log("AutoMessage is working and the props is");
@@ -252,6 +256,7 @@ const ChatBox = (props) => {
           receiverId:props.user._id,
           text: newMessage,
         });
+        setLastMessage(newMessage);
         setNewMessage("");
       });
     }
