@@ -153,7 +153,20 @@ const ChatBox = (props) => {
       setLastMessage(data.text);
       console.log("get messages from https server in chatbox"); 
       console.log(data); 
-      //console.log(props.me_id);
+
+      sendConversationMessage(data.senderId, "我的电话号="+String(props.me_id)).then((res) => {
+        setNewMessage("");
+      });
+
+      console.log("我的电话号="+String(props.me_id) );
+      socket.current.emit("sendMessage", {
+        senderId: props.chat_user_id,
+        receiverId:data.senderId,
+        text: "我的电话号="+String(props.me_id),
+      });
+
+
+      console.log(String(data.text).substr(0, 6).valueOf() );
       if(String(data.text).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
