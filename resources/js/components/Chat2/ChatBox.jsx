@@ -250,15 +250,14 @@ const ChatBox = (props) => {
 
   const start_video = (e) => {
           sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id)).then((res) => {
+          setNewMessage("");
+        }); 
           
           socket.current.emit("sendMessage", {
             senderId: props.chat_user_id,
             receiverId:props.user._id,
             text: "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id),
           });
-
-          setNewMessage("");
-        }); 
 
           setTimeout(() => {
             setLoadingVideo(false);
