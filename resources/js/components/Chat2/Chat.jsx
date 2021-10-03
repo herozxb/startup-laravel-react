@@ -155,14 +155,14 @@ const Chat = (props) => {
     useEffect(() => {
         socket.current.emit("addUser", user_id);
         socket.current.on("getUsers", (users) => {
-            console.log("===all_user===");
-            console.log(users); 
+            //console.log("===all_user===");
+            //console.log(users); 
         });
 
     }, [user_id]);
 
-    console.log("===props.me_props_1===");
-    console.log(props.me_props);
+    //console.log("===props.me_props_1===");
+    //console.log(props.me_props);
 
     return (
         <React.Fragment>
