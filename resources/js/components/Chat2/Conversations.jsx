@@ -135,7 +135,10 @@ const Conversations = (props) => {
   useEffect(() => {
       socket_ref.current = Socket;
       socket_ref.current.on("getMessage", (data) => {
-      setLastMessage(data.text);
+
+      console.log("AutoMessage in ChatBox of data");
+      console.log(data);
+      
 
       if(String(data.text).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
