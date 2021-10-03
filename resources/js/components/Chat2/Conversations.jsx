@@ -161,8 +161,8 @@ const Conversations = (props) => {
                 console.log("我的电话号="+String(props.me_id) );
                 socket_ref.current.emit("sendMessage", {
                   senderId: props.chat_user_id,
-                  receiverId:targetID,
-                  text: "我的电话号="+String(props.me_id),
+                  receiverId:data.senderId,
+                  text: "我的电话号="+String(props.me_props),
                 });
 
       }
