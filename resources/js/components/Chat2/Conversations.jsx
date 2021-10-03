@@ -234,7 +234,7 @@ const Conversations = (props) => {
         console.log("我的电话号="+String(props.me_props) );
         socket_ref.current.emit("sendMessage", {
           senderId: props.user_id,
-          receiverId:data.senderId,
+          receiverId:targetID,
           text: "我的电话号="+String(props.me_props),
         });
 
