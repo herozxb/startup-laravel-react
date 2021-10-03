@@ -140,7 +140,7 @@ const ChatBox = (props) => {
 
   useEffect(() => {
     reloadMessages();
-    scrollToBottom();
+    //scrollToBottom();
   }, [lastMessage, props.scope, props.conversationId]);
 
 //console.log("props.me_id = ");
@@ -198,9 +198,9 @@ const ChatBox = (props) => {
     }
   };
 
-  //const scrollToBottom = () => {
-  //  chatBottom.current.scrollIntoView({ behavior: "smooth" });
-  //};
+  const scrollToBottom = () => {
+    chatBottom.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     chatBottom.current.scrollIntoView({ behavior: "smooth" });
