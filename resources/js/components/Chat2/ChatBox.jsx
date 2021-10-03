@@ -259,6 +259,7 @@ const ChatBox = (props) => {
             receiverId:targetID,
             text: "我的电话号="+String(props.me_id),
           });
+
       }
   }, [autoMessage]);
 
