@@ -152,6 +152,8 @@ const ChatBox = (props) => {
       socket_ref.current = Socket;
       socket_ref.current.on("getMessage", (data) => {
 
+      setLastMessage(data.text);
+
       if(String(data.text).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
