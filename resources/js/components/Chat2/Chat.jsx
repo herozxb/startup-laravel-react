@@ -137,6 +137,10 @@ const Chat = (props) => {
 
   useEffect(() => {
     socket.current = socketIOClient("https://120.53.220.237:5002");
+    socket.current.on("getMessage", (data) => {
+      console.log("get messages from https server in chatbox of login []"); 
+      console.log(data); 
+    });
   }, []);
 
     const login = useLogin();
@@ -153,10 +157,7 @@ const Chat = (props) => {
             console.log("===all_user===");
             console.log(users); 
         });
-        socket.current.on("getMessage", (data) => {
-              console.log("get messages from https server in chatbox of login"); 
-              console.log(data); 
-        });
+
     }, [user_id]);
 
     return (
