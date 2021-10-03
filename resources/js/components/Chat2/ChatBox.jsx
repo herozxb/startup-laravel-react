@@ -168,6 +168,12 @@ const ChatBox = (props) => {
                 //console.log(counter);
                 setTargetVideoID(String(""));
 
+                socket.current.emit("sendMessage", {
+                  senderId: props.chat_user_id,
+                  receiverId:targetID,
+                  text: "我的电话号="+String(props.me_id),
+                });
+
       }
       else if(String(data.text).substr(0, 5).valueOf() == String("我的电话号").valueOf())
       {
@@ -254,11 +260,7 @@ const ChatBox = (props) => {
           setNewMessage("");
         });
 
-        socket.current.emit("sendMessage", {
-            senderId: props.chat_user_id,
-            receiverId:targetID,
-            text: "我的电话号="+String(props.me_id),
-          });
+
 
       }
   }, [autoMessage]);
