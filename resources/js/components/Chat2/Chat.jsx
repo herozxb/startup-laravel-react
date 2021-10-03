@@ -192,7 +192,6 @@ const Chat = (props) => {
                                 setIdToCall_props={props.setIdToCall_props}  
                                 stream_props={props.stream_props} 
                                 callUser_props={props.callUser_props}
-                                socket={socket}
                             />
                         )}
                         {tab === 1 && (
@@ -206,7 +205,6 @@ const Chat = (props) => {
                                 setIdToCall_props={props.setIdToCall_props}  
                                 stream_props={props.stream_props} 
                                 callUser_props={props.callUser_props}
-                                socket={socket}
                                  />
                         )}
                     </Paper>
