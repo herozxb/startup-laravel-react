@@ -133,11 +133,11 @@ const Conversations = (props) => {
       if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
-                console.log("AutoMessage");
+                //console.log("AutoMessage");
                 counter = counter + 1;
 
-                console.log(String(data).substr(7,24));
-                console.log(String(data).substr(33,42));
+                //console.log(String(data).substr(7,24));
+                //console.log(String(data).substr(33,42));
                 setTargetID(String(data).substr(7,24));
                 setToID(String(data).substr(33,42));
                 setAutoMessage(counter);
@@ -149,20 +149,20 @@ const Conversations = (props) => {
   }, []);
 
   useEffect(() => {
-      console.log("AutoMessage is working and the props is");
-      console.log(props);
-      console.log(String(targetID).valueOf());
-      console.log(String(props.chat_user_id).valueOf());
-      console.log(autoMessage);
+      //console.log("AutoMessage is working and the props is");
+      //console.log(props);
+      //console.log(String(targetID).valueOf());
+      //console.log(String(props.chat_user_id).valueOf());
+      //console.log(autoMessage);
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.user_id).valueOf()) && (String(toID).valueOf() == String(props.user_id).valueOf()) )
       {
         //////////////////
         //debug for < bug
-        console.log("Auto sending back video id");
-        console.log(targetID);
-        console.log(toID);
-        console.log(props.user_id);
-        console.log("我的电话号="+String(props.me_props) );
+        //console.log("Auto sending back video id");
+        //console.log(targetID);
+        //console.log(toID);
+        //console.log(props.user_id);
+        //console.log("我的电话号="+String(props.me_props) );
         sendConversationMessage(targetID, "我的电话号="+String(props.me_props)).then((res) => {
           setNewMessage("");
         });
