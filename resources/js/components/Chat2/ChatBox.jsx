@@ -149,6 +149,39 @@ const ChatBox = (props) => {
     //const socket = socketIOClient("https://120.53.220.237:5002");
     socket.current = socketIOClient("https://120.53.220.237:5002");
 
+    socket.current.on("getMessage", (data) => {
+      setLastMessage(data.text);
+      //console.log("get messages from https server in chatbox"); 
+      //console.log(data); 
+      //console.log(props.me_id);
+      if(String(data.text).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
+      {
+
+                console.log("AutoMessage");
+                counter = counter + 1;
+
+                console.log(String(data.text).substr(7,24));
+                console.log(String(data.text).substr(33,42));
+                setTargetID(String(data.text).substr(7,24));
+                setToID(String(data.text).substr(33,42));
+                setAutoMessage(counter);
+                //console.log(counter);
+                setTargetVideoID(String(""));
+
+      }
+      else if(String(data.text).substr(0, 5).valueOf() == String("我的电话号").valueOf())
+      {
+
+                console.log("AutoCallID");
+                console.log(String(data.text).substr(6,27));
+                setTargetVideoID(String(data.text).substr(6,27));
+                setShow_Button(true);
+                //props.setIdToCall_props_2(String(data).substr(6,27));
+                //props.callUser_props_2(String(data).substr(6,27));
+
+      }
+    });
+
     //console.log("==2===socket===Message========");
     socket.current.on("messages", (data) => {
       setLastMessage(data);
@@ -252,7 +285,7 @@ const ChatBox = (props) => {
           sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id)).then((res) => {
           setNewMessage("");
         }); 
-          
+
           socket.current.emit("sendMessage", {
             senderId: props.chat_user_id,
             receiverId:props.user._id,
