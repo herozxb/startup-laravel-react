@@ -131,6 +131,9 @@ const Conversations = (props) => {
       }
   }
 
+  console.log("===props.me_props_2===");
+  console.log(props.me_props);
+  console.log(props.user_id);
 
   useEffect(() => {
       socket_ref.current = Socket;
@@ -156,6 +159,7 @@ const Conversations = (props) => {
 
                 console.log("Auto sending back video id");
                 console.log(props.user_id);
+                console.log("===props.me_props_3===");
                 console.log("我的电话号="+String(props.me_props) );
                 socket_ref.current.emit("sendMessage", {
                   senderId: props.user_id,
