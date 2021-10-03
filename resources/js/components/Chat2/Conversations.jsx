@@ -24,6 +24,7 @@ import {
   useSendConversationMessage,
 } from "../Services/chatService";
 
+import Socket from "./Socket";
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
@@ -82,6 +83,10 @@ const Conversations = (props) => {
 
   const sendConversationMessage = useSendConversationMessage();
 
+  const socket_ref = useRef();
+
+
+
   // Returns the recipient name that does not
   // belong to the current user.
   const handleRecipient = (recipients) => {
@@ -105,7 +110,7 @@ const Conversations = (props) => {
 
 
   useEffect(() => {
-    let socket = socketIOClient("https://120.53.220.237:5002");
+    let socket = Socket;
     console.log("==1===socket=====newConversation======");
     socket.on("messages", (data) => { setNewConversation(data);console.log("get Conversation from https server "); console.log(data);});
 
@@ -126,8 +131,14 @@ const Conversations = (props) => {
   }
 
     useEffect(() => {
-    
-    const socket = socketIOClient("https://120.53.220.237:5002");
+
+    socket_ref.current = Socket;
+    socket_ref.current.on("getMessage", (data) => {
+      console.log("get messages from https server in chatbox of login [] Conversations"); 
+      console.log(data); 
+    });
+
+    const socket = Socket;
     //console.log("==2===socket===Message========");
     socket.on("messages", (data) => {
 
