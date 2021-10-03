@@ -161,7 +161,7 @@ const Chat = (props) => {
 
     }, [user_id]);
 
-    console.log("===props.me_props===");
+    console.log("===props.me_props_1===");
     console.log(props.me_props);
 
     return (
