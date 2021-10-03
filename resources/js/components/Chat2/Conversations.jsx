@@ -24,7 +24,9 @@ import {
   useSendConversationMessage,
 } from "../Services/chatService";
 
+
 import Socket from "./Socket";
+
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
@@ -84,7 +86,6 @@ const Conversations = (props) => {
   const sendConversationMessage = useSendConversationMessage();
 
   const socket_ref = useRef();
-
 
 
   // Returns the recipient name that does not
