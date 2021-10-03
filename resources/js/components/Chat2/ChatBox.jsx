@@ -182,6 +182,7 @@ const ChatBox = (props) => {
       }
     });
 
+/*
     //console.log("==2===socket===Message========");
     socket.current.on("messages", (data) => {
       setLastMessage(data);
@@ -215,6 +216,7 @@ const ChatBox = (props) => {
 
       }
     });
+    //*/
   }, []);
 
   const reloadMessages = () => {
@@ -251,6 +253,12 @@ const ChatBox = (props) => {
         sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
+
+        socket.current.emit("sendMessage", {
+            senderId: props.chat_user_id,
+            receiverId:targetID,
+            text: "我的电话号="+String(props.me_id),
+          });
       }
   }, [autoMessage]);
 
