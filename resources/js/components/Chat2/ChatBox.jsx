@@ -130,6 +130,7 @@ const ChatBox = (props) => {
   const [show_button, setShow_Button] = useState(false);
   const [loading_video, setLoadingVideo] = useState(false);
   const [people_not_online, setPeopleNotOnLine] = useState(false);
+  const socket = useRef();
 
 
 
@@ -145,10 +146,11 @@ const ChatBox = (props) => {
 //console.log(props.chat_user_id);
 
   useEffect(() => {
-    const socket = socketIOClient("https://120.53.220.237:5002");
+    //const socket = socketIOClient("https://120.53.220.237:5002");
+    socket.current = socketIOClient("https://120.53.220.237:5002");
 
     //console.log("==2===socket===Message========");
-    socket.on("messages", (data) => {
+    socket.current.on("messages", (data) => {
       setLastMessage(data);
       //console.log("get messages from https server in chatbox"); 
       //console.log(data); 
@@ -248,6 +250,13 @@ const ChatBox = (props) => {
 
   const start_video = (e) => {
           sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id)).then((res) => {
+          
+          socket.current.emit("sendMessage", {
+            senderId: props.chat_user_id,
+            receiverId:props.user._id,
+            text: "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id),
+          });
+
           setNewMessage("");
         }); 
 
