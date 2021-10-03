@@ -1,4 +1,4 @@
- 
+
 import React, { useState, useEffect, useRef, useReducer, useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -198,9 +198,9 @@ const ChatBox = (props) => {
     }
   };
 
-  const scrollToBottom = () => {
-    chatBottom.current.scrollIntoView({ behavior: "smooth" });
-  };
+  //const scrollToBottom = () => {
+  //  chatBottom.current.scrollIntoView({ behavior: "smooth" });
+  //};
 
   useEffect(() => {
     chatBottom.current.scrollIntoView({ behavior: "smooth" });
