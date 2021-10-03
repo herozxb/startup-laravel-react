@@ -151,8 +151,8 @@ const ChatBox = (props) => {
 
     socket.current.on("getMessage", (data) => {
       setLastMessage(data.text);
-      //console.log("get messages from https server in chatbox"); 
-      //console.log(data); 
+      console.log("get messages from https server in chatbox"); 
+      console.log(data); 
       //console.log(props.me_id);
       if(String(data.text).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
