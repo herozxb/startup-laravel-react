@@ -192,7 +192,7 @@ const ChatBox = (props) => {
         setMessages(res);
       });
     } else if (props.scope !== null && props.conversationId !== null) {
-      getConversationMessages(props.user._id).then((res) => setMessages((prev)=>[...prev,lastMessage]));
+      getConversationMessages(props.user._id).then((res) => setMessages(res));
     } else {
       setMessages([]);
     }
