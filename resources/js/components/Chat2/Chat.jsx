@@ -161,6 +161,9 @@ const Chat = (props) => {
 
     }, [user_id]);
 
+    console.log("===props.me_props===");
+    console.log(props.me_props);
+
     return (
         <React.Fragment>
             <Grid container>
