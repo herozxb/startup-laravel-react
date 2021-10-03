@@ -150,8 +150,12 @@ const Chat = (props) => {
     useEffect(() => {
         socket.current.emit("addUser", user_id);
         socket.current.on("getUsers", (users) => {
-            //console.log("===all_user===");
-            //console.log(users); 
+            console.log("===all_user===");
+            console.log(users); 
+        });
+        socket.current.on("getMessage", (data) => {
+              console.log("get messages from https server in chatbox"); 
+              console.log(data); 
         });
     }, [user_id]);
 
