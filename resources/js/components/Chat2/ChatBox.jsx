@@ -480,7 +480,9 @@ const ChatBox = (props) => {
                   </Modal.Header>
                   <Modal.Body>
 
+                  <Grid container className={classes.root}>
                     <video playsInline muted ref={myVideo} autoPlay />
+                  </Grid>
 
 
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
