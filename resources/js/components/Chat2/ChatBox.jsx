@@ -29,9 +29,6 @@ import Spinner from 'react-bootstrap/Spinner'
 
 import Socket from "./Socket";
 
-import { Container } from '@material-ui/core';
-import { io } from 'socket.io-client';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -102,35 +99,9 @@ const useStyles = makeStyles((theme) => ({
   listItemRight: {
     flexDirection: "row-reverse",
   },
-
-
-  gridContainer: {
-    width: '100%',
-    [theme.breakpoints.down('xs')]: {
-      width: '100%',
-      flexDirection: 'column',
-      justifyContent: 'center',
-    },
-  },
-
-  paper: {
-    padding: '0px 0px',
-    border: '2px solid black',
-    background: 'linear-gradient(107.68deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 100%)',
-  },
-
-  video: {
-    width: '100vw',
-    maxWidth: '1200px',
-    [theme.breakpoints.down('xs')]: {
-      width: '100vw',
-    },
-  },
-
 }));
 
 var counter = 0;
-const socket = io("https://120.53.220.237:5001");
 
 const ChatBox = (props) => {
   const [currentUserId] = useState(
@@ -163,83 +134,6 @@ const ChatBox = (props) => {
   const [people_not_online, setPeopleNotOnLine] = useState(false);
 
   const socket_ref = useRef();
-
-
-  const [callAccepted, setCallAccepted] = useState(false);
-  const [callEnded, setCallEnded] = useState(false);
-  const [stream, setStream] = useState();
-  const [name, setName] = useState('');
-  const [call, setCall] = useState({});
-  const [me, setMe] = useState('');
-
-  const myVideo = useRef();
-  const userVideo = useRef();
-  const connectionRef = useRef();
-
-
-  useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      .then((currentStream) => {
-        setStream(currentStream);
-
-        myVideo.current.srcObject = currentStream;
-      });
-
-    socket.on('me', (id) =>{ setMe(id); console.log(id) });
-    setName(props.name)
-
-    socket.on('callUser', ({ from, name: callerName, signal }) => {
-      setCall({ isReceivingCall: true, from, name: callerName, signal });
-      handleShow();
-    });
-  }, []);
-
-  const answerCall = () => {
-    setCallAccepted(true);
-
-    const peer = new Peer({ initiator: false, trickle: false, stream });
-
-    peer.on('signal', (data) => {
-      socket.emit('answerCall', { signal: data, to: call.from });
-    });
-
-    peer.on('stream', (currentStream) => {
-      userVideo.current.srcObject = currentStream;
-    });
-
-    peer.signal(call.signal);
-
-    connectionRef.current = peer;
-  };
-
-  const callUser = (id) => {
-    const peer = new Peer({ initiator: true, trickle: false, stream });
-
-    peer.on('signal', (data) => {
-      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name });
-    });
-
-    peer.on('stream', (currentStream) => {
-      userVideo.current.srcObject = currentStream;
-    });
-
-    socket.on('callAccepted', (signal) => {
-      setCallAccepted(true);
-
-      peer.signal(signal);
-    });
-
-    connectionRef.current = peer;
-  };
-
-  const leaveCall = () => {
-    setCallEnded(true);
-
-    connectionRef.current.destroy();
-
-    window.location.reload();
-  };
-
 
 
 
@@ -479,12 +373,6 @@ const ChatBox = (props) => {
                     <Modal.Title>视频通话</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-
-                  <Grid container className={classes.root}>
-                    <video playsInline muted ref={myVideo} autoPlay />
-                  </Grid>
-
-
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                       <h5>向 {props.scope} 发起通话</h5>
                     </div>

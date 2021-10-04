@@ -90,7 +90,12 @@ const Example = (props) => {
 
 
   useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+      .then((currentStream) => {
+        setStream(currentStream);
 
+        myVideo.current.srcObject = currentStream;
+      });
 
     socket.on('me', (id) =>{ setMe(id); console.log(id) });
     setName(props.name)
@@ -169,6 +174,24 @@ const Example = (props) => {
                 <div className="row justify-content-center">
                     <div className="col-md-20">
                         <div className="card">
+                  			    <Grid container className={classes.gridContainer}>
+                        			      {stream && (
+                        				<Paper className={classes.paper}>
+                        				  <Grid item xs={12} md={6}>
+                        				    <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
+                        				    <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
+                        				  </Grid>
+                        				</Paper>
+                        			      )}
+                        			      {callAccepted && !callEnded && (
+                        				<Paper className={classes.paper}>
+                        				  <Grid item xs={12} md={6}>
+                        				    <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
+                        				    <video playsInline ref={userVideo} autoPlay className={classes.video} />
+                        				  </Grid>
+                        				</Paper>
+                        			      )}
+                  			    </Grid>
 
                   			    <Container className={classes.container}>
                   			      <Paper elevation={10} className={classes.paper}>
@@ -184,7 +207,7 @@ const Example = (props) => {
                                 					<Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
                                 					  挂掉电话
                                 					</Button>
-                        				      ) }
+                        				      )}
                         				    </Grid>
                         				  </Grid>
                                   <Modal
