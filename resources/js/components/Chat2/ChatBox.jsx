@@ -129,6 +129,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 var counter = 0;
+const socket = io("https://120.53.220.237:5001");
 
 const ChatBox = (props) => {
   const [currentUserId] = useState(
