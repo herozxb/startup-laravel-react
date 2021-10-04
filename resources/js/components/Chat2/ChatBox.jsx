@@ -464,7 +464,7 @@ const ChatBox = (props) => {
                     <SendIcon />
                   </IconButton>
                 </Grid>
-<video playsInline muted ref={myVideo} autoPlay />
+
                 <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {setShow_Button(false);handleShow()}} className={classes.margin}>
                   视频通话
                 </Button>
