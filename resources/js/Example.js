@@ -89,68 +89,6 @@ const Example = (props) => {
   const handleShow = () => setShow(true);
 
 
-  useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-      .then((currentStream) => {
-        setStream(currentStream);
-
-        myVideo.current.srcObject = currentStream;
-      });
-
-    socket.on('me', (id) =>{ setMe(id); console.log(id) });
-    setName(props.name)
-
-    socket.on('callUser', ({ from, name: callerName, signal }) => {
-      setCall({ isReceivingCall: true, from, name: callerName, signal });
-      handleShow();
-    });
-  }, []);
-
-  const answerCall = () => {
-    setCallAccepted(true);
-
-    const peer = new Peer({ initiator: false, trickle: false, stream });
-
-    peer.on('signal', (data) => {
-      socket.emit('answerCall', { signal: data, to: call.from });
-    });
-
-    peer.on('stream', (currentStream) => {
-      userVideo.current.srcObject = currentStream;
-    });
-
-    peer.signal(call.signal);
-
-    connectionRef.current = peer;
-  };
-
-  const callUser = (id) => {
-    const peer = new Peer({ initiator: true, trickle: false, stream });
-
-    peer.on('signal', (data) => {
-      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name });
-    });
-
-    peer.on('stream', (currentStream) => {
-      userVideo.current.srcObject = currentStream;
-    });
-
-    socket.on('callAccepted', (signal) => {
-      setCallAccepted(true);
-
-      peer.signal(signal);
-    });
-
-    connectionRef.current = peer;
-  };
-
-  const leaveCall = () => {
-    setCallEnded(true);
-
-    connectionRef.current.destroy();
-
-    window.location.reload();
-  };
 
 
 
@@ -174,24 +112,7 @@ const Example = (props) => {
                 <div className="row justify-content-center">
                     <div className="col-md-20">
                         <div className="card">
-                  			    <Grid container className={classes.gridContainer}>
-                        			      {stream && (
-                        				<Paper className={classes.paper}>
-                        				  <Grid item xs={12} md={6}>
-                        				    <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
-                        				    <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
-                        				  </Grid>
-                        				</Paper>
-                        			      )}
-                        			      {callAccepted && !callEnded && (
-                        				<Paper className={classes.paper}>
-                        				  <Grid item xs={12} md={6}>
-                        				    <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
-                        				    <video playsInline ref={userVideo} autoPlay className={classes.video} />
-                        				  </Grid>
-                        				</Paper>
-                        			      )}
-                  			    </Grid>
+
 
                   			    <Container className={classes.container}>
                   			      <Paper elevation={10} className={classes.paper}>
