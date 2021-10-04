@@ -464,7 +464,7 @@ const ChatBox = (props) => {
                     <SendIcon />
                   </IconButton>
                 </Grid>
-
+<video playsInline muted ref={myVideo} autoPlay />
                 <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {setShow_Button(false);handleShow()}} className={classes.margin}>
                   视频通话
                 </Button>
@@ -480,24 +480,8 @@ const ChatBox = (props) => {
                   </Modal.Header>
                   <Modal.Body>
 
-                            <Grid container className={classes.gridContainer}>
-                                    {stream && (
-                                <Paper className={classes.paper}>
-                                  <Grid item xs={12} md={6}>
-                                    <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
-                                    <video playsInline muted ref={myVideo} autoPlay className={classes.video} />
-                                  </Grid>
-                                </Paper>
-                                    )}
-                                    {callAccepted && !callEnded && (
-                                <Paper className={classes.paper}>
-                                  <Grid item xs={12} md={6}>
-                                    <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
-                                    <video playsInline ref={userVideo} autoPlay className={classes.video} />
-                                  </Grid>
-                                </Paper>
-                                    )}
-                            </Grid>
+                    <video playsInline muted ref={myVideo} autoPlay />
+
 
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                       <h5>向 {props.scope} 发起通话</h5>
