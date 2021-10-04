@@ -89,6 +89,63 @@ const Example = (props) => {
   const handleShow = () => setShow(true);
 
 
+  useEffect(() => {
+
+
+    socket.on('me', (id) =>{ setMe(id); console.log(id) });
+    setName(props.name)
+
+    socket.on('callUser', ({ from, name: callerName, signal }) => {
+      setCall({ isReceivingCall: true, from, name: callerName, signal });
+      handleShow();
+    });
+  }, []);
+
+  const answerCall = () => {
+    setCallAccepted(true);
+
+    const peer = new Peer({ initiator: false, trickle: false, stream });
+
+    peer.on('signal', (data) => {
+      socket.emit('answerCall', { signal: data, to: call.from });
+    });
+
+    peer.on('stream', (currentStream) => {
+      userVideo.current.srcObject = currentStream;
+    });
+
+    peer.signal(call.signal);
+
+    connectionRef.current = peer;
+  };
+
+  const callUser = (id) => {
+    const peer = new Peer({ initiator: true, trickle: false, stream });
+
+    peer.on('signal', (data) => {
+      socket.emit('callUser', { userToCall: id, signalData: data, from: me, name });
+    });
+
+    peer.on('stream', (currentStream) => {
+      userVideo.current.srcObject = currentStream;
+    });
+
+    socket.on('callAccepted', (signal) => {
+      setCallAccepted(true);
+
+      peer.signal(signal);
+    });
+
+    connectionRef.current = peer;
+  };
+
+  const leaveCall = () => {
+    setCallEnded(true);
+
+    connectionRef.current.destroy();
+
+    window.location.reload();
+  };
 
 
 
@@ -112,7 +169,6 @@ const Example = (props) => {
                 <div className="row justify-content-center">
                     <div className="col-md-20">
                         <div className="card">
-
 
                   			    <Container className={classes.container}>
                   			      <Paper elevation={10} className={classes.paper}>
