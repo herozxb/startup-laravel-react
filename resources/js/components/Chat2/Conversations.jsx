@@ -250,8 +250,9 @@ const Conversations = (props) => {
         <React.Fragment>
           {conversations.map((c) => {
 
-            console.log(c);
-            (
+
+          console.log(c); 
+          return (
             <ListItem
               className={classes.listItem}
               key={c._id}
