@@ -264,7 +264,7 @@ const Conversations = (props) => {
             console.log(c);
             console.log(user_on_server);
 
-            var result_online = search(c._id, user_on_server);
+            var result_online = search(c.recipientObj[1]._id, user_on_server);
 
             console.log(result_online);
 
