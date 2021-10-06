@@ -27,6 +27,8 @@ import {
 
 import Socket from "./Socket";
 
+import "./chatOnline.css"
+
 const RADIUS_DOT = 1.5;
 const useStyles = makeStyles((theme) => ({
   subheader: {
@@ -69,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 var counter = 0;
-
 
 const Conversations = (props) => {
   const classes = useStyles();
@@ -252,7 +253,7 @@ const Conversations = (props) => {
                     handleRecipient(c.recipientObj).username
                   )}
                 </Avatar>
-                <span className={classes.circle} style={styles} />
+               <div className="chatOnlineBadge"></div>
               </ListItemAvatar>
               <ListItemText
                 className={classes.subheaderText}
