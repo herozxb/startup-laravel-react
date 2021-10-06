@@ -264,7 +264,10 @@ const Conversations = (props) => {
             console.log(c);
             console.log(user_on_server);
 
-          
+            var result_online = search(c._id, user_on_server);
+
+            console.log(result_online);
+
           return (
             <ListItem
               className={classes.listItem}
@@ -334,5 +337,17 @@ const Conversations = (props) => {
     </List>
   );
 };
+
+function search(user_id, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].userId === user_id) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
 
 export default Conversations;
