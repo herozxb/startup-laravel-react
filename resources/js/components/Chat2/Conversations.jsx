@@ -27,7 +27,7 @@ import {
 
 import Socket from "./Socket";
 
-
+const RADIUS_DOT = 1.5;
 const useStyles = makeStyles((theme) => ({
   subheader: {
     display: "flex",
@@ -59,6 +59,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop : "5px"
   },
 
+  circle: {
+    borderRadius: RADIUS_DOT,
+    height: RADIUS_DOT * 2,
+    width: RADIUS_DOT * 2,
+    padding: 0,
+  },
+
 }));
 
 var counter = 0;
@@ -86,6 +93,8 @@ const Conversations = (props) => {
   const sendConversationMessage = useSendConversationMessage();
 
   const socket_ref = useRef();
+
+  const styles = { backgroundColor: "green" };
 
 
   // Returns the recipient name that does not
@@ -243,6 +252,7 @@ const Conversations = (props) => {
                     handleRecipient(c.recipientObj).username
                   )}
                 </Avatar>
+                <span className={classes.circle} style={styles} />
               </ListItemAvatar>
               <ListItemText
                 className={classes.subheaderText}
