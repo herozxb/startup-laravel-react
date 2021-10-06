@@ -234,6 +234,7 @@ const Conversations = (props) => {
         classes={{ root: classes.subheader }}
         onClick={() => {
           props.setScope("Global Chat");
+          handleShow();
         }}
       >
         <ListItemAvatar>
@@ -247,7 +248,10 @@ const Conversations = (props) => {
 
       {conversations && (
         <React.Fragment>
-          {conversations.map((c) => (
+          {conversations.map((c) => {
+
+            console.log(c);
+            (
             <ListItem
               className={classes.listItem}
               key={c._id}
@@ -259,20 +263,20 @@ const Conversations = (props) => {
               }}
             >
               <ListItemAvatar >
-              <StyledBadge
-                overlap="circle"
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right"
-                }}
-                variant="dot"
-              >
-                <Avatar className={classes.globe} >
-                  {commonUtilites.getInitialsFromName(
-                    handleRecipient(c.recipientObj).username
-                  )}
-                </Avatar>
-              </StyledBadge>
+                <StyledBadge
+                  overlap="circle"
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right"
+                  }}
+                  variant="dot"
+                >
+                  <Avatar className={classes.globe} >
+                    {commonUtilites.getInitialsFromName(
+                      handleRecipient(c.recipientObj).username
+                    )}
+                  </Avatar>
+                </StyledBadge>
 
 
               </ListItemAvatar>
@@ -285,7 +289,7 @@ const Conversations = (props) => {
 
 
 
-          ))}
+          )})}
         </React.Fragment>
       )}
       <Modal
