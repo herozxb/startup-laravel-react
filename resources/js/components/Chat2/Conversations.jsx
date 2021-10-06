@@ -81,6 +81,24 @@ const StyledBadge = withStyles(theme => ({
   }
 }))(Badge);
 
+const GreyStyledBadge = withStyles(theme => ({
+  badge: {
+    backgroundColor: "grey",
+    color: "grey",
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    "&::after": {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      border: "1px solid currentColor",
+      content: '""'
+    }
+  }
+}))(Badge);
+
 var counter = 0;
 
 const Conversations = (props) => {
@@ -280,7 +298,8 @@ const Conversations = (props) => {
               }}
             >
               <ListItemAvatar >
-                <StyledBadge
+                result_online? (
+                  <StyledBadge
                   overlap="circle"
                   anchorOrigin={{
                     vertical: "bottom",
@@ -293,7 +312,24 @@ const Conversations = (props) => {
                       handleRecipient(c.recipientObj).username
                     )}
                   </Avatar>
-                </StyledBadge>
+                </StyledBadge>) 
+                :
+                (
+                  <GreyStyledBadge
+                  overlap="circle"
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right"
+                  }}
+                  variant="dot"
+                >
+                  <Avatar className={classes.globe} >
+                    {commonUtilites.getInitialsFromName(
+                      handleRecipient(c.recipientObj).username
+                    )}
+                  </Avatar>
+                </GreyStyledBadge>) 
+
 
 
               </ListItemAvatar>
