@@ -256,7 +256,21 @@ const Conversations = (props) => {
 
   }, [props.user_id]);
 
-            //online =  c  user_on_server.userId
+  function search(user_id, myArray){
+      for (var i=0; i < myArray.length; i++) {
+          console.log("search")
+          console.log(i)
+          console.log(myArray[i].userId)
+          console.log(user_id)
+          if (myArray[i].userId === user_id) {
+              return true;
+          }
+          else
+          {
+              return false;
+          }
+      }
+  }
   return (
     <List className={classes.list}>
       <ListItem
@@ -282,7 +296,7 @@ const Conversations = (props) => {
             console.log(c);
             console.log(user_on_server);
 
-            var result_online = search(c.recipientObj[1]._id, user_on_server);
+            var result_online = user_on_server.filter(x => x.userId === c.recipientObj[1]._id);
 
             console.log(result_online);
 
@@ -375,20 +389,6 @@ const Conversations = (props) => {
   );
 };
 
-function search(user_id, myArray){
-    for (var i=0; i < myArray.length; i++) {
-        console.log("search")
-        console.log(i)
-        console.log(myArray[i].userId)
-        console.log(user_id)
-        if (myArray[i].userId === user_id) {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-}
+
 
 export default Conversations;
