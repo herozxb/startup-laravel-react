@@ -377,6 +377,10 @@ const Conversations = (props) => {
 
 function search(user_id, myArray){
     for (var i=0; i < myArray.length; i++) {
+        console.log("search")
+        console.log(i)
+        console.log(myArray[i].userId)
+        console.log(user_id)
         if (myArray[i].userId === user_id) {
             return true;
         }
