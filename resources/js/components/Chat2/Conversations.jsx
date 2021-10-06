@@ -298,7 +298,7 @@ const Conversations = (props) => {
               }}
             >
               <ListItemAvatar >
-                result_online? (
+                { result_online? (
                   <StyledBadge
                   overlap="circle"
                   anchorOrigin={{
@@ -329,6 +329,7 @@ const Conversations = (props) => {
                     )}
                   </Avatar>
                 </GreyStyledBadge>) 
+              }
 
 
 
