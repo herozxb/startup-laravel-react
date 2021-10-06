@@ -236,7 +236,7 @@ const Conversations = (props) => {
           console.log(user_on_server); 
       });
 
-  }, [user_id]);
+  }, [props.user_id]);
 
 
   return (
