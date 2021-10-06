@@ -105,8 +105,8 @@ const Conversations = (props) => {
   const sendConversationMessage = useSendConversationMessage();
 
   const socket_ref = useRef();
+  const [user_on_server, setUser_On_Server] = useState([])
 
-  const styles = { backgroundColor: "green" };
 
 
   // Returns the recipient name that does not
@@ -227,6 +227,17 @@ const Conversations = (props) => {
   //*/
 
 
+  useEffect(() => {
+
+      socket_ref.current.on("getUsers", (users) => {
+          console.log("===all_user===");
+          console.log(users); 
+          setUser_On_Server(users);
+          console.log(user_on_server); 
+      });
+
+  }, [user_id]);
+
 
   return (
     <List className={classes.list}>
@@ -251,7 +262,7 @@ const Conversations = (props) => {
           {conversations.map((c) => {
 
 
-          console.log(c); 
+          
           return (
             <ListItem
               className={classes.listItem}
