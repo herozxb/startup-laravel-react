@@ -27,7 +27,7 @@ import {
 
 import Socket from "./Socket";
 
-import "./chatOnline.css"
+import Badge from "@material-ui/core/Badge";
 
 const RADIUS_DOT = 1.5;
 const useStyles = makeStyles((theme) => ({
@@ -61,11 +61,20 @@ const useStyles = makeStyles((theme) => ({
     marginTop : "5px"
   },
 
-  circle: {
-    borderRadius: RADIUS_DOT,
-    height: RADIUS_DOT * 2,
-    width: RADIUS_DOT * 2,
-    padding: 0,
+  badge: {
+    backgroundColor: "green",
+    color: "green",
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    "&::after": {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      border: "1px solid currentColor",
+      content: '""'
+    }
   },
 
 }));
@@ -248,12 +257,22 @@ const Conversations = (props) => {
               }}
             >
               <ListItemAvatar >
+              <StyledBadge
+                overlap="circle"
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right"
+                }}
+                variant="dot"
+              >
                 <Avatar className={classes.globe} >
                   {commonUtilites.getInitialsFromName(
                     handleRecipient(c.recipientObj).username
                   )}
                 </Avatar>
-               <div className="chatOnlineBadge"></div>
+              </StyledBadge>
+
+
               </ListItemAvatar>
               <ListItemText
                 className={classes.subheaderText}
