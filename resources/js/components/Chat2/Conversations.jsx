@@ -60,7 +60,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.primary.dark,
     marginTop : "5px"
   },
+}));
 
+const StyledBadge = withStyles(theme => ({
   badge: {
     backgroundColor: "green",
     color: "green",
@@ -75,9 +77,8 @@ const useStyles = makeStyles((theme) => ({
       border: "1px solid currentColor",
       content: '""'
     }
-  },
-
-}));
+  }
+}))(Badge);
 
 var counter = 0;
 
