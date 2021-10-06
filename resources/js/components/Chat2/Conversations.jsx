@@ -27,6 +27,7 @@ import {
 
 import Socket from "./Socket";
 
+import { withStyles } from "@material-ui/core/styles";
 import Badge from "@material-ui/core/Badge";
 
 const RADIUS_DOT = 1.5;
