@@ -238,7 +238,7 @@ const Conversations = (props) => {
 
   }, [props.user_id]);
 
-
+            //online =  c  user_on_server.userId
   return (
     <List className={classes.list}>
       <ListItem
@@ -261,6 +261,8 @@ const Conversations = (props) => {
         <React.Fragment>
           {conversations.map((c) => {
 
+            console.log(c);
+            console.log(user_on_server);
 
           
           return (
