@@ -8,6 +8,7 @@
           ============================= -->
                 <div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="天赋网"><img
                             src="{{ asset('images/Photo.jpg') }}" alt="Payyed" style="height:50px"/></a> </div>
+                            <div>hello</div>
                 <!--div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="Payyed - HTML Template">主页</a> </div-->
                 <!-- Logo end -->
 
