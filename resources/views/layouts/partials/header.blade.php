@@ -8,23 +8,9 @@
           ============================= -->
                 <div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="天赋网"><img
                             src="{{ asset('images/Photo.jpg') }}" alt="天赋网" style="height:50px"/></a> </div>
-                <div>hello 1</div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
 
 
-                <script>
-
-                    console.log("===socket===");
-                
-                    var socket = io('https://120.53.220.237:5002');
-
-                    socket.on("getUsers", (users) => {
-                      console.log("===all_user_in_laravel===");
-                      console.log(users); 
-                    });
-
-
-                </script>
                 <!--div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="Payyed - HTML Template">主页</a> </div-->
                 <!-- Logo end -->
 
