@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -25,6 +25,8 @@ import ChatBox from './ChatBox';
 import Conversations from './Conversations';
 import Users from './Users';
 
+import socketIOClient from "socket.io-client";
+import Socket from "./Socket";
 
 
 const useStyles = makeStyles(theme => ({
@@ -128,11 +130,19 @@ const Chat = (props) => {
     const [newMessage, setNewMessage] = useState("");
 
     const [user_id, setUser_ID] = useState('');
+    const socket = useRef();
 
     const handleChange = (e, newVal) => {
         setTab(newVal);
     };
 
+  useEffect(() => {
+    socket.current = Socket;
+    socket.current.on("getMessage", (data) => {
+      console.log("get messages from https server in chatbox of login []"); 
+      console.log(data); 
+    });
+  }, []);
 
     const login = useLogin();
     login(props.chat_props.name,"hero2009").then((user_login) => {
@@ -142,10 +152,22 @@ const Chat = (props) => {
         //console.log(user_id); 
       });
 
+    useEffect(() => {
+        socket.current.emit("addUser", user_id);
+        socket.current.on("getUsers", (users) => {
+            //console.log("===all_user===");
+            //console.log(users); 
+        });
+
+    }, [user_id]);
+
+    //console.log("===props.me_props_1===");
+    //console.log(props.me_props);
+
     return (
         <React.Fragment>
             <Grid container>
-                <Grid item md={4} className={classes.sidebar}>
+                <Grid item  className={classes.sidebar}>
                     <Paper className={classes.paper} square elevation={5}>
                         <Paper square>
                             <Tabs
@@ -163,15 +185,29 @@ const Chat = (props) => {
                             <Conversations
                                 setUser={setUser}
                                 setScope={setScope}
+                                scope={scope} 
+                                user={user} 
+                                me_props={props.me_props} 
+                                user_id={user_id} 
+                                setIdToCall_props={props.setIdToCall_props}  
+                                stream_props={props.stream_props} 
+                                callUser_props={props.callUser_props}
                             />
                         )}
                         {tab === 1 && (
-                            <Users setUser={setUser} setScope={setScope} />
+                            <Users 
+                                setUser={setUser} 
+                                setScope={setScope}
+                                scope={scope} 
+                                user={user} 
+                                me_props={props.me_props} 
+                                user_id={user_id} 
+                                setIdToCall_props={props.setIdToCall_props}  
+                                stream_props={props.stream_props} 
+                                callUser_props={props.callUser_props}
+                                 />
                         )}
                     </Paper>
-                </Grid>
-                <Grid item md={8}>
-                    <ChatBox scope={scope} user={user} me_id={props.me_props} chat_user_id={user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props}/>
                 </Grid>
             </Grid>
         </React.Fragment>

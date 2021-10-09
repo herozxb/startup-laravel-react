@@ -200,35 +200,12 @@ const Example = (props) => {
                         				    <Grid item xs={12} md={6} className={classes.padding}>
                         				      <Typography gutterBottom variant="h6">账户信息</Typography>
                         				      <TextField label="Name" value={props.name} onChange={(e) => setName(props.name)} fullWidth />
-                        				      <CopyToClipboard text={me} className={classes.margin}>
-                                					<Button variant="contained" color="primary" fullWidth startIcon={<Assignment fontSize="large" />}>
-                                					  拷贝自己的电话ID号码 {me} 发送给对方
-                                					</Button>
-                        				      </CopyToClipboard>
                         				    </Grid>
 
-                                    <>
-                                      {call.isReceivingCall && !callAccepted && (
-                                        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-                                          <h1>{call.name} 正在呼叫:</h1>
-                                          <Button variant="contained" color="primary" onClick={answerCall}>
-                                            接受电话
-                                          </Button>
-                                        </div>
-
-                                      )}
-                                    </>
-
                         				    <Grid item xs={12} md={6} className={classes.padding}>
-                        				      <Typography gutterBottom variant="h6">视频通话</Typography>
-                        				      <TextField label="填写对方的电话ID号码" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth />
-                        				      {callAccepted && !callEnded ? (
+                        				      {callAccepted && !callEnded && (
                                 					<Button variant="contained" color="secondary" startIcon={<PhoneDisabled fontSize="large" />} fullWidth onClick={leaveCall} className={classes.margin}>
                                 					  挂掉电话
-                                					</Button>
-                        				      ) : (
-                                					<Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => callUser(idToCall)} className={classes.margin}>
-                                					  视频通话
                                 					</Button>
                         				      )}
                         				    </Grid>

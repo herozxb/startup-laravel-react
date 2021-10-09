@@ -1,4 +1,4 @@
- 
+
 import React, { useState, useEffect, useRef, useReducer, useCallback } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -26,6 +26,8 @@ import {
 import { authenticationService } from "../Services/authenticationService";
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
+
+import Socket from "./Socket";
 
 
 
@@ -65,8 +67,14 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "0 10px 10px 10px",
     boxShadow: "-3px 4px 4px 0px rgba(0,0,0,0.08)",
     marginTop: 8,
-    maxWidth: "40em",
+    maxWidth: "75%",
     color:theme.palette.primary.dark,
+    wordBreak: "break-all",
+
+    [theme.breakpoints.down('xs')]: {
+      maxWidth: "270px",
+      wordBreak: "break-all",
+    },
   },
   messageBubbleRight: {
     borderRadius: "10px 0 10px 10px",
@@ -116,6 +124,7 @@ const ChatBox = (props) => {
 
   const [targetID, setTargetID] = useState("")
   const [targetVideoID, setTargetVideoID] = useState("")
+  const [toID, setToID] = useState("")
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -124,11 +133,14 @@ const ChatBox = (props) => {
   const [loading_video, setLoadingVideo] = useState(false);
   const [people_not_online, setPeopleNotOnLine] = useState(false);
 
+  const socket_ref = useRef();
+
+
 
 
   useEffect(() => {
     reloadMessages();
-    scrollToBottom();
+    //scrollToBottom();
   }, [lastMessage, props.scope, props.conversationId]);
 
 //console.log("props.me_id = ");
@@ -136,34 +148,35 @@ const ChatBox = (props) => {
 
 //console.log("props.chat_user_id = ");
 //console.log(props.chat_user_id);
-
   useEffect(() => {
-    const socket = socketIOClient("https://120.53.220.237:5002");
-    //console.log("==2===socket===Message========");
-    socket.on("messages", (data) => {
-      setLastMessage(data);
-      //console.log("get messages from https server in chatbox"); 
-      //console.log(data); 
-      //console.log(props.me_id);
-      if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
+      socket_ref.current = Socket;
+      socket_ref.current.on("getMessage", (data) => {
+
+      setLastMessage(data.text);
+
+      if(String(data.text).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
       {
 
-                console.log("AutoMessage");
+                //console.log("AutoMessage in ChatBox");
                 counter = counter + 1;
 
-                //console.log(String(data).substr(7,32));
-                setTargetID(String(data).substr(7,32));
+                //console.log(String(data.text).substr(7,24));
+                //console.log(String(data.text).substr(33,42));
+                setTargetID(String(data.text).substr(7,24));
+                setToID(String(data.text).substr(33,42));
                 setAutoMessage(counter);
                 //console.log(counter);
                 setTargetVideoID(String(""));
 
+
+
       }
-      else if(String(data).substr(0, 5).valueOf() == String("我的电话号").valueOf())
+      else if(String(data.text).substr(0, 5).valueOf() == String("我的电话号").valueOf())
       {
 
                 //console.log("AutoCallID");
-                //console.log(String(data).substr(6,27));
-                setTargetVideoID(String(data).substr(6,27));
+                //console.log(String(data.text).substr(6,27));
+                setTargetVideoID(String(data.text).substr(6,27));
                 setShow_Button(true);
                 //props.setIdToCall_props_2(String(data).substr(6,27));
                 //props.callUser_props_2(String(data).substr(6,27));
@@ -171,6 +184,7 @@ const ChatBox = (props) => {
       }
     });
   }, []);
+
 
   const reloadMessages = () => {
     if (props.scope === "Global Chat") {
@@ -184,24 +198,43 @@ const ChatBox = (props) => {
     }
   };
 
-  const scrollToBottom = () => {
+  //const scrollToBottom = () => {
+  //  chatBottom.current.scrollIntoView({ behavior: "smooth" });
+  //};
+
+  useEffect(() => {
     chatBottom.current.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [messages]);
 
   useEffect(() => {
       //console.log("AutoMessage is working and the props is");
       //console.log(props);
       //console.log(String(targetID).valueOf());
       //console.log(String(props.chat_user_id).valueOf());
-      console.log(autoMessage);
-      if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) )
+      //console.log(autoMessage);
+      if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) && (String(toID).valueOf() == String(props.chat_user_id).valueOf()) )
       {
+        //////////////////
+        //debug for < bug
         //console.log("Auto sending back video id");
         //console.log(targetID);
-        //console.log("我的电话号="+String(props.me_id) );
+        //console.log(toID);
+        //console.log(props.user_id);
+        //console.log("我的电话号="+String(props.me_props) );
         sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
           setNewMessage("");
         });
+
+        //console.log("Auto sending back video id");
+        //console.log(props.user_id);
+        //console.log("===props.me_props_3===");
+        //console.log("我的电话号="+String(props.me_props) );
+        socket_ref.current.emit("sendMessage", {
+          senderId: props.chat_user_id,
+          receiverId:targetID,
+          text: "我的电话号="+String(props.me_id),
+        });
+
       }
   }, [autoMessage]);
 
@@ -217,30 +250,31 @@ const ChatBox = (props) => {
         setNewMessage("");
       });
     } else {
-      if(String(newMessage).valueOf() == String("发起视频通话").valueOf())
-      {
-        sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
-          setNewMessage("");
+      sendConversationMessage(props.user._id, newMessage).then((res) => {
+        socket_ref.current.emit("sendMessage", {
+          senderId: props.chat_user_id,
+          receiverId:props.user._id,
+          text: newMessage,
         });
-      }
-      else
-      {
-        sendConversationMessage(props.user._id, newMessage).then((res) => {
-          setNewMessage("");
-        });
-      }
+        setLastMessage(newMessage);
+        setNewMessage("");
+      });
     }
   };
 
   const start_video = (e) => {
-          sendConversationMessage(props.user._id, "发起视频通话=" + String(props.chat_user_id)).then((res) => {
-          setNewMessage("");
-        }); 
 
-          setTimeout(() => {
-            setLoadingVideo(false);
-            setPeopleNotOnLine(true);
-          }, 10000);
+    socket_ref.current.emit("sendMessage", {
+      senderId: props.chat_user_id,
+      receiverId:props.user._id,
+      text: "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id),
+    });
+
+    setTimeout(() => {
+      setLoadingVideo(false);
+      setPeopleNotOnLine(true);
+    }, 10000);
+
   }
 
   const on_change_for_message = () =>{
@@ -325,7 +359,7 @@ const ChatBox = (props) => {
                   </IconButton>
                 </Grid>
 
-                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {handleShow()}} className={classes.margin}>
+                <Button variant="contained" color="primary" startIcon={<Phone fontSize="large" />} fullWidth onClick={() => {setShow_Button(false);handleShow()}} className={classes.margin}>
                   视频通话
                 </Button>
 
@@ -357,7 +391,7 @@ const ChatBox = (props) => {
                     </>
 
                     {
-                      show_button ? (<Button variant="contained" color="info" onClick={() => {props.callUser_props_2(targetVideoID);setShow_Button(false);handleClose();}} >发起视频通话</Button>)
+                      show_button ? (<Button variant="contained" color="primary" onClick={() => {props.callUser_props_2(targetVideoID);setShow_Button(false);handleClose();}} >发起视频通话</Button>)
                                   : (
                                     <Button variant="contained" color="primary" onClick={() => {start_video(); setLoadingVideo(true); setPeopleNotOnLine(false);}} >检测对方视频</Button>
                                     )

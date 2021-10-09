@@ -11,6 +11,16 @@ import TextField from "@material-ui/core/TextField";
 
 import { useGetUsers, useGetUsersByPage } from "../Services/userService";
 import commonUtilites from "../Utilities/common";
+import Modal from 'react-bootstrap/Modal'
+import ChatBox from './ChatBox';
+
+import {
+  useGetGlobalMessages,
+  useSendGlobalMessage,
+  useGetConversationMessages,
+  useSendConversationMessage,
+} from "../Services/chatService";
+
 
 const useStyles = makeStyles((theme) => ({
   subheader: {
@@ -52,6 +62,20 @@ const Users = (props) => {
   const [newUser, setNewUser] = useState(null);
   const getUsers = useGetUsers();
   const getUsersByPage = useGetUsersByPage();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [show_button, setShow_Button] = useState(false);
+  const [loading_video, setLoadingVideo] = useState(false);
+  const [people_not_online, setPeopleNotOnLine] = useState(false);
+
+
+  const [autoMessage, setAutoMessage] = useState(0);
+  const [targetID, setTargetID] = useState("")
+  const [targetVideoID, setTargetVideoID] = useState("")
+  const [toID, setToID] = useState("")
+
+  const sendConversationMessage = useSendConversationMessage();
   
 
   useEffect(() => {
@@ -82,6 +106,50 @@ const Users = (props) => {
       }
   }
 
+    useEffect(() => {
+    const socket = socketIOClient("https://120.53.220.237:5002");
+    //console.log("==2===socket===Message========");
+    socket.on("messages", (data) => {
+
+      if(String(data).substr(0, 6).valueOf() == String("发起视频通话").valueOf())
+      {
+
+                console.log("AutoMessage");
+                counter = counter + 1;
+
+                console.log(String(data).substr(7,24));
+                console.log(String(data).substr(33,42));
+                setTargetID(String(data).substr(7,24));
+                setToID(String(data).substr(33,42));
+                setAutoMessage(counter);
+                //console.log(counter);
+
+      }
+
+    });
+  }, []);
+
+  useEffect(() => {
+      console.log("AutoMessage is working and the props is");
+      console.log(props);
+      console.log(String(targetID).valueOf());
+      console.log(String(props.chat_user_id).valueOf());
+      console.log(autoMessage);
+      if(autoMessage>0 && (String(targetID).valueOf() != String(props.user_id).valueOf()) && (String(toID).valueOf() == String(props.user_id).valueOf()) )
+      {
+        //////////////////
+        //debug for < bug
+        console.log("Auto sending back video id");
+        console.log(targetID);
+        console.log(toID);
+        console.log(props.user_id);
+        console.log("我的电话号="+String(props.me_props) );
+        sendConversationMessage(targetID, "我的电话号="+String(props.me_props)).then((res) => {
+          setNewMessage("");
+        });
+      }
+  }, [autoMessage]);
+
 
   return (
     <List className={classes.list}>
@@ -94,6 +162,7 @@ const Users = (props) => {
               onClick={() => {
                 props.setUser(u);
                 props.setScope(u.username);
+                handleShow();
               }}
               button
             >
@@ -106,6 +175,21 @@ const Users = (props) => {
 
         </React.Fragment>
       )}
+      <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+      >
+        <Modal.Body>
+              <ChatBox scope={props.scope} user={props.user} me_id={props.me_props} chat_user_id={props.user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="contained" color="primary" onClick={() => {handleClose();}}>
+            关闭
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <TextField
         className={classes.input_text}
         label="页数"
