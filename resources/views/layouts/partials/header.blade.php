@@ -19,7 +19,7 @@
                     }
 
                     socket.on("getUsers", (users) => {
-                      console.log("===all_user===");
+                      console.log("===all_user_in_laravel===");
                       console.log(users); 
                     });
 
