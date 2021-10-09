@@ -72,8 +72,7 @@ const HomePageApp = (props) => {
           requestOptions
       ).then(handleResponse)
       .then(user => {
-              setUser_login(user);
-              
+                    setUser_login(user);
           }).catch((error) => {
                     console.log(error)
                     window.location.reload();
