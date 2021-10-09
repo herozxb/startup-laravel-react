@@ -18,6 +18,11 @@
                         console.log(data);
                     }
 
+                    socket.on("getUsers", (users) => {
+                      console.log("===all_user===");
+                      console.log(users); 
+                    });
+
                 </script>
                 <!--div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="Payyed - HTML Template">主页</a> </div-->
                 <!-- Logo end -->
