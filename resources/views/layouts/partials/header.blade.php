@@ -12,6 +12,7 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
 
                 <script>
+                    console.log("===socket===");
                     var socket = io('https://120.53.220.237:5002');
                     socket.on("getMessage", (data) => {
                         console.log("data");
