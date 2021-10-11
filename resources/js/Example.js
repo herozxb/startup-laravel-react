@@ -175,7 +175,7 @@ const Example = (props) => {
                     <div className="col-md-20">
                         <div className="card">
                   			    <Grid container className={classes.gridContainer}>
-                        			      {stream && (
+                        			      {callAccepted && !callEnded && (
                         				<Paper className={classes.paper}>
                         				  <Grid item xs={12} md={6}>
                                     <Typography variant="h5" gutterBottom>{call.name || 'Name'}</Typography>
@@ -183,7 +183,7 @@ const Example = (props) => {
                         				  </Grid>
                         				</Paper>
                         			      )}
-                        			      {callAccepted && !callEnded && (
+                        			      {stream && (
                         				<Paper className={classes.paper}>
                         				  <Grid item xs={12} md={6}>
                                     <Typography variant="h5" gutterBottom>{name || 'Name'}</Typography>
