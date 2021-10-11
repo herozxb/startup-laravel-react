@@ -41,7 +41,7 @@ const HomePageApp = (props) => {
               const data = text && JSON.parse(text);
               if (!response.ok) {
                   if ([401, 403].indexOf(response.status) !== -1) {
-
+                      window.location.reload();
                   }
 
                   const error = (data && data.message) || response.statusText;
@@ -75,7 +75,7 @@ const HomePageApp = (props) => {
                     setUser_login(user);
           }).catch((error) => {
                     console.log(error)
-                    window.location.reload();
+                    
                   });
 
   };
