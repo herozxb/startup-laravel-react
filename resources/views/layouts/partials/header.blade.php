@@ -10,10 +10,6 @@
                 <div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="天赋网"><img
                             src="{{ asset('images/Photo.jpg') }}" alt="Payyed" style="height:50px"/></a> </div>
                 <div>hello 1</div>
-                <div>
-                    @icon('bell') 
-                </div>
-                <i class="fas fa-bell"></i>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
                 <script>
                     console.log("===socket===");
@@ -55,6 +51,7 @@
             <div class="header-column justify-content-end">
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
+                        <i class="fas fa-bell"></i>
                         <li class="align-items-center h-auto ml-sm-3 float-right"><button
                                 class="btn btn-outline-primary shadow-none d-sm-block" Onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">退出账户</button></li>
@@ -76,7 +73,7 @@
           ============================== -->
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
-
+                        <i class="fas fa-bell"></i>
                         <li class="align-items-center h-auto ml-sm-3"><a class="btn btn-outline-primary shadow-none  d-sm-block" href="{{ route('register') }}">注册</a> </li>
                         <li class="align-items-center h-auto ml-sm-3"><a
                                 class="btn btn-outline-primary shadow-none d-sm-block"
