@@ -51,9 +51,11 @@
             <div class="header-column justify-content-end">
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
-                        <span style="font-size: 30px; color: orange;">
-                          <i class="fas fa-bell"></i>
-                        </span>
+                        <div class="d-flex align-items-center">
+                            <span style="font-size: 30px; color: orange;">
+                              <i class="fas fa-bell"></i>
+                            </span>
+                        </div>
                         <li class="align-items-center h-auto ml-sm-3 float-right"><button
                                 class="btn btn-outline-primary shadow-none d-sm-block" Onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">退出账户</button></li>
@@ -75,9 +77,11 @@
           ============================== -->
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
-                        <span style="font-size: 30px; color: orange;">
-                          <i class="fas fa-bell"></i>
-                        </span>
+                        <div class="d-flex align-items-center">
+                            <span style="font-size: 30px; color: orange;">
+                              <i class="fas fa-bell"></i>
+                            </span>
+                        </div>
                         <li class="align-items-center h-auto ml-sm-3"><a class="btn btn-outline-primary shadow-none  d-sm-block" href="{{ route('register') }}">注册</a> </li>
                         <li class="align-items-center h-auto ml-sm-3"><a
                                 class="btn btn-outline-primary shadow-none d-sm-block"
