@@ -19,6 +19,8 @@
                       console.log("===all_user_in_laravel===");
                       console.log(users); 
                     });
+
+                    document.getElementById("greeting").innerHTML = "Bonjour";
                 </script>
 
 
@@ -68,7 +70,7 @@
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
-                                  <div class="modal-body">
+                                  <div class="modal-body" id="greeting">
                                     ...
                                   </div>
                                   <div class="modal-footer">
