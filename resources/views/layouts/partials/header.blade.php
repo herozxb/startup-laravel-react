@@ -89,7 +89,7 @@
                                     ...
                                     <p id="greeting">bonjour</p>
                                     <p>{{$temp}}</p>
-                                    @foreach($json as $t)
+                                    @foreach($temp as $t)
                                         <p>{{$t}}</p>
                                     @endforeach
                                                               </div>
