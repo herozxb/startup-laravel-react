@@ -73,7 +73,7 @@
           ============================== -->
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
-                        <i class="fas fa-bell fa-3x"></i>
+                        <i class="fas fa-bell fa-2x"></i>
                         <li class="align-items-center h-auto ml-sm-3"><a class="btn btn-outline-primary shadow-none  d-sm-block" href="{{ route('register') }}">注册</a> </li>
                         <li class="align-items-center h-auto ml-sm-3"><a
                                 class="btn btn-outline-primary shadow-none d-sm-block"
