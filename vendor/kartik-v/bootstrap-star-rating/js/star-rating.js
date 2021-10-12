@@ -1,5 +1,5 @@
 /*!
- * bootstrap-star-rating v4.1.0
+ * bootstrap-star-rating v4.1.2
  * http://plugins.krajee.com/star-rating
  *
  * Author: Kartik Visweswaran
@@ -10,19 +10,12 @@
  */
 (function (factory) {
     'use strict';
-    //noinspection JSUnresolvedVariable
-    if (typeof define === 'function' && define.amd) { // jshint ignore:line
-        // AMD. Register as an anonymous module.
-        define(['jquery'], factory); // jshint ignore:line
-    } else { // noinspection JSUnresolvedVariable
-        if (typeof module === 'object' && module.exports) { // jshint ignore:line
-            // Node/CommonJS
-            // noinspection JSUnresolvedVariable
-            module.exports = factory(require('jquery')); // jshint ignore:line
-        } else {
-            // Browser globals
-            factory(window.jQuery);
-        }
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && typeof module.exports === 'object') {
+        factory(require('jquery'));
+    } else {
+        factory(window.jQuery);
     }
 }(function ($) {
     'use strict';
@@ -32,7 +25,7 @@
 
     var $h, Rating;
 
-    // global helper methods and constants
+    // Global helper methods and constants
     $h = {
         NAMESPACE: '.rating',
         DEFAULT_MIN: 0,
@@ -66,12 +59,14 @@
         }
     };
 
-    // rating constructor
+    // Rating constructor
     Rating = function (element, options) {
         var self = this;
         self.$element = $(element);
         self._init(options);
     };
+
+    // Rating prototype
     Rating.prototype = {
         constructor: Rating,
         _parseAttr: function (vattr, options) {

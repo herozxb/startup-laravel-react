@@ -1,6 +1,7 @@
 <!-- Header
   ============================================= -->
 <header id="header">
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <div class="container">
         <div class="header-row">
             <div class="header-column justify-content-start">
@@ -9,6 +10,9 @@
                 <div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="天赋网"><img
                             src="{{ asset('images/Photo.jpg') }}" alt="Payyed" style="height:50px"/></a> </div>
                 <div>hello 1</div>
+                <a href="...">
+                    @icon('bacon') Click to recieve bacon!
+                </a>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
                 <script>
                     console.log("===socket===");

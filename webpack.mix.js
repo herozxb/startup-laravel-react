@@ -15,3 +15,8 @@ mix.react('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
    .copy('node_modules/semantic-ui-css/semantic.min.css','public/css/semantic.min.css')
    .copy('node_modules/semantic-ui-css/semantic.min.js','public/js/semantic.min.js');
+
+
+mix.styles([
+    'vendor/components/font-awesome/css/fontawesome.css',
+], 'public/css/all.css');
