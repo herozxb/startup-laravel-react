@@ -96,14 +96,45 @@
 
                                 </span>
 
-        <li>
-            <div class="link"><i class="fa fa-laptop"></i>Laptops<i class="fa fa-chevron-down"></i></div>
-            <ul class="submenu">
-                <li><a href="#">Dell Acron</a></li>
-                <li><a href="#">HP Envy</a></li>
-                <li><a href="#">Macbook Air</a></li>
-            </ul>
-        </li>
+<nav id="nav">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Tutorials</a>
+         <ul>
+           <li><a href="#">Design</a>
+                   <ul>
+                   <li><a href="#">HTML</a></li>
+                   <li><a href="#">CSS</a></li>
+                   <li><a href="#">jQuery</a></li>
+                </ul>
+           </li>
+           <li><a href="#">Development</a></li>
+           <li><a href="#">Graphics</a>
+                   <ul>
+                   <li><a href="#">Photoshop</a></li>
+                   <li><a href="#">Illustrator</a></li>
+                   <li><a href="#">Logos</a></li>
+                </ul>
+           </li>
+        </ul>
+    </li>
+    <li><a href="#">Snippets</a></li>
+    <li><a href="#">Resources</a>
+        <ul>
+           <li><a href="#">Free</a></li>
+           <li><a href="#">Premium</a></li>
+        </ul>
+    </li>
+    <li><a href="#">Demos</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a>
+        <ul>
+           <li><a href="#"></i>Facebook</a></li>
+           <li><a href="#"></i>Twitter</a></li>
+        </ul>
+      </li>
+    </ul>
+</nav>
                                 
                             </div>
                         
