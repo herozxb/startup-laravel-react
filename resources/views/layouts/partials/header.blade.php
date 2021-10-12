@@ -52,7 +52,7 @@
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
                         
-                            <div class="d-flex align-items-center mr-5">
+                            <div class="d-flex align-items-center mr-2">
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
                                 </span>
@@ -101,7 +101,7 @@
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
                         
-                            <div class="d-flex align-items-center mr-5">
+                            <div class="d-flex align-items-center mr-2">
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
                                 </span>  
@@ -128,7 +128,7 @@
                               </div>
                             </div>
                         
-                        <li class="align-items-center h-auto ml-sm-3"><a class="btn btn-outline-primary shadow-none  d-sm-block" href="{{ route('register') }}">注册</a> </li>
+                        <li class="align-items-center h-auto ml-sm-3 mr-2"><a class="btn btn-outline-primary shadow-none  d-sm-block" href="{{ route('register') }}">注册</a> </li>
                         <li class="align-items-center h-auto ml-sm-3"><a
                                 class="btn btn-outline-primary shadow-none d-sm-block"
                                 href="{{ route('login') }}">登入</a></li>
