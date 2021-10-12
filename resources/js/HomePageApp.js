@@ -23,6 +23,7 @@ import Typography from '@material-ui/core/Typography';
 
 import Chat from './components/Chat2/Chat';
 import {useSendConversationMessage} from "./components/Services/chatService";
+import Modal from 'react-bootstrap/Modal'
 
 const HomePageApp = (props) => { 
 
@@ -33,6 +34,9 @@ const HomePageApp = (props) => {
   const [loading,setLoading] = useState(true);
   const [user_login,setUser_login] = useState("");
   const [pagings,setPagings] = useState(0);  
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const useHandleResponse = () => {
 
@@ -252,7 +256,24 @@ const HomePageApp = (props) => {
               <div class="input-group-prepend">
                 <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 发布 </button>
               </div>
-              <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} />
+              <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />
+            
+              <Modal
+                  show={show}
+                  onHide={handleClose}
+                  backdrop="static"
+                  keyboard={false}
+              >
+                <Modal.Body>
+                  <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} />
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="contained" color="primary" onClick={() => {handleClose();}}>
+                    关闭
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+
             </div>
 
 

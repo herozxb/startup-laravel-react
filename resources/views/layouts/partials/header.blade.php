@@ -16,6 +16,7 @@
                     console.log("===socket===");
                 
                     var socket = io('https://120.53.220.237:5002');
+                    
                     socket.on("getUsers", (users) => {
                       console.log("===all_user_in_laravel===");
                       console.log(users); 
@@ -24,13 +25,6 @@
                         socketID.push(users[i].socketId);
 
                       }
-
-                        $json = array (
-                            "item1" => "no1",
-                            "item2" => "no2",
-                            "item3" => "no3",
-                        );
-
                       document.getElementById("greeting").innerHTML = socketID;
                       {{ $temp="socketID" }}
                     });
