@@ -96,14 +96,14 @@
 
                                 </span>
 
-                                        <li>
-                                        <div class="link"><i class="fa fa-laptop"></i></div>
-                                        <ul class="submenu">
-                                            <li><a href="#">Dell Acron</a></li>
-                                            <li><a href="#">HP Envy</a></li>
-                                            <li><a href="#">Macbook Air</a></li>
-                                        </ul>
-                                    </li>
+        <li>
+            <div class="link"><i class="fa fa-laptop"></i>Laptops<i class="fa fa-chevron-down"></i></div>
+            <ul class="submenu">
+                <li><a href="#">Dell Acron</a></li>
+                <li><a href="#">HP Envy</a></li>
+                <li><a href="#">Macbook Air</a></li>
+            </ul>
+        </li>
                                 
                             </div>
                         
