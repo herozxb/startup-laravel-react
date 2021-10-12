@@ -18,7 +18,7 @@
                     socket.on("getUsers", (users) => {
                       console.log("===all_user_in_laravel===");
                       console.log(users); 
-                      document.getElementById("greeting").innerHTML = "Bonjour";
+                      document.getElementById("greeting").innerHTML = users;
                     });
 
                     
@@ -123,6 +123,7 @@
                                   </div>
                                   <div class="modal-body">
                                     ...
+                                    <p id="greeting">bonjour</p>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
