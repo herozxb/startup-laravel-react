@@ -24,6 +24,7 @@
 
                       }
                       document.getElementById("greeting").innerHTML = socketID;
+                      {{$temp}} = "script"
                     });
 
                     
@@ -79,6 +80,7 @@
                                   <div class="modal-body" >
                                     ...
                                     <p id="greeting">bonjour</p>
+                                    <p>{{$temp}}</p>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
