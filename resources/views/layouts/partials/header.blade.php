@@ -83,17 +83,19 @@
                     <ul class="navbar-nav">
                         
                             <div class="d-flex align-items-center">
-                                <a href="/video">
+                                
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></i>
                                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <a href="/video">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
+                                    </a>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                   </ul>
 
                                 </span>
-                                </a>
+                                
                             </div>
                         
                         <li class="align-items-center h-auto ml-sm-3"><a class="btn btn-outline-primary shadow-none  d-sm-block" href="{{ route('register') }}">注册</a> </li>
