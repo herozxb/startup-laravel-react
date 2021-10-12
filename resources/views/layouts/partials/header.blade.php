@@ -85,7 +85,7 @@
                             <div class="d-flex align-items-center">
                                 
                                 <span style="font-size: 30px; color: orange;">
-                                  <i class="fas fa-bell" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></i>
+                                  <i class="fas fa-bell" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></i>
                                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <a href="/video">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -95,6 +95,15 @@
                                   </ul>
 
                                 </span>
+
+                                        <li>
+                                        <div class="link"><i class="fa fa-laptop"></i></div>
+                                        <ul class="submenu">
+                                            <li><a href="#">Dell Acron</a></li>
+                                            <li><a href="#">HP Envy</a></li>
+                                            <li><a href="#">Macbook Air</a></li>
+                                        </ul>
+                                    </li>
                                 
                             </div>
                         
