@@ -18,7 +18,12 @@
                     socket.on("getUsers", (users) => {
                       console.log("===all_user_in_laravel===");
                       console.log(users); 
-                      document.getElementById("greeting").innerHTML = users;
+                      socketID=[]
+                      for(var i =0; i < users.length; i++) {
+                        socketID.push(users[i].socketId);
+
+                      }
+                      document.getElementById("greeting").innerHTML = socketID;
                     });
 
                     
