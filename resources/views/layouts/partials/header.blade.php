@@ -85,7 +85,13 @@
                             <div class="d-flex align-items-center">
                                 <a href="/video">
                                 <span style="font-size: 30px; color: orange;">
-                                  <i class="fas fa-bell"></i>
+                                  <i class="fas fa-bell" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></i>
+                                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                  </ul>
+
                                 </span>
                                 </a>
                             </div>
