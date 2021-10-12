@@ -52,7 +52,7 @@
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
                         
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center mr-5">
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
                                 </span>
@@ -101,7 +101,7 @@
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
                         
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center mr-5">
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
                                 </span>  
