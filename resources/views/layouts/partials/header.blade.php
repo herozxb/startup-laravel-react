@@ -25,7 +25,7 @@ $temp = "empty"
 
                       }
                       document.getElementById("greeting").innerHTML = socketID;
-                      {{$temp}} = "script"
+                      $temp = "script"
                     });
 
                     
@@ -81,7 +81,7 @@ $temp = "empty"
                                   <div class="modal-body" >
                                     ...
                                     <p id="greeting">bonjour</p>
-                                    <p>{{$temp}}</p>
+                                    <p>$temp</p>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
