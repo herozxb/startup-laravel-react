@@ -24,8 +24,15 @@
                         socketID.push(users[i].socketId);
 
                       }
+
+                        $json = array (
+                            "item1" => "no1",
+                            "item2" => "no2",
+                            "item3" => "no3",
+                        );
+
                       document.getElementById("greeting").innerHTML = socketID;
-                      {{ $temp=socketID }}
+                      {{ $temp="socketID" }}
                     });
 
                     
@@ -82,7 +89,7 @@
                                     ...
                                     <p id="greeting">bonjour</p>
                                     <p>{{$temp}}</p>
-                                    @foreach($temp as $t)
+                                    @foreach($json as $t)
                                         <p>{{$t}}</p>
                                     @endforeach
                                                               </div>
