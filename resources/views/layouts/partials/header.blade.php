@@ -70,8 +70,9 @@
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
-                                  <div class="modal-body" id="greeting">
+                                  <div class="modal-body" >
                                     ...
+                                    <p id="greeting">bonjour</p>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
