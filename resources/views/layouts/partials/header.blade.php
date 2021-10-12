@@ -1,5 +1,6 @@
 <!-- Header
   ============================================= -->
+$temp = "empty"
 <header id="header">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <div class="container">
