@@ -85,7 +85,7 @@
                             <div class="d-flex align-items-center">
                                 
                                 <span style="font-size: 30px; color: orange;">
-                                  <i class="fas fa-bell" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" ></i>
+                                  <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
                                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <a href="/video">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -94,49 +94,29 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                   </ul>
 
-                                </span>
-
-<nav id="nav">
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Tutorials</a>
-         <ul>
-           <li><a href="#">Design</a>
-                   <ul>
-                   <li><a href="#">HTML</a></li>
-                   <li><a href="#">CSS</a></li>
-                   <li><a href="#">jQuery</a></li>
-                </ul>
-           </li>
-           <li><a href="#">Development</a></li>
-           <li><a href="#">Graphics</a>
-                   <ul>
-                   <li><a href="#">Photoshop</a></li>
-                   <li><a href="#">Illustrator</a></li>
-                   <li><a href="#">Logos</a></li>
-                </ul>
-           </li>
-        </ul>
-    </li>
-    <li><a href="#">Snippets</a></li>
-    <li><a href="#">Resources</a>
-        <ul>
-           <li><a href="#">Free</a></li>
-           <li><a href="#">Premium</a></li>
-        </ul>
-    </li>
-    <li><a href="#">Demos</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a>
-        <ul>
-           <li><a href="#"></i>Facebook</a></li>
-           <li><a href="#"></i>Twitter</a></li>
-        </ul>
-      </li>
-    </ul>
-</nav>
-                                
+                                </span>  
                             </div>
+
+                            <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                         
                         <li class="align-items-center h-auto ml-sm-3"><a class="btn btn-outline-primary shadow-none  d-sm-block" href="{{ route('register') }}">注册</a> </li>
                         <li class="align-items-center h-auto ml-sm-3"><a
