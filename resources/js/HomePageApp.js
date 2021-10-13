@@ -269,6 +269,7 @@ const HomePageApp = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                   <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} />
+                  <textarea class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="contained" color="primary" onClick={() => {upload_post();}}>
