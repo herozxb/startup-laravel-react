@@ -18,19 +18,32 @@
                     var socket = io('https://120.53.220.237:5002');
                     
                     socket.on("getUsers", (users) => {
-                      console.log("===all_user_in_laravel===");
-                      console.log(users); 
-                      socketID=[]
-                      for(var i =0; i < users.length; i++) {
-                        socketID.push(users[i].socketId);
+                        console.log("===all_user_in_laravel===");
+                        console.log(users); 
+                        socketID=[]
+                        for(var i =0; i < users.length; i++) {
+                            socketID.push(users[i].socketId);
 
-                      }
+                        }
 
-                      var jArray = [ "One", "Two", "Three"];
-                      document.getElementById("hiddenF").value = jArray;
+                        var jArray = [ "One", "Two", "Three"];
+                        document.getElementById("hiddenF").value = jArray;
 
-                      document.getElementById("greeting").innerHTML = socketID;
-                      {{ $temp="socketID" }}
+                        document.getElementById("greeting").innerHTML = socketID;
+                        {{ $temp="socketID" }}
+
+
+                        var submitJArray = function(frm) 
+                        { var jArray = ["Zero", "One", "Two", "Three"];
+                          for (var i=0;i<jArray.length;i++)
+                          { var newHidInp = document.createElement('input');
+                                newHidInp.type  = 'hidden';
+                                newHidInp.name  = 'outArray[]';
+                                newHidInp.value = jArray[i];
+                            frm.appendChild(newHidInp);
+                          }
+                        }
+
                     });
 
                     
@@ -88,6 +101,9 @@
                                     <p id="greeting">bonjour</p>
                                     <p>{{$temp}}</p>
                                     <input type="hidden" id="hiddenF" name="hiddenF" value="">
+                                    <form action="#" method="post" onSubmit="return submitJArray(this);">
+                                      <input type="submit" value="send">
+                                    </form>
 
                                   </div>
                                   <div class="modal-footer">
