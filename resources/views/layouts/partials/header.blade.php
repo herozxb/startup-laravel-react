@@ -25,6 +25,10 @@
                         socketID.push(users[i].socketId);
 
                       }
+
+                      var jArray = [ "One", "Two", "Three"];
+                      document.getElementById("hiddenF").value = jArray;
+
                       document.getElementById("greeting").innerHTML = socketID;
                       {{ $temp="socketID" }}
                     });
@@ -83,6 +87,7 @@
                                     ...
                                     <p id="greeting">bonjour</p>
                                     <p>{{$temp}}</p>
+                                    <input type="hidden" id="hiddenF" name="hiddenF" value="">
 
                                   </div>
                                   <div class="modal-footer">
