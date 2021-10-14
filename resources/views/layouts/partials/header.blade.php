@@ -28,10 +28,6 @@
 
                         }
 
-
-                        document.getElementById("greeting").innerHTML = socketID;
-                        {{ $temp="socketID" }}
-
                         var myArray = [
                             {'name':'Michael', 'age':'30', 'birthdate':'11/10/1989'},
                             {'name':'Mila', 'age':'32', 'birthdate':'10/1/1989'},
@@ -111,24 +107,16 @@
                                     </button>
                                   </div>
                                   <div class="modal-body" >
-                                    ...
-                                    <p id="greeting">bonjour</p>
-                                    <p>{{$temp}}</p>
-                                    <input type="hidden" id="hiddenF" name="hiddenF" value="">
-                                    <form action="#" method="post" onSubmit="return submitJArray(this);">
-                                      <input type="submit" value="send">
-                                    </form>
-
                                     <table class="table table-striped">
                                         <tr  class="bg-info">
                                             <th>Name</th>
                                             <th>Age</th>
                                             <th>Birthday</th>
                                         </tr>
-
-                                        <tbody id="myTable">
-                                            
-                                        </tbody>
+                                        <a class="btn-link stretched-link" href="/video">
+                                            <tbody id="myTable">
+                                            </tbody>
+                                        </a>
                                     </table>
 
                                   </div>
