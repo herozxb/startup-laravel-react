@@ -271,9 +271,9 @@ const HomePageApp = (props) => {
                  <textarea type="text" value={texts} class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
                 </Modal.Body>
                 <Modal.Footer>
-                  <Button variant="contained" color="primary" onClick={() => {upload_post();}}>
+                  <button class="btn btn-primary btn-lg" type="button" onClick={() => {upload_post();}}>
                     发布
-                  </Button>
+                  </button>
                 </Modal.Footer>
               </Modal>
 
