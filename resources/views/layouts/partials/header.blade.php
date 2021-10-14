@@ -1,5 +1,6 @@
 <!-- Header
   ============================================= -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <header id="header">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
@@ -12,6 +13,7 @@
                             src="{{ asset('images/Photo.jpg') }}" alt="Payyed" style="height:50px"/></a> </div>
                 <div>hello 1</div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
+
                 <script>
                     console.log("===socket===");
                 
@@ -26,22 +28,34 @@
 
                         }
 
-                        var jArray = [ "One", "Two", "Three"];
-                        document.getElementById("hiddenF").value = jArray;
 
                         document.getElementById("greeting").innerHTML = socketID;
                         {{ $temp="socketID" }}
 
+                        var myArray = [
+                            {'name':'Michael', 'age':'30', 'birthdate':'11/10/1989'},
+                            {'name':'Mila', 'age':'32', 'birthdate':'10/1/1989'},
+                            {'name':'Paul', 'age':'29', 'birthdate':'10/14/1990'},
+                            {'name':'Dennis', 'age':'25', 'birthdate':'11/29/1993'},
+                            {'name':'Tim', 'age':'27', 'birthdate':'3/12/1991'},
+                            {'name':'Erik', 'age':'24', 'birthdate':'10/31/1995'},
+                        ]
+                        
+                        buildTable(myArray)
 
-                        var submitJArray = function(frm) 
-                        { var jArray = ["Zero", "One", "Two", "Three"];
-                          for (var i=0;i<jArray.length;i++)
-                          { var newHidInp = document.createElement('input');
-                                newHidInp.type  = 'hidden';
-                                newHidInp.name  = 'outArray[]';
-                                newHidInp.value = jArray[i];
-                            frm.appendChild(newHidInp);
-                          }
+                        function buildTable(data){
+                            var table = document.getElementById('myTable')
+
+                            for (var i = 0; i < data.length; i++){
+                                var row = `<tr>
+                                                <td>${data[i].name}</td>
+                                                <td>${data[i].age}</td>
+                                                <td>${data[i].birthdate}</td>
+                                          </tr>`
+                                table.innerHTML += row
+
+
+                            }
                         }
 
                     });
@@ -104,6 +118,18 @@
                                     <form action="#" method="post" onSubmit="return submitJArray(this);">
                                       <input type="submit" value="send">
                                     </form>
+
+                                    <table class="table table-striped">
+                                        <tr  class="bg-info">
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Birthday</th>
+                                        </tr>
+
+                                        <tbody id="myTable">
+                                            
+                                        </tbody>
+                                    </table>
 
                                   </div>
                                   <div class="modal-footer">
