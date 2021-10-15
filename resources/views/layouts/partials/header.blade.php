@@ -102,7 +102,7 @@
                             <div class="d-flex align-items-center mr-2">
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
-                                  <span class="badge badge-notify">3</span>
+                                  <span class="badge badge-pill badge-primary" style="float:right;margin-bottom:-10px;">1</span> <!-- your badge -->
                                 </span>
                             </div>
 
