@@ -2,6 +2,15 @@
   ============================================= -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+/* CSS used here will be applied after bootstrap.css */
+.badge-notify{
+   background:red;
+   position:relative;
+   top: -20px;
+   left: -35px;
+}
+
+
 <header id="header">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <div class="container">
@@ -93,6 +102,7 @@
                             <div class="d-flex align-items-center mr-2">
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
+                                  <span class="badge badge-notify">3</span>
                                 </span>
                             </div>
 
@@ -160,7 +170,7 @@
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">站内消息提示</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
