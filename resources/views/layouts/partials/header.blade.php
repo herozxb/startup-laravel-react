@@ -24,7 +24,7 @@
                     socket.on("getUsers", (users) => {
                         console.log("===all_user_in_laravel===");
                         console.log(users); 
-                        socketID=[]
+                        socketID=[];
                         for(var i =0; i < users.length; i++) {
                             socketID.push(users[i].socketId);
 
@@ -37,9 +37,13 @@
                             {'name':'Dennis', 'age':'25', 'birthdate':'11/29/1993'},
                             {'name':'Tim', 'age':'27', 'birthdate':'3/12/1991'},
                             {'name':'Erik', 'age':'24', 'birthdate':'10/31/1995'},
-                        ]
+                        ];
                         
-                        buildTable(myArray)
+                        buildTable(myArray);
+
+                        var badge = document.getElementById('myBadge');
+                        badge.innerHTML = socketID.length;
+
 
                         function buildTable(data){
                             var table = document.getElementById('myTable')
@@ -50,10 +54,11 @@
                                                 <td>${data[i].age}</td>
                                                 <td>${data[i].birthdate}</td>
                                           </tr>`
-                                table.innerHTML += row
+                                table.innerHTML += row;
 
 
                             }
+
                         }
 
                     });
@@ -96,7 +101,7 @@
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell mr-2" data-toggle="modal" data-target="#exampleModal"></i>
                                 </span>
-                                <span class="badge badge-success">3</span>
+                                <span class="badge badge-success" id="myBadge">3</span>
                             </div>
 
                             <!-- Modal -->
