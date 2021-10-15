@@ -166,8 +166,17 @@
                                     </button>
                                   </div>
                                   <div class="modal-body">
-                                    ...
-                                    <p id="greeting">bonjour</p>
+                                    <table class="table table-striped">
+                                        <tr  class="bg-info">
+                                            <th>Name</th>
+                                            <th>Age</th>
+                                            <th>Birthday</th>
+                                        </tr>
+                                        <a class="btn-link stretched-link" href="/video">
+                                            <tbody id="myTable">
+                                            </tbody>
+                                        </a>
+                                    </table>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
