@@ -96,6 +96,7 @@
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell mr-2" data-toggle="modal" data-target="#exampleModal"></i>
                                 </span>
+                                <span class="counter counter-lg">3</span>
                                 <span class="badge badge-success">3</span>
                             </div>
 
