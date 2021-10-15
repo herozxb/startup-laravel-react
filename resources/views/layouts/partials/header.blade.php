@@ -31,7 +31,7 @@
                         }
 
                         var myArray = [
-                            {'name':'=======================================Michael============================================', 'age':'30', 'birthdate':'11/10/1989'},
+                            {'name':'Michael', 'age':'30', 'birthdate':'11/10/1989'},
                             {'name':'Mila', 'age':'32', 'birthdate':'10/1/1989'},
                             {'name':'Paul', 'age':'29', 'birthdate':'10/14/1990'},
                             {'name':'Dennis', 'age':'25', 'birthdate':'11/29/1993'},
@@ -117,9 +117,9 @@
                                   <div class="modal-body" >
                                     <table class="table table-striped">
                                         <tr  class="bg-info">
-                                            <th>Name</th>
-                                            <th>Age</th>
-                                            <th>Birthday</th>
+                                            <th>姓名</th>
+                                            <th>消息</th>
+                                            <th>备用</th>
                                         </tr>
                                         <a class="btn-link stretched-link" href="/video">
                                             <tbody id="myTable">
