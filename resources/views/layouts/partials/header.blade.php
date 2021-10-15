@@ -101,8 +101,10 @@
                         
                             <div class="d-flex align-items-center mr-2">
                                 <span style="font-size: 30px; color: orange;">
-                                  <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
-                                  <span class="badge badge-pill badge-primary" style="float:right;margin-bottom:-10px;">1</span> <!-- your badge -->
+                                    <span class="fa-layers fa-fw" style="background:MistyRose">
+                                        <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
+                                        <span class="fa-layers-counter" style="background:Tomato">1,419</span>
+                                    </span>`
                                 </span>
                             </div>
 
