@@ -130,6 +130,7 @@ const Chat = (props) => {
     const [newMessage, setNewMessage] = useState("");
 
     const [user_id, setUser_ID] = useState('');
+    const [user_name, setUser_Name] = useState('');
     const socket = useRef();
 
     const handleChange = (e, newVal) => {
@@ -149,11 +150,12 @@ const Chat = (props) => {
         //console.log("===user_login==="); 
         //console.log(user_login); 
         setUser_ID(user_login.userId)
+        setUser_Name(user_login.username)
         //console.log(user_id); 
       });
 
     useEffect(() => {
-        socket.current.emit("addUser", user_id);
+        socket.current.emit("addUser", {user_id,user_name});
         socket.current.on("getUsers", (users) => {
             //console.log("===all_user===");
             //console.log(users); 

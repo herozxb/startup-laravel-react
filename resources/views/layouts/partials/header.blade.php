@@ -50,7 +50,7 @@
 
                             for (var i = 0; i < data.length; i++){
                                 var row = `<tr>
-                                                <td>${data[i].name.substring(0,2)}</td>
+                                                <td>${data[i].name.substring(0,5)}</td>
                                                 <td>${data[i].age}</td>
                                                 <td>${data[i].birthdate}</td>
                                           </tr>`
