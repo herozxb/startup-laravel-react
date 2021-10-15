@@ -2,13 +2,6 @@
   ============================================= -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-/* CSS used here will be applied after bootstrap.css */
-.badge-notify{
-   background:red;
-   position:relative;
-   top: -20px;
-   left: -35px;
-}
 
 
 <header id="header">
@@ -101,10 +94,8 @@
                         
                             <div class="d-flex align-items-center mr-2">
                                 <span style="font-size: 30px; color: orange;">
-                                    <span class="fa-layers fa-fw" style="background:MistyRose">
-                                        <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
-                                        <span class="fa-layers-counter" style="background:Tomato">1,419</span>
-                                    </span>`
+                                  <i class="fas fa-bell" data-toggle="modal" data-target="#exampleModal"></i>
+                                  <span class="badge badge-light">3</span>
                                 </span>
                             </div>
 
