@@ -271,21 +271,24 @@ const HomePageApp = (props) => {
                   <Modal.Title>创建发布的信息</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <Grid_Modal
-                  container
-                  direction="column"
-                  columnSpacing={1}
-                >
-                  <Grid_Modal container item spacing={2} >
+                <Grid_Modal container direction={'column'} spacing={24}>
+
+                  <Grid_Modal item>
                    <textarea type="text" value={texts} class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
                   </Grid_Modal>
 
                    <Grid_Modal container item spacing={2}>
-                    <Grid_Modal item xs={6}>
-                      <input type="text" value={city} class="form-control" placeholder="城市" aria-label="" aria-describedby="basic-addon1" />
+                    <Grid_Modal item xs={4}>
+                      <input type="text" value={city} class="form-control" placeholder="地点" aria-label="" aria-describedby="basic-addon1" />
                     </Grid_Modal>
-                    <Grid_Modal item xs={6}>
-                      <input type="text" value={salary} class="form-control" placeholder="薪资每小时" aria-label="" aria-describedby="basic-addon1" />
+                    <Grid_Modal item xs={2}>
+                      <h5>城市</h5>
+                    </Grid_Modal>
+                    <Grid_Modal item xs={4}>
+                      <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
+                    </Grid_Modal>
+                    <Grid_Modal item xs={2}>
+                      <h5>每小时</h5>
                     </Grid_Modal>
                    </Grid_Modal>
                 </Grid_Modal>
