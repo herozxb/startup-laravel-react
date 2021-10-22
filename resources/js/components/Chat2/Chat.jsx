@@ -148,15 +148,16 @@ const Chat = (props) => {
 
     const login = useLogin();
     login(props.chat_props.name,"hero2009").then((user_login) => {
-        //console.log("===user_login==="); 
+        console.log("===user_login==="); 
         //console.log(user_login); 
         setUser_ID(user_login.userId)
         setUser_Name(user_login.username)
-        //console.log(user_id); 
+        console.log(user_id); 
+        console.log(username); 
       });
 
     useEffect(() => {
-        socket.current.emit("addUser", {user_id,username});
+        socket.current.emit("addUser", {user_ID: user_id, user_name:username});
         socket.current.on("getUsers", (users) => {
             //console.log("===all_user===");
             //console.log(users); 
