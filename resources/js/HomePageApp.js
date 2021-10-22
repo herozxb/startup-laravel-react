@@ -271,22 +271,32 @@ const HomePageApp = (props) => {
                   <Modal.Title>创建发布的信息</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <Grid.Row>
-                    <Grid.Row>
-                      <textarea type="text" value={texts} class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
-                    </Grid.Row>
+                <Grid_Modal
+                  container
+                  direction="column"
+                  columnSpacing={{ xs: 1}}
+                >
+                 <textarea type="text" value={texts} class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
 
-                    <Grid.Row>
-                      <input type="text" value={city} class="form-control" placeholder="地址" aria-label="" aria-describedby="basic-addon1" />
-                      <Typography variant="caption" display="block" alignItems="center">
-                        城市
-                      </Typography>
-                      <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
-                      <Typography variant="caption" display="block" alignItems="center">
-                        每小时
-                      </Typography>
-                    </Grid.Row>
-                  </Grid.Row>
+                 <Grid_Modal container spacing={2}>
+                  <Grid_Modal item xs={4}>
+                    <input type="text" value={city} class="form-control" placeholder="地址" aria-label="" aria-describedby="basic-addon1" />
+                  </Grid_Modal>
+                  <Grid_Modal item xs={2}>
+                    <Typography variant="caption" display="block" alignItems="center">
+                      城市
+                    </Typography>
+                  </Grid_Modal>
+                  <Grid_Modal item xs={4}>
+                    <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
+                  </Grid_Modal>
+                  <Grid_Modal item xs={2}>
+                    <Typography variant="caption" display="block" alignItems="center">
+                      每小时
+                    </Typography>
+                  </Grid_Modal>
+                </Grid_Modal>
+                </Grid_Modal>
                 </Modal.Body>
                 <Modal.Footer>
                   <button class="btn btn-primary btn-lg" type="button" onClick={() => {upload_post();}}>
