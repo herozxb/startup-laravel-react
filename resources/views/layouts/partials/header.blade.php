@@ -13,7 +13,6 @@
           ============================= -->
                 <div class="logo"> <a class="d-flex" href="{{ url('/') }}" title="天赋网"><img
                             src="{{ asset('images/Photo.jpg') }}" alt="Payyed" style="height:50px"/></a> </div>
-                <div>hello 1</div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
 
                 <script>
