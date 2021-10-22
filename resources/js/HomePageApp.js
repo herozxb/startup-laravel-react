@@ -20,6 +20,7 @@ import TextField from "@material-ui/core/TextField";
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import Grid_Modal from '@material-ui/core/Grid';
 
 import Chat from './components/Chat2/Chat';
 import {useSendConversationMessage} from "./components/Services/chatService";
@@ -285,6 +286,24 @@ const HomePageApp = (props) => {
                     </Typography>
                   </Row>
                  </Row>
+                 <Grid_Modal container spacing={1}>
+                  <Grid_Modal item xs={6}>
+                    <input type="text" value={city} class="form-control" placeholder="地址" aria-label="" aria-describedby="basic-addon1" />
+                  </Grid_Modal>
+                  <Grid_Modal item xs={2}>
+                    <Typography variant="caption" display="block" gutterBottom>
+                      城市
+                    </Typography>
+                  </Grid_Modal>
+                  <Grid_Modal item xs={6}>
+                    <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
+                  </Grid_Modal>
+                  <Grid_Modal item xs={2}>
+                    <Typography variant="caption" display="block" gutterBottom>
+                      每小时
+                    </Typography>
+                  </Grid_Modal>
+                </Grid_Modal>
                 </Modal.Body>
                 <Modal.Footer>
                   <button class="btn btn-primary btn-lg" type="button" onClick={() => {upload_post();}}>
