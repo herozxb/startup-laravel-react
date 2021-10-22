@@ -277,18 +277,18 @@ const HomePageApp = (props) => {
                      <textarea type="text" value={texts} class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
                     </Grid_Modal>
 
-                     <Grid_Modal container item spacing={2}>
+                     <Grid_Modal container item spacing={1}>
                       <Grid_Modal item xs={4}>
                         <input type="text" value={city} class="form-control" placeholder="地点" aria-label="" aria-describedby="basic-addon1" />
                       </Grid_Modal>
                       <Grid_Modal item xs={2} style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
-                        <span class="align-middle">城市1</span>
+                        <span>城市</span>
                       </Grid_Modal>
                       <Grid_Modal item xs={4}>
                         <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
                       </Grid_Modal>
-                      <Grid_Modal item xs={2} justify="center" alignItems="center" >
-                        <span class="align-middle">每小时</span>
+                      <Grid_Modal item xs={2} style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
+                        <span>每小时</span>
                       </Grid_Modal>
                      </Grid_Modal>
                   </Grid_Modal>
