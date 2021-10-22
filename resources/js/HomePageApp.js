@@ -274,7 +274,7 @@ const HomePageApp = (props) => {
 
                   <Grid_Modal container direction={'column'} spacing={24}>
                     <Grid_Modal item>
-                     <textarea type="text" value={texts} class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
+                     <textarea type="text" value={texts} class="form-control" id="text-content" rows="7"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
                     </Grid_Modal>
                     <Divider />
                      <Grid_Modal container item spacing={0}>
