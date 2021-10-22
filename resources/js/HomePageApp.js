@@ -287,18 +287,18 @@ const HomePageApp = (props) => {
                   </Row>
                  </Row>
                  <Grid_Modal container spacing={1}>
-                  <Grid_Modal item xs={6}>
+                  <Grid_Modal item xs={4}>
                     <input type="text" value={city} class="form-control" placeholder="地址" aria-label="" aria-describedby="basic-addon1" />
                   </Grid_Modal>
-                  <Grid_Modal item xs={2}>
-                    <Typography variant="caption" display="block" gutterBottom>
+                  <Grid_Modal item xs={1}>
+                    <h3>
                       城市
-                    </Typography>
+                    </h3>
                   </Grid_Modal>
-                  <Grid_Modal item xs={6}>
+                  <Grid_Modal item xs={4}>
                     <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
                   </Grid_Modal>
-                  <Grid_Modal item xs={2}>
+                  <Grid_Modal item xs={1}>
                     <Typography variant="caption" display="block" gutterBottom>
                       每小时
                     </Typography>
