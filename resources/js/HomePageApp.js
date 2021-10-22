@@ -276,6 +276,7 @@ const HomePageApp = (props) => {
                     direction="column"
                     justifyContent="center"
                     alignItems="center"
+                    columnSpacing={3}
                   >
                    <textarea type="text" value={texts} class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
 
