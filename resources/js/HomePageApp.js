@@ -283,6 +283,7 @@ const HomePageApp = (props) => {
                     </Grid_Modal>
                     <Grid_Modal item xs={2} justify="center" alignItems="center" >
                       <h5>城市</h5>
+                      <span class="align-middle">middle</span>
                     </Grid_Modal>
                     <Grid_Modal item xs={4}>
                       <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
