@@ -147,6 +147,8 @@ const HomePageApp = (props) => {
 
 
   const [texts, setTexts] = useState();
+  const [city, setCity] = useState();
+  const [salary, setSalary] = useState();
   const [thoughtAreaMutation, setThoughtAreaMutation] = useState('default');
 
 
@@ -269,6 +271,16 @@ const HomePageApp = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                  <textarea type="text" value={texts} class="form-control" id="text-content" rows="3"  placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text} ></textarea>
+                 <Row>
+                   <input type="text" value={city} class="form-control" placeholder="地址" aria-label="" aria-describedby="basic-addon1" />
+                    <Typography variant="caption" display="block" gutterBottom>
+                      城市
+                    </Typography>
+                   <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
+                    <Typography variant="caption" display="block" gutterBottom>
+                      每小时
+                    </Typography>
+                 </Row>
                 </Modal.Body>
                 <Modal.Footer>
                   <button class="btn btn-primary btn-lg" type="button" onClick={() => {upload_post();}}>
