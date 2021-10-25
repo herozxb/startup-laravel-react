@@ -285,11 +285,11 @@ const HomePageApp = (props) => {
                       <Grid_Modal item xs={1} style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
                         <span>城市</span>
                       </Grid_Modal>
-                      <Grid_Modal item xs={4.8}>
+                      <Grid_Modal item xs={4}>
                         <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
                       </Grid_Modal>
-                      <Grid_Modal item xs={1.2} style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
-                        <span>每小时</span>
+                      <Grid_Modal item xs={2} style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
+                        <span> 每小时</span>
                       </Grid_Modal>
                      </Grid_Modal>
                   </Grid_Modal>
