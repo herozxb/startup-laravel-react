@@ -279,14 +279,14 @@ const HomePageApp = (props) => {
                       <div key="inline-radio" className="mb-3">
                         <Form.Check
                           inline
-                          label="1"
+                          label="个人信息"
                           name="group1"
                           type="radio"
                           id="inline-radio-1"
                         />
                         <Form.Check
                           inline
-                          label="2"
+                          label="企业招聘"
                           name="group1"
                           type="radio"
                           id="inline-radio-2"
