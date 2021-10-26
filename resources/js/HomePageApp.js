@@ -26,6 +26,13 @@ import Chat from './components/Chat2/Chat';
 import {useSendConversationMessage} from "./components/Services/chatService";
 import Modal from 'react-bootstrap/Modal'
 
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+
 const HomePageApp = (props) => { 
 
   //////////////////////////////////////////////////////////
@@ -269,6 +276,19 @@ const HomePageApp = (props) => {
               >
                 <Modal.Header closeButton>
                   <Modal.Title>创建发布的信息</Modal.Title>
+                  <FormControl component="fieldset">
+                    <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
+                      <FormControlLabel value="female" control={<Radio />} label="Female" />
+                      <FormControlLabel value="male" control={<Radio />} label="Male" />
+                      <FormControlLabel value="other" control={<Radio />} label="Other" />
+                      <FormControlLabel
+                        value="disabled"
+                        disabled
+                        control={<Radio />}
+                        label="other"
+                      />
+                    </RadioGroup>
+                  </FormControl>
                 </Modal.Header>
                 <Modal.Body>
 
