@@ -283,6 +283,8 @@ const HomePageApp = (props) => {
                           name="group1"
                           type="radio"
                           id="inline-radio-1"
+                          defaultChecked="true"
+                          onChange={(e) => {}}
                         />
                         <Form.Check
                           inline
