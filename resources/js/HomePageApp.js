@@ -275,8 +275,6 @@ const HomePageApp = (props) => {
                   keyboard={false}
               >
                 <Modal.Header closeButton>
-                  <Modal.Title>创建发布的信息</Modal.Title>
-                  <span>  </span>
                   <FormControl component="fieldset">
                     <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
                       <FormControlLabel value="个人信息" control={<Radio color="primary" />} label="个人信息" />
