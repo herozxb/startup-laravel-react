@@ -275,13 +275,12 @@ const HomePageApp = (props) => {
                   keyboard={false}
               >
                 <Modal.Header closeButton>
-                  <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+                  <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked />
                   <label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>
-                  </input>
 
-                  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+                  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off" />
                   <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
-                  </input>
+
                 </Modal.Header>
                 <Modal.Body>
 
