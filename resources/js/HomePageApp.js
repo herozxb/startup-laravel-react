@@ -278,15 +278,8 @@ const HomePageApp = (props) => {
                   <Modal.Title>创建发布的信息</Modal.Title>
                   <FormControl component="fieldset">
                     <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
-                      <FormControlLabel value="female" control={<Radio />} label="Female" />
-                      <FormControlLabel value="male" control={<Radio />} label="Male" />
-                      <FormControlLabel value="other" control={<Radio />} label="Other" />
-                      <FormControlLabel
-                        value="disabled"
-                        disabled
-                        control={<Radio />}
-                        label="other"
-                      />
+                      <FormControlLabel value="个人信息" control={<Radio color="success" />} label="个人信息" />
+                      <FormControlLabel value="企业招聘" control={<Radio color="secondary" />} label="企业招聘" />
                     </RadioGroup>
                   </FormControl>
                 </Modal.Header>
