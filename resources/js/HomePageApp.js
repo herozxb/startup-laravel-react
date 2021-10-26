@@ -275,12 +275,13 @@ const HomePageApp = (props) => {
                   keyboard={false}
               >
                 <Modal.Header closeButton>
-                  <FormControl component="fieldset">
-                    <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
-                      <FormControlLabel value="个人信息" control={<Radio color="primary" />} label="个人信息" />
-                      <FormControlLabel value="企业招聘" control={<Radio color="secondary" />} label="企业招聘" />
-                    </RadioGroup>
-                  </FormControl>
+                  <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+                  <label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>
+                  </input>
+
+                  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
+                  </input>
                 </Modal.Header>
                 <Modal.Body>
 
