@@ -275,10 +275,24 @@ const HomePageApp = (props) => {
                   keyboard={false}
               >
                 <Modal.Header closeButton>
-                  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button type="button" class="btn btn-outline-primary">个人信息</button>
-                    <button type="button" class="btn btn-outline-success">企业招聘</button>
-                  </div>
+                  <Form>
+                      <div key="inline-radio" className="mb-3">
+                        <Form.Check
+                          inline
+                          label="1"
+                          name="group1"
+                          type="radio"
+                          id="inline-radio-1"
+                        />
+                        <Form.Check
+                          inline
+                          label="2"
+                          name="group1"
+                          type="radio"
+                          id="inline-radio-2"
+                        />
+                      </div>
+                  </Form>
                 </Modal.Header>
                 <Modal.Body>
 
