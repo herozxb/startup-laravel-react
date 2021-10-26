@@ -276,9 +276,8 @@ const HomePageApp = (props) => {
               >
                 <Modal.Header closeButton>
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button type="button" class="btn btn-danger">Left</button>
-                    <button type="button" class="btn btn-warning">Middle</button>
-                    <button type="button" class="btn btn-success">Right</button>
+                    <button type="button" class="btn btn-outline-primary">个人信息</button>
+                    <button type="button" class="btn btn-outline-success">企业招聘</button>
                   </div>
                 </Modal.Header>
                 <Modal.Body>
