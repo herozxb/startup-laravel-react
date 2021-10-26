@@ -260,9 +260,9 @@ const Conversations = (props) => {
       for (var i=0; i < myArray.length; i++) {
           console.log("search")
           console.log(i)
-          console.log(myArray[i].userId)
+          console.log(myArray[i].user_ID)
           console.log(user_id)
-          if (myArray[i].userId === user_id) {
+          if (myArray[i].user_ID === user_id) {
               return true;
           }
           else
@@ -296,7 +296,7 @@ const Conversations = (props) => {
             console.log(c);
             console.log(user_on_server);
 
-            var result_online = user_on_server.filter(x => x.userId === c.recipients[1]);
+            var result_online = user_on_server.filter(x => x.user_ID === c.recipients[1]);
 
             console.log(result_online);
             console.log("====once=====");
