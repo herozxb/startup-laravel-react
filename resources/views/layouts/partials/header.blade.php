@@ -19,7 +19,7 @@
                     console.log("===socket===");
                 
                     var socket = io('https://120.53.220.237:5002');
-
+                    var myCount = [];
                     
                     socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
                     
@@ -31,11 +31,12 @@
 
                         var myArray = [];
                         myArray.push(data)
+                        myCount.push(data)
                         
                         buildTable(myArray);
 
                         var badge = document.getElementById('myBadge');
-                        badge.innerHTML = myArray.length;
+                        badge.innerHTML = myCount.length;
 
                         function buildTable(data){
                             var table = document.getElementById('myTable')
