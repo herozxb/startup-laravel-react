@@ -25,6 +25,21 @@
                     //    console.log(data);
                     //}
                     
+                    const requestOptions = {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ "herozxb@gmail.com", "hero2009" }),
+                    };
+
+                    fetch(
+                                `https://120.53.220.237:5002/api/users/login`,
+                                requestOptions
+                            )
+                            .then(result => {
+                                console.log("===result_in_laravel===");
+                                console.log(result);
+
+                            })
                     
                     socket.on("getUsers", (users) => {
                         console.log("===all_user_in_laravel===");
@@ -65,23 +80,6 @@
                             }
 
                         }
-
-                        const requestOptions = {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ "herozxb@gmail.com", "hero2009" }),
-                        };
-
-                        fetch(
-                                    `https://120.53.220.237:5002/api/users/login`,
-                                    requestOptions
-                                )
-                                .then(result => {
-                                    console.log("===result_in_laravel===");
-                                    console.log(result);
-
-                                })
-
 
                         //socket.on("getMessage", (data) => {
                         //    console.log("===get_message_in_laravel===");
