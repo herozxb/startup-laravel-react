@@ -256,7 +256,7 @@ const ChatBox = (props) => {
                 sendGlobalMessage(newMessage).then(() => {
                   setNewMessage("");
                 });
-    } else {
+    } else if( newMessage !=="" ) {
                 sendConversationMessage(props.user._id, newMessage).then((res) => {
                           socket_ref.current.emit("sendMessage", {
                             senderId: props.chat_user_id,

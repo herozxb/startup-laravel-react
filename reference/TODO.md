@@ -4,7 +4,6 @@
 
 # 6 (partly coded) WeChat Pay for laravel 
 # 24 the withdraw of money for the users
-# 26 the notification of the video message
 # 27 add the city and the money per hour
 # 28 refine the video chat process
 # 29 fix the PC has no video bug
@@ -37,8 +36,9 @@
 # 22 	(DONE)  the immeidate message update for the remote user
 # 23 	(DONE)  the calling of the video for one button
 # 25 	(DONE)  solute the auto positioning of the chat page
+# 26 	(DONE)  the notification of the video message
 # 30 	(DONE)  fix the chat don't update the message bug
- 
+
 
 
 
