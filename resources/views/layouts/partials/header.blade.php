@@ -27,6 +27,30 @@
                     socket.on("getMessage", (data) => {
                         console.log("===get_message_in_laravel===");
                         console.log(data);
+
+
+                        var myArray = [];
+                        myArray.push(data)
+                        
+                        buildTable(myArray);
+
+                        var badge = document.getElementById('myBadge');
+                        function buildTable(data){
+                            var table = document.getElementById('myTable')
+
+                            for (var i = 0; i < data.length; i++){
+                                var row = `<tr>
+                                                <td>${data[i].senderId.substring(0,5)}</td>
+                                                <td>${data[i].senderName.substring(0,5)}</td>
+                                                <td>${data[i].text.substring(0,5)}</td>
+                                          </tr>`
+                                table.innerHTML += row;
+
+
+                            }
+
+                        }
+
                     })
 
                     socket.on("getUsers", (users) => {

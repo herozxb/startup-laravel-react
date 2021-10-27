@@ -134,6 +134,7 @@ const Chat = (props) => {
         setTab(newVal);
     };
 
+/*
     useEffect(() => {
         socket.current = Socket;
         socket.current.on("getMessage", (data) => {
@@ -141,7 +142,7 @@ const Chat = (props) => {
           console.log(data); 
         });
     }, []);
-
+//*/
     const login = useLogin();
     login(props.chat_props.name,"hero2009").then((user_login) => {
         console.log("===user_login==="); 
