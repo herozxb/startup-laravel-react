@@ -55,11 +55,11 @@
 
                     });
 
-                    socket.on('reconnect', () => {
-
-                        socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
-            
-                        });
+                    socket.on("disconnect", () => {
+                      socket.connect();
+                      socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
+                    
+                    });
 
 /*
                     socket.on("getUsers", (users) => {
