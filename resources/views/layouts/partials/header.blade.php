@@ -18,7 +18,7 @@
                 <script>
                     console.log("===socket===");
                 
-                    var socket = io('https://120.53.220.237:5002'{
+                    var socket = io('https://120.53.220.237:5002',{
                         'reconnection': true,
                         'reconnectionDelay': 1000,
                         'reconnectionDelayMax' : 5000,
