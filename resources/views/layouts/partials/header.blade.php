@@ -40,9 +40,9 @@
 
                             for (var i = 0; i < data.length; i++){
                                 var row = `<tr>
+                                                <td>${data[i].senderName.substring(0,10)}</td>
                                                 <td>${data[i].senderId.substring(0,5)}</td>
-                                                <td>${data[i].senderName.substring(0,5)}</td>
-                                                <td>${data[i].text.substring(0,5)}</td>
+                                                <td>${data[i].text.substring(0,20)}</td>
                                           </tr>`
                                 table.innerHTML += row;
 
@@ -53,6 +53,7 @@
 
                     })
 
+/*
                     socket.on("getUsers", (users) => {
                         console.log("===all_user_in_laravel===");
                         console.log(users); 
@@ -156,8 +157,8 @@
                                     <table class="table table-striped">
                                         <tr  class="bg-info">
                                             <th>姓名</th>
+                                            <th>ID</th>
                                             <th>消息</th>
-                                            <th>备用</th>
                                         </tr>
                                         <a class="btn-link stretched-link" href="/video">
                                             <tbody id="myTable">
