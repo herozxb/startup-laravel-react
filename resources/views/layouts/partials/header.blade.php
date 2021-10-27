@@ -23,11 +23,11 @@
                     
                     socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
                     
-                    
+
                     socket.on("getMessage", (data) => {
                         console.log("===get_message_in_laravel===");
                         console.log(data);
-                    }
+                    })
 
                     socket.on("getUsers", (users) => {
                         console.log("===all_user_in_laravel===");
