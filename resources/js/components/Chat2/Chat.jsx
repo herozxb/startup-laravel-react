@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -13,21 +14,16 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+
 import classnames from "classnames";
 import commonUtilites from "../Utilities/common";
-
-
 import { useLogin } from '../Services/authenticationService';
-
-
-//import Header from '../Layout/Header';
 import ChatBox from './ChatBox';
 import Conversations from './Conversations';
 import Users from './Users';
-
-import socketIOClient from "socket.io-client";
 import Socket from "./Socket";
 
+import socketIOClient from "socket.io-client";
 
 const useStyles = makeStyles(theme => ({
 
@@ -138,13 +134,13 @@ const Chat = (props) => {
         setTab(newVal);
     };
 
-  useEffect(() => {
-    socket.current = Socket;
-    socket.current.on("getMessage", (data) => {
-      console.log("get messages from https server in chatbox of login []"); 
-      console.log(data); 
-    });
-  }, []);
+    useEffect(() => {
+        socket.current = Socket;
+        socket.current.on("getMessage", (data) => {
+          console.log("get messages from https server in chatbox of login []"); 
+          console.log(data); 
+        });
+    }, []);
 
     const login = useLogin();
     login(props.chat_props.name,"hero2009").then((user_login) => {
@@ -162,7 +158,6 @@ const Chat = (props) => {
             //console.log("===all_user===");
             //console.log(users); 
         });
-
     }, [user_id,username]);
 
     //console.log("===props.me_props_1===");

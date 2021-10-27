@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef, useReducer, useCallback } from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -14,7 +15,10 @@ import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import { Button } from '@material-ui/core';
 import { Phone, PhoneDisabled } from '@material-ui/icons';
-import socketIOClient from "socket.io-client";
+
+import Modal from 'react-bootstrap/Modal'
+import Spinner from 'react-bootstrap/Spinner'
+
 import classnames from "classnames";
 import commonUtilites from "../Utilities/common";
 import {
@@ -24,10 +28,11 @@ import {
   useSendConversationMessage,
 } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
-import Modal from 'react-bootstrap/Modal'
-import Spinner from 'react-bootstrap/Spinner'
+
 
 import Socket from "./Socket";
+import socketIOClient from "socket.io-client";
+
 
 
 
@@ -143,11 +148,11 @@ const ChatBox = (props) => {
     //scrollToBottom();
   }, [lastMessage, props.scope, props.conversationId]);
 
-//console.log("props.me_id = ");
-//console.log(props.me_id);
+  //console.log("props.me_id = ");
+  //console.log(props.me_id);
 
-//console.log("props.chat_user_id = ");
-//console.log(props.chat_user_id);
+  //console.log("props.chat_user_id = ");
+  //console.log(props.chat_user_id);
   useEffect(() => {
       socket_ref.current = Socket;
       socket_ref.current.on("getMessage", (data) => {
@@ -187,15 +192,15 @@ const ChatBox = (props) => {
 
 
   const reloadMessages = () => {
-    if (props.scope === "Global Chat") {
-      getGlobalMessages().then((res) => {
-        setMessages(res);
-      });
-    } else if (props.scope !== null && props.conversationId !== null) {
-      getConversationMessages(props.user._id).then((res) => setMessages(res));
-    } else {
-      setMessages([]);
-    }
+      if (props.scope === "Global Chat") {
+                getGlobalMessages().then((res) => {
+                  setMessages(res);
+                });
+      } else if (props.scope !== null && props.conversationId !== null) {
+                getConversationMessages(props.user._id).then((res) => setMessages(res));
+      } else {
+                setMessages([]);
+      }
   };
 
   //const scrollToBottom = () => {
@@ -214,26 +219,26 @@ const ChatBox = (props) => {
       //console.log(autoMessage);
       if(autoMessage>0 && (String(targetID).valueOf() != String(props.chat_user_id).valueOf()) && (String(toID).valueOf() == String(props.chat_user_id).valueOf()) )
       {
-        //////////////////
-        //debug for < bug
-        //console.log("Auto sending back video id");
-        //console.log(targetID);
-        //console.log(toID);
-        //console.log(props.user_id);
-        //console.log("我的电话号="+String(props.me_props) );
-        sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
-          setNewMessage("");
-        });
+                //////////////////
+                //debug for < bug
+                //console.log("Auto sending back video id");
+                //console.log(targetID);
+                //console.log(toID);
+                //console.log(props.user_id);
+                //console.log("我的电话号="+String(props.me_props) );
+                sendConversationMessage(targetID, "我的电话号="+String(props.me_id)).then((res) => {
+                  setNewMessage("");
+                });
 
-        //console.log("Auto sending back video id");
-        //console.log(props.user_id);
-        //console.log("===props.me_props_3===");
-        //console.log("我的电话号="+String(props.me_props) );
-        socket_ref.current.emit("sendMessage", {
-          senderId: props.chat_user_id,
-          receiverId:targetID,
-          text: "我的电话号="+String(props.me_id),
-        });
+                //console.log("Auto sending back video id");
+                //console.log(props.user_id);
+                //console.log("===props.me_props_3===");
+                //console.log("我的电话号="+String(props.me_props) );
+                socket_ref.current.emit("sendMessage", {
+                  senderId: props.chat_user_id,
+                  receiverId:targetID,
+                  text: "我的电话号="+String(props.me_id),
+                });
 
       }
   }, [autoMessage]);
@@ -246,24 +251,25 @@ const ChatBox = (props) => {
 
     e.preventDefault();
     if (props.scope === "Global Chat") {
-      sendGlobalMessage(newMessage).then(() => {
-        setNewMessage("");
-      });
+                sendGlobalMessage(newMessage).then(() => {
+                  setNewMessage("");
+                });
     } else {
-      sendConversationMessage(props.user._id, newMessage).then((res) => {
-        socket_ref.current.emit("sendMessage", {
-          senderId: props.chat_user_id,
-          receiverId:props.user._id,
-          text: newMessage,
-        });
-        setLastMessage(newMessage);
-        setNewMessage("");
-      });
+                sendConversationMessage(props.user._id, newMessage).then((res) => {
+                          socket_ref.current.emit("sendMessage", {
+                            senderId: props.chat_user_id,
+                            receiverId:props.user._id,
+                            text: newMessage,
+                          });
+                          setLastMessage(newMessage);
+                          setNewMessage("");
+                });
     }
   };
 
   const start_video = (e) => {
 
+    console.log(props);
     socket_ref.current.emit("sendMessage", {
       senderId: props.chat_user_id,
       receiverId:props.user._id,
@@ -271,22 +277,22 @@ const ChatBox = (props) => {
     });
 
     setTimeout(() => {
-      setLoadingVideo(false);
-      setPeopleNotOnLine(true);
+                setLoadingVideo(false);
+                setPeopleNotOnLine(true);
     }, 10000);
 
   }
 
   const on_change_for_message = () =>{
     if (props.scope === "Global Chat") {
-      getGlobalMessages().then((res) => {
-        setMessages(res);
-      });
+                getGlobalMessages().then((res) => {
+                  setMessages(res);
+                });
     } else if (props.scope !== null && props.conversationId !== null) {
-      getConversationMessages(props.user._id).then((res) => setMessages(res));
-      mountedRef.current = true;
+                getConversationMessages(props.user._id).then((res) => setMessages(res));
+                mountedRef.current = true;
     } else {
-      setMessages([]);
+                setMessages([]);
     }
   }
 

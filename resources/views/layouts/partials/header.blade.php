@@ -19,6 +19,11 @@
                     console.log("===socket===");
                 
                     var socket = io('https://120.53.220.237:5002');
+
+                    socket.on("getMessage", (data) => {
+                        console.log("===get_message_in_laravel===");
+                        console.log(data);
+                    }
                     
                     socket.on("getUsers", (users) => {
                         console.log("===all_user_in_laravel===");

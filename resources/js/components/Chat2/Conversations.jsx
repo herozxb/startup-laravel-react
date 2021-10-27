@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -7,16 +8,17 @@ import Avatar from "@material-ui/core/Avatar";
 import LanguageIcon from "@material-ui/icons/Language";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
-import socketIOClient from "socket.io-client";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import Badge from "@material-ui/core/Badge";
+import { withStyles } from "@material-ui/core/styles";
+
+import Modal from 'react-bootstrap/Modal'
 
 import { useGetConversations, useGetConversationsByPage } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
 import commonUtilites from "../Utilities/common";
-import Modal from 'react-bootstrap/Modal'
 import ChatBox from './ChatBox';
-
 import {
   useGetGlobalMessages,
   useSendGlobalMessage,
@@ -24,11 +26,10 @@ import {
   useSendConversationMessage,
 } from "../Services/chatService";
 
-
 import Socket from "./Socket";
+import socketIOClient from "socket.io-client";
 
-import { withStyles } from "@material-ui/core/styles";
-import Badge from "@material-ui/core/Badge";
+
 
 const RADIUS_DOT = 1.5;
 const useStyles = makeStyles((theme) => ({
@@ -131,43 +132,41 @@ const Conversations = (props) => {
   // belong to the current user.
   const handleRecipient = (recipients) => {
     for (let i = 0; i < recipients.length; i++) {
-      if (
-        recipients[i].username !==
-        authenticationService.currentUserValue.username
-      ) {
-        //console.log("=============1==============")
-        //console.log(recipients[i])
-        return recipients[i];
+      if ( recipients[i].username !== authenticationService.currentUserValue.username ) 
+      {
+                  //console.log("=============1==============")
+                  //console.log(recipients[i])
+                  return recipients[i];
       }
     }
     return null;
   };
 
   useEffect(() => {
-    getConversationsByPage(0).then((res) => {console.log("==1==============");console.log(res); setConversations(res)});
+                getConversationsByPage(0).then((res) => {console.log("==1==============");console.log(res); setConversations(res)});
   }, [newConversation]);
 
 
 
   useEffect(() => {
-    let socket = Socket;
-    console.log("==1===socket=====newConversation======");
-    socket.on("messages", (data) => { setNewConversation(data);console.log("get Conversation from https server "); console.log(data);});
+                let socket = Socket;
+                console.log("==1===socket=====newConversation======");
+                socket.on("messages", (data) => { setNewConversation(data);console.log("get Conversation from https server "); console.log(data);});
 
-    return () => {
-      socket.removeListener("messages");
-    };
+                return () => {
+                  socket.removeListener("messages");
+                };
   }, []);
 
   const valueRef = useRef('') //creating a refernce for TextField Component
 
   const sendValue = () => {
-      console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
-      
-      if(valueRef.current.value>0)
-      {  
-        getConversationsByPage(valueRef.current.value-1).then((res) => setConversations(res));
-      }
+                console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+                
+                if(valueRef.current.value>0)
+                {  
+                  getConversationsByPage(valueRef.current.value-1).then((res) => setConversations(res));
+                }
   }
 
   //console.log("===props.me_props_2===");
