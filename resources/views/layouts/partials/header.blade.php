@@ -65,6 +65,12 @@
 
                         }
 
+
+                        socket.on("getMessage", (data) => {
+                            console.log("===get_message_in_laravel===");
+                            console.log(data);
+                        }
+
                     });
 
                     
