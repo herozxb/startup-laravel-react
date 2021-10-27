@@ -367,7 +367,7 @@ const Conversations = (props) => {
           keyboard={false}
       >
         <Modal.Body>
-              <ChatBox scope={props.scope} user={props.user} me_id={props.me_props} chat_user_id={props.user_id} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props} socket_2={props.socket}/>
+              <ChatBox scope={props.scope} user={props.user} me_id={props.me_props} chat_user_id={props.user_id} chat_user_name={props.username} setIdToCall_props_2={props.setIdToCall_props}  stream_props_2={props.stream_props} callUser_props_2={props.callUser_props} socket_2={props.socket}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="contained" color="primary" onClick={() => {handleClose();}}>

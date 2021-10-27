@@ -236,7 +236,9 @@ const ChatBox = (props) => {
                 //console.log("我的电话号="+String(props.me_props) );
                 socket_ref.current.emit("sendMessage", {
                   senderId: props.chat_user_id,
-                  receiverId:targetID,
+                  senderName : props.chat_user_name,
+                  receiverId :targetID,
+                  receiverName : props.user.username,
                   text: "我的电话号="+String(props.me_id),
                 });
 
@@ -258,7 +260,9 @@ const ChatBox = (props) => {
                 sendConversationMessage(props.user._id, newMessage).then((res) => {
                           socket_ref.current.emit("sendMessage", {
                             senderId: props.chat_user_id,
-                            receiverId:props.user._id,
+                            senderName : props.chat_user_name,
+                            receiverId : props.user._id,
+                            receiverName : props.user.username,
                             text: newMessage,
                           });
                           setLastMessage(newMessage);
@@ -272,7 +276,9 @@ const ChatBox = (props) => {
     console.log(props);
     socket_ref.current.emit("sendMessage", {
       senderId: props.chat_user_id,
+      senderName : props.chat_user_name,
       receiverId:props.user._id,
+      receiverName : props.user.username,
       text: "发起视频通话=" + String(props.chat_user_id)+"TO"+ String(props.user._id),
     });
 

@@ -188,6 +188,7 @@ const Chat = (props) => {
                                 user={user} 
                                 me_props={props.me_props} 
                                 user_id={user_id} 
+                                username={username}
                                 setIdToCall_props={props.setIdToCall_props}  
                                 stream_props={props.stream_props} 
                                 callUser_props={props.callUser_props}
@@ -201,6 +202,7 @@ const Chat = (props) => {
                                 user={user} 
                                 me_props={props.me_props} 
                                 user_id={user_id} 
+                                username={username}
                                 setIdToCall_props={props.setIdToCall_props}  
                                 stream_props={props.stream_props} 
                                 callUser_props={props.callUser_props}
