@@ -43,9 +43,8 @@
 
                             for (var i = 0; i < data.length; i++){
                                 var row = `<tr>
-                                                <td>${data[i].senderName.substring(0,10)}</td>
-                                                <td>${data[i].senderId.substring(0,5)}</td>
-                                                <td>${data[i].text.substring(0,20)}</td>
+                                                <td>${data[i].senderName.substring(0,15)}</td>
+                                                <td>${data[i].text.substring(0,25)}</td>
                                           </tr>`
                                 table.innerHTML += row;
 
@@ -160,7 +159,6 @@
                                     <table class="table table-striped">
                                         <tr  class="bg-info">
                                             <th>姓名</th>
-                                            <th>ID</th>
                                             <th>消息</th>
                                         </tr>
                                         <a class="btn-link stretched-link" href="/video">
@@ -219,7 +217,6 @@
                                     <table class="table table-striped">
                                         <tr  class="bg-info">
                                             <th>Name</th>
-                                            <th>Age</th>
                                             <th>Birthday</th>
                                         </tr>
                                         <a class="btn-link stretched-link" href="/video">
