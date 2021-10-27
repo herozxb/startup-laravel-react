@@ -35,6 +35,8 @@
                         buildTable(myArray);
 
                         var badge = document.getElementById('myBadge');
+                        badge.innerHTML = myArray.length;
+
                         function buildTable(data){
                             var table = document.getElementById('myTable')
 
@@ -140,7 +142,7 @@
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell mr-2" data-toggle="modal" data-target="#exampleModal"></i>
                                 </span>
-                                <span class="badge badge-success" id="myBadge">3</span>
+                                <span class="badge badge-success" id="myBadge">0</span>
                             </div>
 
                             <!-- Modal -->
