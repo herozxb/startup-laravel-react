@@ -225,7 +225,7 @@ const Conversations = (props) => {
         //console.log(props.user_id);
         //console.log("我的电话号="+String(props.me_props) );
         sendConversationMessage(targetID, "我的电话号="+String(props.me_props)).then((res) => {
-          setNewMessage("");
+          //setNewMessage("");
         });
 
         //console.log("Auto sending back video id");
