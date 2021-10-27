@@ -295,7 +295,7 @@ const Conversations = (props) => {
             console.log(c);
             console.log(user_on_server);
 
-            var result_online = user_on_server.filter(x => x.user_ID === c.recipients[1]);
+            var result_online = user_on_server.filter(x => x.user_name === handleRecipient(c.recipientObj).username);
 
             console.log(result_online);
             console.log("====once=====");
