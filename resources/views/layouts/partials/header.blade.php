@@ -20,13 +20,15 @@
                 
                     var socket = io('https://120.53.220.237:5002');
 
-                    //socket.on("getMessage", (data) => {
-                    //    console.log("===get_message_in_laravel===");
-                    //    console.log(data);
-                    //}
                     
                     socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
                     
+                    
+                    socket.on("getMessage", (data) => {
+                        console.log("===get_message_in_laravel===");
+                        console.log(data);
+                    }
+
                     socket.on("getUsers", (users) => {
                         console.log("===all_user_in_laravel===");
                         console.log(users); 
