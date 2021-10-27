@@ -25,7 +25,7 @@
                     //    console.log(data);
                     //}
                     
-                    socket.emit("addUser", {user_ID: "in_header", user_name: {{ Auth::user()->email }} });
+                    socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
                     
                     socket.on("getUsers", (users) => {
                         console.log("===all_user_in_laravel===");
