@@ -134,13 +134,13 @@ const Chat = (props) => {
         setTab(newVal);
     };
 
-/*
+
     useEffect(() => {
         socket.current = Socket;
-        socket.current.on("getMessage", (data) => {
-          console.log("get messages from https server in chatbox of login []"); 
-          console.log(data); 
-        });
+        //socket.current.on("getMessage", (data) => {
+        //  console.log("get messages from https server in chatbox of login []"); 
+        //  console.log(data); 
+        //});
     }, []);
 //*/
     const login = useLogin();
