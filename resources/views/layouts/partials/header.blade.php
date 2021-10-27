@@ -18,7 +18,12 @@
                 <script>
                     console.log("===socket===");
                 
-                    var socket = io('https://120.53.220.237:5002');
+                    var socket = io('https://120.53.220.237:5002'{
+                        'reconnection': true,
+                        'reconnectionDelay': 1000,
+                        'reconnectionDelayMax' : 5000,
+                        'reconnectionAttempts': 5000
+                    });
                     var myCount = [];
                     
                     socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
@@ -55,11 +60,7 @@
 
                     });
 
-                    socket.on("disconnect", () => {
-                      socket.connect();
-                      socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
-                    
-                    });
+
 
 /*
                     socket.on("getUsers", (users) => {
