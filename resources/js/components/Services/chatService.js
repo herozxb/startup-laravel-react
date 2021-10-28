@@ -136,7 +136,7 @@ export function useGetConversationMessagesByPage() {
     const getConversationMessages = (id,page) => {
 
         const requestOptions = {
-            method: 'GET',
+            method: 'POST',
             headers: authHeader(),
             body: JSON.stringify({"page":page}),
         };
