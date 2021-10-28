@@ -26,8 +26,10 @@
                     });
                     var myCount = [];
                     
-                    json_encode(Auth::user()->email ? socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email ) !!}}) : false;
-                    
+                    @if(Auth::check())
+                    socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email ) !!}}) 
+                    @else
+                    @endif
 
                     socket.on("getMessage", (data) => {
                         console.log("===get_message_in_laravel===");
