@@ -26,7 +26,7 @@
                     });
                     var myCount = [];
                     
-                    socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email) !!}});
+                    json_encode(Auth::user()->email ? socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email ) !!}}) : false;
                     
 
                     socket.on("getMessage", (data) => {
