@@ -126,6 +126,34 @@ export function useGetConversationMessages() {
     return getConversationMessages;
 }
 
+// get conversation messages based on
+// to and from id's
+export function useGetConversationMessagesByPage() {
+
+    const handleResponse = useHandleResponse();
+
+
+    const getConversationMessages = (id,page) => {
+
+        const requestOptions = {
+            method: 'GET',
+            headers: authHeader(),
+            body: JSON.stringify({"page":page}),
+        };
+
+        return fetch(
+            `https://120.53.220.237:5002/api/messages/conversations/query?userId=${id}`,
+            requestOptions
+        )
+            .then(handleResponse)
+            .catch(() =>{}
+
+            );
+    };
+
+    return getConversationMessages;
+}
+
 export function useSendConversationMessage() {
 
     const handleResponse = useHandleResponse();

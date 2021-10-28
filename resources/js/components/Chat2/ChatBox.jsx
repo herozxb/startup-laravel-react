@@ -25,6 +25,7 @@ import {
   useGetGlobalMessages,
   useSendGlobalMessage,
   useGetConversationMessages,
+  useGetConversationMessagesByPage,
   useSendConversationMessage,
 } from "../Services/chatService";
 import { authenticationService } from "../Services/authenticationService";
@@ -121,6 +122,7 @@ const ChatBox = (props) => {
   const getGlobalMessages = useGetGlobalMessages();
   const sendGlobalMessage = useSendGlobalMessage();
   const getConversationMessages = useGetConversationMessages();
+  const getConversationMessagesByPage = useGetConversationMessagesByPage();
   const sendConversationMessage = useSendConversationMessage();
 
   let chatBottom = useRef(null);
@@ -197,7 +199,8 @@ const ChatBox = (props) => {
                   setMessages(res);
                 });
       } else if (props.scope !== null && props.conversationId !== null) {
-                getConversationMessages(props.user._id).then((res) => setMessages(res));
+                //getConversationMessages(props.user._id).then((res) => setMessages(res));
+                getConversationMessagesByPage(props.user._id,0).then((res) => setMessages(res));
       } else {
                 setMessages([]);
       }
@@ -295,7 +298,8 @@ const ChatBox = (props) => {
                   setMessages(res);
                 });
     } else if (props.scope !== null && props.conversationId !== null) {
-                getConversationMessages(props.user._id).then((res) => setMessages(res));
+                //getConversationMessages(props.user._id).then((res) => setMessages(res));
+                getConversationMessagesByPage(props.user._id,0).then((res) => setMessages(res));
                 mountedRef.current = true;
     } else {
                 setMessages([]);
@@ -405,7 +409,7 @@ const ChatBox = (props) => {
                     {
                       show_button ? (<Button variant="contained" color="primary" onClick={() => {props.callUser_props_2(targetVideoID);setShow_Button(false);handleClose();}} >开始视频通话</Button>)
                                   : (
-                                    <Button variant="contained" color="primary" onClick={() => {start_video(); setLoadingVideo(true); setPeopleNotOnLine(false);}} >发起对方视频</Button>
+                                    <Button variant="contained" color="primary" onClick={() => {start_video(); setLoadingVideo(true); setPeopleNotOnLine(false);}} >发起视频通话</Button>
                                     )
                     }
                     <Button variant="contained" color="primary" onClick={() => {handleClose();}}>

@@ -25,7 +25,7 @@
                         'reconnectionAttempts': 5000
                     });
                     var myCount = [];
-                    
+
                     @if(Auth::check())
                     socket.emit("addUser", {user_ID: "in_header", user_name:{!! json_encode(Auth::user()->email ) !!}}) 
                     @else
@@ -225,8 +225,8 @@
                                   <div class="modal-body">
                                     <table class="table table-striped">
                                         <tr  class="bg-info">
-                                            <th>Name</th>
-                                            <th>Birthday</th>
+                                            <th>姓名</th>
+                                            <th>消息</th>
                                         </tr>
                                         <a class="btn-link stretched-link" href="/video">
                                             <tbody id="myTable">
@@ -235,8 +235,7 @@
                                     </table>
                                   </div>
                                   <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-primary">关闭</button>
                                   </div>
                                 </div>
                               </div>
