@@ -322,7 +322,8 @@ const ChatBox = (props) => {
                 
                 if(valueRef.current.value>0)
                 {  
-                  getConversationsByPage(valueRef.current.value-1).then((res) => setConversations(res));
+                  //getConversationsByPage(valueRef.current.value-1).then((res) => setConversations(res));
+                  getConversationMessagesByPage(props.user._id,valueRef.current.value-1).then((res) => setMessages(res));
                 }
   }
 
