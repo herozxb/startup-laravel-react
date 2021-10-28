@@ -208,8 +208,8 @@ const ChatBox = (props) => {
                   setMessages(res);
                 });
       } else if (props.scope !== null && props.conversationId !== null) {
-                //getConversationMessages(props.user._id).then((res) => setMessages(res));
-                getConversationMessagesByPage(props.user._id,0).then((res) => setMessages(res));
+                getConversationMessages(props.user._id).then((res) => setMessages(res));
+                //getConversationMessagesByPage(props.user._id,0).then((res) => setMessages(res));
       } else {
                 setMessages([]);
       }
@@ -307,8 +307,8 @@ const ChatBox = (props) => {
                   setMessages(res);
                 });
     } else if (props.scope !== null && props.conversationId !== null) {
-                //getConversationMessages(props.user._id).then((res) => setMessages(res));
-                getConversationMessagesByPage(props.user._id,0).then((res) => setMessages(res));
+                getConversationMessages(props.user._id).then((res) => setMessages(res));
+                //getConversationMessagesByPage(props.user._id,0).then((res) => setMessages(res));
                 mountedRef.current = true;
     } else {
                 setMessages([]);
