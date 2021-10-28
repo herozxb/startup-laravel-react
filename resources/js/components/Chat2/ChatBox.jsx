@@ -105,6 +105,15 @@ const useStyles = makeStyles((theme) => ({
   listItemRight: {
     flexDirection: "row-reverse",
   },
+  input_text: {
+    marginLeft: "20px", 
+    marginTop : "5px"
+  },
+  button: {
+    marginLeft: "20px", 
+    color: theme.palette.primary.dark,
+    marginTop : "5px"
+  },
 }));
 
 var counter = 0;
@@ -306,6 +315,17 @@ const ChatBox = (props) => {
     }
   }
 
+  const valueRef = useRef('') //creating a refernce for TextField Component
+
+  const sendValue = () => {
+                console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+                
+                if(valueRef.current.value>0)
+                {  
+                  getConversationsByPage(valueRef.current.value-1).then((res) => setConversations(res));
+                }
+  }
+
 
   return (
     <Grid container className={classes.root}>
@@ -319,6 +339,16 @@ const ChatBox = (props) => {
       <Grid item xs={12}>
         <Grid container className={classes.messageContainer}>
           <Grid item xs={12} className={classes.messagesRow}>
+            <TextField
+              className={classes.input_text}
+              label="页数"
+              id="outlined-size-small"
+              defaultValue="1"
+              variant="outlined"
+              size="small"
+              inputRef={valueRef}
+            />
+            <Button className={classes.button} variant="outlined" onClick={sendValue} >搜索更多以前的信息</Button>
             {messages && (
               <List>
                 {messages.map((m) => (
