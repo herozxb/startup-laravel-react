@@ -342,7 +342,7 @@ const ChatBox = (props) => {
           <Grid item xs={12} className={classes.messagesRow}>
             <br />
             <br />
-            <h5>     在所有信息里的第几页</h5>
+            <span>   在所有信息里的第几页</span>
             <TextField
               className={classes.input_text}
               label="页数"
