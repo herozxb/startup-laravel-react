@@ -272,22 +272,6 @@ const Conversations = (props) => {
   }
   return (
     <List className={classes.list}>
-      <ListItem
-        classes={{ root: classes.subheader }}
-        onClick={() => {
-          props.setScope("Global Chat");
-          handleShow();
-        }}
-      >
-        <ListItemAvatar>
-          <Avatar className={classes.globe}>
-            <LanguageIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText className={classes.subheaderText} primary="Global Chat" />
-      </ListItem>
-      <Divider />
-
       {conversations && (
         <React.Fragment>
           {conversations.map((c) => {
