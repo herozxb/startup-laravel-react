@@ -45,6 +45,9 @@ export const FETCH_AREA_QUERY = gql`
       thoughtArea
       honesty
       ability
+      position
+      salary
+      person
     }
   }
 `;

@@ -351,8 +351,12 @@ const HomePageApp = (props) => {
                   								<Card style={{ width: '15rem', transform:' translateX(15px)' }}>
                   								  <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                   								  <Card.Body>
-                  								    {post.person} !== "person"  &&<Card.Title><Badge bg="primary">个人</Badge>{post.username}</Card.Title>
-                                      {post.person} !== "company" &&<Card.Title><Badge bg="success">公司</Badge>{post.username}</Card.Title>
+                  								    {
+                                        post.person == "person"  &&<Card.Title><Badge bg="primary">个人</Badge>{post.username}</Card.Title>
+                                      }
+                                      {
+                                        post.person == "company" &&<Card.Title><Badge bg="success">公司</Badge>{post.username}</Card.Title>
+                                      }
                                       <Row style={{  transform:' translateX(50px)' }} >
                                           <Typography variant="caption" display="block" gutterBottom>
                                             信誉
@@ -368,12 +372,16 @@ const HomePageApp = (props) => {
                   								    <Card.Text>
                   								      {post.body}
                   								    </Card.Text>
-                                      <Card.Text>
-                                        {post.position}
-                                      </Card.Text>
-                                      <Card.Text>
-                                        {post.salary}每小时
-                                      </Card.Text>
+                                      {post.position && 
+                                        <Card.Text>
+                                          {post.position}
+                                        </Card.Text>}
+
+                                      {post.salary && 
+                                        <Card.Text>
+                                          {post.salary}每小时
+                                        </Card.Text>}
+
                      								  { user_login &&  <a href="/video" >
                   								          { post.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post.user)}}>联系他</Button>  
                      								       }
