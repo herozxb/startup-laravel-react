@@ -8,7 +8,7 @@ import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from '@apollo/react-hooks';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { FETCH_POSTS_QUERY, FETCH_AREA_QUERY, CREATE_AREA_POST_MUTATION, CREATE_AREA_HONESTY_POST_MUTATION } from './util/graphql';
+import { FETCH_POSTS_QUERY, FETCH_AREA_QUERY, CREATE_AREA_POST_MUTATION, CREATE_AREA_HONESTY_POST_MUTATION, CREATE_AREA_HONESTY_POSITION_POST_MUTATION } from './util/graphql';
 import PostCard from './components/PostCard';
 import { Card, Button, Dropdown, DropdownButton, Form, Row, Col } from 'react-bootstrap';
 
@@ -157,6 +157,7 @@ const HomePageApp = (props) => {
   const [texts, setTexts] = useState();
   const [city, setCity] = useState();
   const [salary, setSalary] = useState();
+  const [person, setPerson] = useState("person");
   const [thoughtAreaMutation, setThoughtAreaMutation] = useState('default');
 
 
@@ -166,11 +167,18 @@ const HomePageApp = (props) => {
     setTexts( event.target.value );
   };
 
+  const on_change_for_city = (event) => {
+    setCity( event.target.value );
+  };
+
+  const on_change_for_salary = (event) => {
+    setSalary( event.target.value );
+  };
 
 
   const upload_post = () =>{
     client.mutate({
-        mutation: CREATE_AREA_HONESTY_POST_MUTATION,
+        mutation: CREATE_AREA_HONESTY_POSITION_POST_MUTATION,
         variables: { body: texts, thoughtArea: areaValues, honesty:String(parseFloat(props.honesty)/parseFloat(props.money)), ability:String(parseFloat(props.ability)/parseFloat(props.money)) },
 
         update(cache, {data:{createAreaHonestyPost}})  {
@@ -284,7 +292,7 @@ const HomePageApp = (props) => {
                           type="radio"
                           id="inline-radio-1"
                           defaultChecked="true"
-                          onChange={(e) => {}}
+                          onChange={(e) => {setPerson("person")}}
                         />
                         <Form.Check
                           inline
@@ -292,6 +300,7 @@ const HomePageApp = (props) => {
                           name="group1"
                           type="radio"
                           id="inline-radio-2"
+                          onChange={(e) => {setPerson("company")}}
                         />
                       </div>
                   </Form>
@@ -305,13 +314,13 @@ const HomePageApp = (props) => {
                     <Divider />
                      <Grid_Modal container item spacing={1}>
                       <Grid_Modal item xs={5}>
-                        <input type="text" value={city} class="form-control" placeholder="地点" aria-label="" aria-describedby="basic-addon1" />
+                        <input type="text" value={city} class="form-control" placeholder="地点" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_city}/>
                       </Grid_Modal>
                       <Grid_Modal item xs={1} style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
                         <span>城市</span>
                       </Grid_Modal>
                       <Grid_Modal item xs={4}>
-                        <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" />
+                        <input type="text" value={salary} class="form-control" placeholder="薪资" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_salary} />
                       </Grid_Modal>
                       <Grid_Modal item xs={2} style={{display:'flex',justifyContent:'center',alignItems:'center'}} >
                         <span> 每小时</span>

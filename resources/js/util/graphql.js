@@ -105,4 +105,35 @@ export const CREATE_AREA_HONESTY_POST_MUTATION = gql`
   }
 `;
 
+export const CREATE_AREA_HONESTY_POSITION_POST_MUTATION = gql`
+  mutation createAreaHonestyPostionPost($body: String!,$thoughtArea: String!,$honesty: String!,$ability: String!,$position: String!,$salary: String!,$person: String!) {
+    createAreaHonestyPostionPost(body: $body, thoughtArea: $thoughtArea, honesty: $honesty, ability: $ability,position: $position, salary: $salary, person: $person) {
+      id
+      body
+      createdAt
+      username
+      likes {
+        id
+        username
+        createdAt
+      }
+      likeCount
+      comments {
+        id
+        body
+        username
+        createdAt
+      }
+      commentCount
+      thoughtArea
+      honesty
+      ability
+      position
+      salary
+      person
+    }
+  }
+`;
+
+
 
