@@ -181,7 +181,7 @@ const HomePageApp = (props) => {
         mutation: CREATE_AREA_HONESTY_POSITION_POST_MUTATION,
         variables: { body: texts, thoughtArea: areaValues, honesty:String(parseFloat(props.honesty)/parseFloat(props.money)), ability:String(parseFloat(props.ability)/parseFloat(props.money)), position:city, salary:salary, person:person },
 
-        update(cache, {data:{createAreaHonestyPost}})  {
+        update(cache, {data:{createAreaHonestyPostionPost}})  {
 
           try {
               client.query({
