@@ -154,9 +154,9 @@ const HomePageApp = (props) => {
   };
 
 
-  const [texts, setTexts] = useState();
-  const [city, setCity] = useState();
-  const [salary, setSalary] = useState();
+  const [texts, setTexts] = useState("");
+  const [city, setCity] = useState("");
+  const [salary, setSalary] = useState("");
   const [person, setPerson] = useState("person");
   const [thoughtAreaMutation, setThoughtAreaMutation] = useState('default');
 
