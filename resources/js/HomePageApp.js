@@ -10,7 +10,7 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { FETCH_POSTS_QUERY, FETCH_AREA_QUERY, CREATE_AREA_POST_MUTATION, CREATE_AREA_HONESTY_POST_MUTATION, CREATE_AREA_HONESTY_POSITION_POST_MUTATION } from './util/graphql';
 import PostCard from './components/PostCard';
-import { Card, Button, Dropdown, DropdownButton, Form, Row, Col } from 'react-bootstrap';
+import { Card, Button, Dropdown, DropdownButton, Form, Row, Col, Badge } from 'react-bootstrap';
 
 import moment from 'moment';
 import { useSnackbar } from 'notistack';
@@ -351,7 +351,8 @@ const HomePageApp = (props) => {
                   								<Card style={{ width: '15rem', transform:' translateX(15px)' }}>
                   								  <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                   								  <Card.Body>
-                  								    <Card.Title>{post.username}</Card.Title>
+                  								    post.person !== "person"  &&<Card.Title><Badge bg="primary">个人</Badge>{post.username}</Card.Title>
+                                      post.person !== "company" &&<Card.Title><Badge bg="success">公司</Badge>{post.username}</Card.Title>
                                       <Row style={{  transform:' translateX(50px)' }} >
                                           <Typography variant="caption" display="block" gutterBottom>
                                             信誉
@@ -367,6 +368,9 @@ const HomePageApp = (props) => {
                   								    <Card.Text>
                   								      {post.body}
                   								    </Card.Text>
+                                      <Card.Text>
+                                        {post.position},{post.position}每小时
+                                      </Card.Text>
 
                      								  { user_login &&  <a href="/video" >
                   								          { post.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post.user)}}>联系他</Button>  
