@@ -354,10 +354,15 @@ const HomePageApp = (props) => {
                   								  <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                   								  <Card.Body>
                   								    {
-                                        post.person == "person"  &&<Card.Title><Chip label="个人" color="success" />{post.username}</Card.Title>
+                                        post.person == "person"  &&
+                                        <Card.Title> 
+                                          <Button variant="secondary" size="sm">
+                                            个人
+                                          </Button>{post.username}
+                                        </Card.Title>
                                       }
                                       {
-                                        post.person == "company" &&<Card.Title><Chip label="公司" color="primary" />{post.username}</Card.Title>
+                                        post.person == "company" &&<Card.Title><Badge bg="success">公司</Badge>{post.username}</Card.Title>
                                       }
                                       <Row style={{  transform:' translateX(50px)' }} >
                                           <Typography variant="caption" display="block" gutterBottom>
