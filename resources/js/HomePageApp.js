@@ -356,13 +356,18 @@ const HomePageApp = (props) => {
                   								    {
                                         post.person == "person"  &&
                                         <Card.Title> 
-                                          <Button variant="secondary" size="sm">
+                                          <Button variant="success" size="sm">
                                             个人
                                           </Button>{post.username}
                                         </Card.Title>
                                       }
                                       {
-                                        post.person == "company" &&<Card.Title><Badge bg="success">公司</Badge>{post.username}</Card.Title>
+                                        post.person == "company" &&
+                                        <Card.Title>                                          
+                                          <Button variant="primary" size="sm">
+                                            公司
+                                          </Button>{post.username}{post.username}
+                                        </Card.Title>
                                       }
                                       <Row style={{  transform:' translateX(50px)' }} >
                                           <Typography variant="caption" display="block" gutterBottom>
