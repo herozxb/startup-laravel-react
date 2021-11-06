@@ -364,7 +364,7 @@ const HomePageApp = (props) => {
                                       {
                                         post.person == "company" &&
                                         <Card.Title>                                          
-                                          <Button variant="primary" size="sm">
+                                          <Button variant="danger" size="sm">
                                             公司
                                           </Button>{post.username}
                                         </Card.Title>
