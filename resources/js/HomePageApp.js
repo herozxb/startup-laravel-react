@@ -351,7 +351,7 @@ const HomePageApp = (props) => {
 				                (
 
 			  		               posts.map((post) => ( 
-                  								<Card style={{ width: '15rem', transform:' translateX(15px)', background: 'linear-gradient(to right, #430089, #82ffa1)', backdropFilter:'blur(140px)'  }}>
+                  								<Card style={{ width: '15rem', transform:' translateX(15px)', backgroundImage: `linear-gradient(to right, rgba(0, 224, 255, 1), rgba(0, 133, 255, 1))`, backdropFilter:'blur(140px)'  }}>
                   								  <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                   								  <Card.Body>
                   								    {
