@@ -290,7 +290,7 @@ const HomePageApp = (props) => {
                       <div key="inline-radio" className="mb-3">
                         <Form.Check
                           inline
-                          label="个人信息"
+                          label="个人求职"
                           name="group1"
                           type="radio"
                           id="inline-radio-1"
@@ -365,9 +365,9 @@ const HomePageApp = (props) => {
                                       {
                                         post.person == "company" &&
                                         <Card.Title>                                          
-                                          <Button variant="primary" size="sm">
+                                          <Button variant="danger" size="sm">
                                             公司
-                                          </Button>{post.username}{post.username}
+                                          </Button>{post.username}
                                         </Card.Title>
                                       }
                                       <Row style={{  transform:' translateX(50px)' }} >
