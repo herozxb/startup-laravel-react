@@ -35,6 +35,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+
 const HomePageApp = (props) => { 
 
   //////////////////////////////////////////////////////////
@@ -350,7 +351,7 @@ const HomePageApp = (props) => {
 				                (
 
 			  		               posts.map((post) => ( 
-                  								<Card style={{ width: '15rem', transform:' translateX(15px)' }}>
+                  								<Card style={{ width: '15rem', transform:' translateX(15px)', background: 'linear-gradient(126.6deg, rgba(255, 255, 255, 0.12) 28.69%, rgba(255, 255, 255, 0) 100%)', backdropFilter:'blur(140px)'  }}>
                   								  <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                   								  <Card.Body>
                   								    {
