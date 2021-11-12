@@ -6,7 +6,7 @@
 # 24 the withdraw of money for the users
 
 # 28 refine the video chat process
-# 29 glass the card
+
 
 
 
@@ -39,8 +39,9 @@
 # 25 	(DONE)  solute the auto positioning of the chat page
 # 26 	(DONE)  the notification of the video message
 # 27 	(DONE)  add the city and the money per hour
+# 29 	(DONE)  glass the card
 # 30 	(DONE)  fix the chat don't update the message bug
-# 310 	(DONE)  Paging of the message
+# 31 	(DONE)  Paging of the message
 
 
 
