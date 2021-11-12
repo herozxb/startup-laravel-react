@@ -237,7 +237,7 @@ const HomePageApp = (props) => {
   
   const on_jump_to_other_user = (user_id) =>{
 
-    if (user_id !== user_login.userId ) 
+    if (user_id !== user_login.userId && user_id) 
     {
       console.log("=============user_id=============")
       console.log(user_id)
