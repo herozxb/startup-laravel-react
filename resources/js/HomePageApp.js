@@ -406,7 +406,12 @@ const HomePageApp = (props) => {
                                           <small>{post.salary}元每小时</small>
                                         </Card.Text>}
 
-                     								  <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post.user)}}>联系他</Button> 
+                     								  { user_login &&  <a href="/video" >
+                  								          { post.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post.user)}}>联系他</Button>  
+                     								       }
+                                        </a>  
+                                      }
+
 
                                         <Card.Text>
                                           <small className="text-muted">{moment(post.createdAt).fromNow(true)}</small>
