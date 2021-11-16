@@ -243,8 +243,8 @@ const HomePageApp = (props) => {
       console.log(user_id)
       console.log("=============user_login.userId=============")
       console.log(user_login.userId)
-      console.log("=============post.user=============")
-      console.log(post.user)
+      //console.log("=============post.user=============")
+      //console.log(post.user)
       
       sendConversationMessage(user_id,"你好").then((res) => {
                   console.log("=============res=============")
