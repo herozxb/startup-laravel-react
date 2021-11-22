@@ -289,10 +289,6 @@ const HomePageApp = (props) => {
             { user_login &&
               <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />
             }
-              <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />
-              <div class="input-group-prepend">
-                <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 搜索人才或工作 </button>
-              </div>
               <Modal
                   show={show}
                   onHide={handleClose}
@@ -353,6 +349,11 @@ const HomePageApp = (props) => {
                 </Modal.Footer>
               </Modal>
 
+            </div>
+
+            <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />
+            <div class="input-group-prepend">
+              <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 搜索人才或工作 </button>
             </div>
 
 
