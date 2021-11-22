@@ -282,9 +282,9 @@ const HomePageApp = (props) => {
           <Grid.Row centered>
             <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(15px)'}}>
               <div class="input-group-prepend">
-                <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 发布 </button>
+                { user_login &&<button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 发布 </button>}
               </div>
-              <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />
+              { user_login && <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />}
             
               <Modal
                   show={show}
