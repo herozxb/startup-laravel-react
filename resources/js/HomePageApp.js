@@ -354,7 +354,7 @@ const HomePageApp = (props) => {
             <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(15px)'}}>
               <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />
               <div class="input-group-prepend">
-                <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 搜索人才或工作 </button>
+                <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 搜索 </button>
               </div>
             </div>
 
