@@ -243,13 +243,10 @@ const HomePageApp = (props) => {
       console.log(user_id)
       console.log("=============user_login.userId=============")
       console.log(user_login.userId)
-      //console.log("=============post.user=============")
-      //console.log(post.user)
+      console.log("=============post.user=============")
+      console.log(post.user)
       
-      sendConversationMessage(user_id,"你好").then((res) => {
-                  console.log("=============res=============")
-                  console.log(res)
-                });;
+      sendConversationMessage(user_id,"你好");
     }
   }
 
@@ -284,11 +281,14 @@ const HomePageApp = (props) => {
 
           <Grid.Row centered>
             <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(15px)'}}>
+            { user_login &&
               <div class="input-group-prepend">
-                { user_login &&<button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 发布 </button>}
+                <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 发布 </button>
               </div>
-              { user_login && <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />}
-            
+            }
+            { user_login &&
+              <input type="text" value={texts} class="form-control" placeholder="世界 你好！" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />
+            }
               <Modal
                   show={show}
                   onHide={handleClose}
