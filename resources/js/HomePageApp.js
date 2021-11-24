@@ -221,6 +221,37 @@ const HomePageApp = (props) => {
 
   const search_get = () =>{
 
+        let webhook_url = "https://ap-southeast-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/search_posts-atrvv/service/word_search/incoming_webhook/search";
+    
+        let url = webhook_url + "?arg1=" + "北京" +"&arg2=0";
+
+        fetch(url)
+            .then(function (response) {
+                if(!response.ok){
+                    console.log(response);
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then(function (movieJSON) {
+                if (movieJSON["$undefined"] === true) {
+                    console.log('NO FETCH RESULT');
+                } else {
+                    console.log("FETCHED RESULT... "  );
+                    if (movieJSON.length !== 0) {
+                        console.log("Fetched array has " + movieJSON.length + " entries");
+                        //txt = buildMovieList(movieJSON);
+                        setPosts_Search(movieJSON)
+                    } else {
+                        console.log("Fetched array has " + movieJSON.length + " entries");
+                        //txt += `<br><br><br><b><h3>Sadly you have no search results. Try checking your spelling or changing your search terms.</h3></b>`;
+                    }
+                }  // end of ELSE
+
+        }).catch(function(error){
+            console.log('Whoopsie!', error);
+        });
+
   }
 
 
