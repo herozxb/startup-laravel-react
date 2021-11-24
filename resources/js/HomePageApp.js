@@ -42,6 +42,7 @@ const HomePageApp = (props) => {
   //Thought Area
   const [areaValues,setAreaValues] = useState("Self_improvement");
   const [posts,setPosts] = useState([]);
+  const [posts_search,setPosts_Search] = useState([]);
   const [loading,setLoading] = useState(true);
   const [user_login,setUser_login] = useState("");
   const [pagings,setPagings] = useState(0);  
@@ -379,10 +380,71 @@ const HomePageApp = (props) => {
                 <Modal.Header closeButton>
                 </Modal.Header>
                 <Modal.Body>
-                  <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
-                  <div class="input-group-prepend">
-                    <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
+                  <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(15px)'}}>
+                    <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
+                    <div class="input-group-prepend">
+                      <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
+                    </div>
                   </div>
+                            posts_search.map((post) => ( 
+                                  <Card style={{ width: '15rem', transform:' translateX(15px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
+                                    <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
+                                    <Card.Body>
+                                      {
+                                        post.person == "person"  &&
+                                        <Card.Title> 
+                                          <Button variant="success" size="sm">
+                                            个人
+                                          </Button>{post.username}
+                                        </Card.Title>
+                                      }
+                                      {
+                                        post.person == "company" &&
+                                        <Card.Title>                                          
+                                          <Button variant="danger" size="sm">
+                                            公司
+                                          </Button>{post.username}
+                                        </Card.Title>
+                                      }
+                                      <Row style={{  transform:' translateX(50px)' }} >
+                                          <Typography variant="caption" display="block" gutterBottom>
+                                            信誉
+                                          </Typography>
+                                          <Rating name="half-rating-read" value={post.honesty} precision={0.1} size="small" readOnly />
+                                      </Row>
+                                      <Row style={{  transform:' translateX(50px)' }} >
+                                          <Typography variant="caption" display="block" gutterBottom>
+                                            能力
+                                          </Typography>
+                                          <Rating name="half-rating-read" value={post.ability} precision={0.1} size="small" readOnly />
+                                      </Row>
+                                      <Card.Text>
+                                        {post.body}
+                                      </Card.Text>
+
+                                      {post.position && 
+                                        <Card.Text>
+                                          <small>{post.position}</small>
+                                        </Card.Text>}
+
+                                      {post.salary && 
+                                        <Card.Text>
+                                          <small>{post.salary}元每小时</small>
+                                        </Card.Text>}
+
+                                      { user_login &&  <a href="/video" >
+                                            { post.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post.user)}}>联系他</Button>  
+                                           }
+                                        </a>  
+                                      }
+
+
+                                        <Card.Text>
+                                          <small className="text-muted">{moment(post.createdAt).fromNow(true)}</small>
+                                        </Card.Text>
+                                    </Card.Body>
+                                  </Card>         
+                          ))
                 </Modal.Body>
                 <Modal.Footer>
                   <Grid.Row centered>
