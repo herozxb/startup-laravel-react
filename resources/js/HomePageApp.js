@@ -407,6 +407,7 @@ const HomePageApp = (props) => {
                   onHide={handleClose_search}
                   backdrop="static"
                   keyboard={false}
+                  centered
               >
                 <Modal.Header closeButton>
                 </Modal.Header>
