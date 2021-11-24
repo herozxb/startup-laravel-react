@@ -469,7 +469,7 @@ const HomePageApp = (props) => {
                                         </Card.Text>
 
                                         {post_search.position && 
-                                          <Card.Text style={{  transform:' translateX(50px)' }} >
+                                          <Card.Text style={{  textAlign: "center" }} >
                                             <small>{post_search.position}</small>
                                           </Card.Text>}
 
