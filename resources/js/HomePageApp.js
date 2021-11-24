@@ -410,6 +410,12 @@ const HomePageApp = (props) => {
                   centered
               >
                 <Modal.Header closeButton>
+                    <div class="input-group" style={{ width: '80%',transform:' translateX(30px)'}}>
+                      <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
+                      <div class="input-group-prepend">
+                        <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
+                      </div>
+                    </div>
                 </Modal.Header>
                 <Modal.Body
                   style={{
@@ -420,12 +426,6 @@ const HomePageApp = (props) => {
                   }}
                 >
                   <Grid.Row centered>
-                    <div class="input-group" style={{ width: '80%',transform:' translateX(30px)'}}>
-                      <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
-                      <div class="input-group-prepend">
-                        <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
-                      </div>
-                    </div>
                     {
                        loading ?   (
                                      <h1>读取中...</h1> ) 
@@ -446,7 +446,7 @@ const HomePageApp = (props) => {
                                         {
                                           post_search.person == "company" &&
                                           <Card.Title>                                          
-                                            <Button variant="danger" size="sm" style={{  transform:' translateX(65px)' }} >
+                                            <Button variant="danger" size="sm" style={{ transform:' translate(65px,-5px)'}} >
                                               公司
                                             </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                           </Card.Title>
@@ -552,7 +552,7 @@ const HomePageApp = (props) => {
                   								    {
                                         post.person == "person"  &&
                                         <Card.Title> 
-                                          <Button variant="success" size="sm">
+                                          <Button variant="success" size="sm" style={{ transform:' translate(0px,-5px)'}} >
                                             个人
                                           </Button>{post.username}
                                         </Card.Title>
@@ -560,7 +560,7 @@ const HomePageApp = (props) => {
                                       {
                                         post.person == "company" &&
                                         <Card.Title>                                          
-                                          <Button variant="danger" size="sm">
+                                          <Button variant="danger" size="sm" style={{ transform:' translate(0px,-5px)'}} >
                                             公司
                                           </Button>{post.username}
                                         </Card.Title>
