@@ -46,8 +46,11 @@ const HomePageApp = (props) => {
   const [user_login,setUser_login] = useState("");
   const [pagings,setPagings] = useState(0);  
   const [show, setShow] = useState(false);
+  const [show_search, setShow_Search] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose_search = () => setShow_Search(false);
+  const handleShow_search = () => setShow_Search(true);
 
   const useHandleResponse = () => {
 
@@ -157,6 +160,7 @@ const HomePageApp = (props) => {
   };
 
 
+  const [search, setSearch] = useState("");
   const [texts, setTexts] = useState("");
   const [city, setCity] = useState("");
   const [salary, setSalary] = useState("");
@@ -176,6 +180,10 @@ const HomePageApp = (props) => {
 
   const on_change_for_salary = (event) => {
     setSalary( event.target.value );
+  };
+
+  const on_change_for_search = (event) => {
+    setSearch( event.target.value );
   };
 
 
@@ -209,6 +217,7 @@ const HomePageApp = (props) => {
      console.log("catch 1", err);
     });;
   }
+
 
 
 
@@ -352,10 +361,58 @@ const HomePageApp = (props) => {
             </div>
 
             <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(15px)'}}>
-              <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_text}         onClick={() => {handleShow();}} />
+              <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
               <div class="input-group-prepend">
-                <button class="btn btn-primary btn-lg" type="button" onClick={upload_post}> 搜索 </button>
+                <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
               </div>
+              <Modal
+                  show={show_search}
+                  onHide={handleClose_search}
+                  backdrop="static"
+                  keyboard={false}
+              >
+                <Modal.Header closeButton>
+                </Modal.Header>
+                <Modal.Body>
+                  <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
+                  <div class="input-group-prepend">
+                    <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
+                  </div>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Grid.Row centered>
+                    <Pagination>
+                      <Pagination.First />
+                      <Pagination.Prev />
+                      <Pagination.Item active={currentPage == 1} onClick={()=>change_paging(0)} >{1}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 2} onClick={()=>change_paging(1)} >{2}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 3} onClick={()=>change_paging(2)} >{3}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 4} onClick={()=>change_paging(3)} >{4}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 5} onClick={()=>change_paging(4)} >{5}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 6} onClick={()=>change_paging(5)} >{6}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 7} onClick={()=>change_paging(6)} >{7}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 8} onClick={()=>change_paging(7)} >{8}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 9} onClick={()=>change_paging(8)} >{9}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 10} onClick={()=>change_paging(9)} >{10}</Pagination.Item>
+                      <Pagination.Next />
+                      <Pagination.Last />
+                    </Pagination>
+                  </Grid.Row>
+                  <Grid.Row centered>
+                    <TextField
+                      label="页数"
+                      id="outlined-size-small"
+                      defaultValue="1"
+                      variant="outlined"
+                      size="small"
+                      inputRef={valueRef}
+                    />
+                    <a style={{ marginLeft: '.5rem' }}></a>
+                    <Button variant="primary" onClick={sendValue}>搜索</Button> 
+
+                  </Grid.Row>
+                </Modal.Footer>
+              </Modal>
             </div>
 
 
