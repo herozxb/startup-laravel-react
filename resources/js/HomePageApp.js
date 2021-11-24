@@ -416,6 +416,7 @@ const HomePageApp = (props) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    transform:' translateX(50px)'
                   }}
                 >
                   <Grid.Row centered>
@@ -438,18 +439,18 @@ const HomePageApp = (props) => {
                                           post_search.person == "person"  &&
                                           <Card.Title > 
                                             <div class="input-group mb-3">
-                                              <Button variant="success" size="sm" style={{  transform:' translateX(50px)' }}  >
+                                              <Button variant="success" size="sm" style={{  textAlign: "center" }}  >
                                                 个人
-                                              </Button><div>{post_search.username}</div>
+                                              </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                             </div>
                                           </Card.Title>
                                         }
                                         {
                                           post_search.person == "company" &&
                                           <Card.Title>                                          
-                                            <Button variant="danger" size="sm" style={{  transform:' translateX(50px)' }}  >
+                                            <Button variant="danger" size="sm" style={{  textAlign: "center" }}  >
                                               公司
-                                            </Button>{post_search.username}
+                                            </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                           </Card.Title>
                                         }
                                         <Row style={{  transform:' translateX(50px)' }} >
@@ -474,7 +475,7 @@ const HomePageApp = (props) => {
                                           </Card.Text>}
 
                                         {post_search.salary && 
-                                          <Card.Text style={{  transform:' translateX(50px)' }}  > 
+                                          <Card.Text style={{  textAlign: "center" }}  > 
                                             <small>{post_search.salary}元每小时</small>
                                           </Card.Text>}
 
@@ -485,7 +486,7 @@ const HomePageApp = (props) => {
                                         }
 
 
-                                          <Card.Text style={{  transform:' translateX(50px)' }} >
+                                          <Card.Text style={{  textAlign: "center" }}  >
                                             <small className="text-muted">{moment(post_search.createdAt).fromNow(true)}</small>
                                           </Card.Text>
                                       </Card.Body>
