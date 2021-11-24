@@ -419,6 +419,7 @@ const HomePageApp = (props) => {
                     transform:' translateX(15px)'
                   }}
                 >
+                  <Grid.Row centered>
                     <div class="input-group" style={{ width: '80%',transform:' translateX(30px)'}}>
                       <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
                       <div class="input-group-prepend">
@@ -491,6 +492,7 @@ const HomePageApp = (props) => {
                             ))
                       ) 
                   } 
+                  </Grid.Row>
                 </Modal.Body>
                 <Modal.Footer
                   style={{
