@@ -416,11 +416,11 @@ const HomePageApp = (props) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    transform:' translateX(20px)'
+                    transform:' translateX(15px)'
                   }}
                 >
                   <Grid.Row centered>
-                    <div class="input-group mb-3" style={{transform:' translateX(30px)'}}>
+                    <div class="input-group" style={{ width: '100%',transform:' translateX(30px)'}}>
                       <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
                       <div class="input-group-prepend">
                         <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
@@ -438,7 +438,7 @@ const HomePageApp = (props) => {
                                         {
                                           post_search.person == "person"  &&
                                           <Card.Title >
-                                              <Button variant="success" size="sm" style={{  verticalAlign:'top', transform:' translateX(65px)' }} >
+                                              <Button variant="success" size="sm" style={{ transform:' translateX(65px)', transform:' translateY(5px)' }} >
                                                 个人
                                               </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                           </Card.Title>
