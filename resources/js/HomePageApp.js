@@ -386,61 +386,61 @@ const HomePageApp = (props) => {
                       <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
                     </div>
                   </div>
-                            posts_search.map((post) => ( 
+                            posts_search.map((post_search) => ( 
                                   <Card style={{ width: '15rem', transform:' translateX(15px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
                                     <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                                     <Card.Body>
                                       {
-                                        post.person == "person"  &&
+                                        post_search.person == "person"  &&
                                         <Card.Title> 
                                           <Button variant="success" size="sm">
                                             个人
-                                          </Button>{post.username}
+                                          </Button>{post_search.username}
                                         </Card.Title>
                                       }
                                       {
-                                        post.person == "company" &&
+                                        post_search.person == "company" &&
                                         <Card.Title>                                          
                                           <Button variant="danger" size="sm">
                                             公司
-                                          </Button>{post.username}
+                                          </Button>{post_search.username}
                                         </Card.Title>
                                       }
                                       <Row style={{  transform:' translateX(50px)' }} >
                                           <Typography variant="caption" display="block" gutterBottom>
                                             信誉
                                           </Typography>
-                                          <Rating name="half-rating-read" value={post.honesty} precision={0.1} size="small" readOnly />
+                                          <Rating name="half-rating-read" value={post_search.honesty} precision={0.1} size="small" readOnly />
                                       </Row>
                                       <Row style={{  transform:' translateX(50px)' }} >
                                           <Typography variant="caption" display="block" gutterBottom>
                                             能力
                                           </Typography>
-                                          <Rating name="half-rating-read" value={post.ability} precision={0.1} size="small" readOnly />
+                                          <Rating name="half-rating-read" value={post_search.ability} precision={0.1} size="small" readOnly />
                                       </Row>
                                       <Card.Text>
-                                        {post.body}
+                                        {post_search.body}
                                       </Card.Text>
 
-                                      {post.position && 
+                                      {post_search.position && 
                                         <Card.Text>
-                                          <small>{post.position}</small>
+                                          <small>{post_search.position}</small>
                                         </Card.Text>}
 
-                                      {post.salary && 
+                                      {post_search.salary && 
                                         <Card.Text>
-                                          <small>{post.salary}元每小时</small>
+                                          <small>{post_search.salary}元每小时</small>
                                         </Card.Text>}
 
                                       { user_login &&  <a href="/video" >
-                                            { post.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post.user)}}>联系他</Button>  
+                                            { post_search.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post_search.user)}}>联系他</Button>  
                                            }
                                         </a>  
                                       }
 
 
                                         <Card.Text>
-                                          <small className="text-muted">{moment(post.createdAt).fromNow(true)}</small>
+                                          <small className="text-muted">{moment(post_search.createdAt).fromNow(true)}</small>
                                         </Card.Text>
                                     </Card.Body>
                                   </Card>         
