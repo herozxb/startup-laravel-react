@@ -478,7 +478,7 @@ const HomePageApp = (props) => {
                                           </Card.Text>}
 
                                         { user_login &&  <a href="/video" >
-                                              { post_search.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post_search.user)}} style={{ transform:' translate(60px,0px)'}}>联系他</Button>  
+                                              { post_search.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post_search.user)}} style={{ transform:' translate(55px,0px)'}}>联系他</Button>  
                                              }
                                           </a>  
                                         }
