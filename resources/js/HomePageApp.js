@@ -433,7 +433,13 @@ const HomePageApp = (props) => {
                               posts_search.map((post_search) => ( 
                                     <Card style={{ width: '15rem', transform:' translateX(15px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
                                       <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
-                                      <Card.Body>
+                                      <Card.Body
+                                        style={{
+                                          display: "flex",
+                                          justifyContent: "center",
+                                          alignItems: "center",
+                                        }}
+                                      >
                                         {
                                           post_search.person == "person"  &&
                                           <Card.Title> 
