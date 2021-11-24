@@ -438,7 +438,7 @@ const HomePageApp = (props) => {
                                           post_search.person == "person"  &&
                                           <Card.Title > 
                                             <div class="input-group mb-3">
-                                              <Button variant="success" size="sm">
+                                              <Button variant="success" size="sm" style={{  transform:' translateX(50px)' }}  >
                                                 个人
                                               </Button><div>{post_search.username}</div>
                                             </div>
@@ -447,7 +447,7 @@ const HomePageApp = (props) => {
                                         {
                                           post_search.person == "company" &&
                                           <Card.Title>                                          
-                                            <Button variant="danger" size="sm">
+                                            <Button variant="danger" size="sm" style={{  transform:' translateX(50px)' }}  >
                                               公司
                                             </Button>{post_search.username}
                                           </Card.Title>
@@ -469,12 +469,12 @@ const HomePageApp = (props) => {
                                         </Card.Text>
 
                                         {post_search.position && 
-                                          <Card.Text>
+                                          <Card.Text style={{  transform:' translateX(50px)' }} >
                                             <small>{post_search.position}</small>
                                           </Card.Text>}
 
                                         {post_search.salary && 
-                                          <Card.Text>
+                                          <Card.Text style={{  transform:' translateX(50px)' }}  > 
                                             <small>{post_search.salary}元每小时</small>
                                           </Card.Text>}
 
@@ -485,7 +485,7 @@ const HomePageApp = (props) => {
                                         }
 
 
-                                          <Card.Text>
+                                          <Card.Text style={{  transform:' translateX(50px)' }} >
                                             <small className="text-muted">{moment(post_search.createdAt).fromNow(true)}</small>
                                           </Card.Text>
                                       </Card.Body>
