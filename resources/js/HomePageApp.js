@@ -386,6 +386,11 @@ const HomePageApp = (props) => {
                       <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
                     </div>
                   </div>
+                  {
+                     loading ?   (
+                                   <h1>读取中...</h1> ) 
+                                : 
+                                (
                             posts_search.map((post_search) => ( 
                                   <Card style={{ width: '15rem', transform:' translateX(15px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
                                     <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
@@ -445,6 +450,8 @@ const HomePageApp = (props) => {
                                     </Card.Body>
                                   </Card>         
                           ))
+                    ) 
+                } 
                 </Modal.Body>
                 <Modal.Footer>
                   <Grid.Row centered>
