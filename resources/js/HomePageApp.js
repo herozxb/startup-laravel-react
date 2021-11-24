@@ -411,7 +411,13 @@ const HomePageApp = (props) => {
               >
                 <Modal.Header closeButton>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <Grid.Row centered>
                     <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(15px)'}}>
                       <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
@@ -487,7 +493,13 @@ const HomePageApp = (props) => {
                   } 
                   </Grid.Row>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
                   <Grid.Row centered>
                     <Pagination>
                       <Pagination.First />
