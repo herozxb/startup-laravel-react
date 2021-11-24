@@ -416,11 +416,11 @@ const HomePageApp = (props) => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    transform:' translateX(30px)'
+                    transform:' translateX(20px)'
                   }}
                 >
                   <Grid.Row centered>
-                    <div class="input-group mb-3" style={{ width: '80%'}}>
+                    <div class="input-group mb-3" style={{ width: '80%',transform:' translateX(25px)'}}>
                       <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
                       <div class="input-group-prepend">
                         <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
@@ -437,18 +437,16 @@ const HomePageApp = (props) => {
                                       <Card.Body>
                                         {
                                           post_search.person == "person"  &&
-                                          <Card.Title > 
-                                            <div class="input-group mb-3">
-                                              <Button variant="success" size="sm" style={{  transform:' translateX(50px)' }} >
+                                          <Card.Title >
+                                              <Button variant="success" size="sm" style={{  transform:' translateX(60px)' }} >
                                                 个人
                                               </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
-                                            </div>
                                           </Card.Title>
                                         }
                                         {
                                           post_search.person == "company" &&
                                           <Card.Title>                                          
-                                            <Button variant="danger" size="sm" style={{  transform:' translateX(50px)' }} >
+                                            <Button variant="danger" size="sm" style={{  transform:' translateX(60px)' }} >
                                               公司
                                             </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                           </Card.Title>
