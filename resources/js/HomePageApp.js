@@ -437,7 +437,7 @@ const HomePageApp = (props) => {
                                         {
                                           post_search.person == "person"  &&
                                           <Card.Title > 
-                                            <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(25px)'}}>
+                                            <div class="input-group mb-3">
                                               <Button variant="success" size="sm">
                                                 个人
                                               </Button><div>{post_search.username}</div>
