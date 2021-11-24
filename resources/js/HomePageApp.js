@@ -436,10 +436,12 @@ const HomePageApp = (props) => {
                                       <Card.Body>
                                         {
                                           post_search.person == "person"  &&
-                                          <Card.Title style={{transform:' translateX(50px)'}}> 
-                                            <Button variant="success" size="sm">
-                                              个人
-                                            </Button>{post_search.username}
+                                          <Card.Title > 
+                                            <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(25px)'}}>
+                                              <Button variant="success" size="sm">
+                                                个人
+                                              </Button><div>{post_search.username}</div>
+                                            </div>
                                           </Card.Title>
                                         }
                                         {
