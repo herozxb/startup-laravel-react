@@ -436,7 +436,7 @@ const HomePageApp = (props) => {
                                       <Card.Body
                                         style={{
                                           display: "flex",
-                                          justifyContent: "center",
+                                          alignItems: "center",
                                         }}
                                       >
                                         {
