@@ -424,8 +424,7 @@ const HomePageApp = (props) => {
                     alignItems: "center",
                   }}
                 >
-                  <Grid.Row centered>
-
+                 <Grid.Row centered>
                     {
                        loading ?   (
                                      <h1>读取中...</h1> ) 
@@ -437,20 +436,18 @@ const HomePageApp = (props) => {
                                       <Card.Body>
                                         {
                                           post_search.person == "person"  &&
-                                          <Card.Title > 
-                                            <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(25px)'}}>
-                                              <Button variant="success" size="sm">
+                                          <Card.Title >
+                                              <Button variant="success" size="sm" style={{ transform:' translate(65px,-5px)'}} >
                                                 个人
-                                              </Button><div>{post_search.username}</div>
-                                            </div>
+                                              </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                           </Card.Title>
                                         }
                                         {
                                           post_search.person == "company" &&
                                           <Card.Title>                                          
-                                            <Button variant="danger" size="sm">
+                                            <Button variant="danger" size="sm" style={{ transform:' translate(65px,-5px)'}} >
                                               公司
-                                            </Button>{post_search.username}
+                                            </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                           </Card.Title>
                                         }
                                         <Row style={{  transform:' translateX(50px)' }} >
@@ -465,28 +462,28 @@ const HomePageApp = (props) => {
                                             </Typography>
                                             <Rating name="half-rating-read" value={post_search.ability} precision={0.1} size="small" readOnly />
                                         </Row>
-                                        <Card.Text>
+                                        <Card.Text style={{  textAlign: "center" }}>
                                           {post_search.body}
                                         </Card.Text>
 
                                         {post_search.position && 
-                                          <Card.Text>
+                                          <Card.Text style={{  textAlign: "center" }} >
                                             <small>{post_search.position}</small>
                                           </Card.Text>}
 
                                         {post_search.salary && 
-                                          <Card.Text>
+                                          <Card.Text style={{  textAlign: "center" }}  > 
                                             <small>{post_search.salary}元每小时</small>
                                           </Card.Text>}
 
                                         { user_login &&  <a href="/video" >
-                                              { post_search.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post_search.user)}}>联系他</Button>  
+                                              { post_search.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post_search.user)}} style={{ transform:' translate(55px,0px)'}}>联系他</Button>  
                                              }
                                           </a>  
                                         }
 
 
-                                          <Card.Text>
+                                          <Card.Text style={{  textAlign: "center" }}  >
                                             <small className="text-muted">{moment(post_search.createdAt).fromNow(true)}</small>
                                           </Card.Text>
                                       </Card.Body>
@@ -612,7 +609,6 @@ const HomePageApp = (props) => {
           <Grid.Row centered>
             <Pagination>
               <Pagination.First />
-              <Pagination.Prev />
               <Pagination.Item active={currentPage == 1} onClick={()=>change_paging(0)} >{1}</Pagination.Item>
               <Pagination.Item active={currentPage == 2} onClick={()=>change_paging(1)} >{2}</Pagination.Item>
               <Pagination.Item active={currentPage == 3} onClick={()=>change_paging(2)} >{3}</Pagination.Item>
@@ -623,7 +619,6 @@ const HomePageApp = (props) => {
               <Pagination.Item active={currentPage == 8} onClick={()=>change_paging(7)} >{8}</Pagination.Item>
               <Pagination.Item active={currentPage == 9} onClick={()=>change_paging(8)} >{9}</Pagination.Item>
               <Pagination.Item active={currentPage == 10} onClick={()=>change_paging(9)} >{10}</Pagination.Item>
-              <Pagination.Next />
               <Pagination.Last />
             </Pagination>
           </Grid.Row>
