@@ -223,7 +223,7 @@ const HomePageApp = (props) => {
 
         let webhook_url = "https://ap-southeast-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/search_posts-atrvv/service/word_search/incoming_webhook/search";
     
-        let url = webhook_url + "?arg1=" + string(search) +"&arg2="+string(page*20);
+        let url = webhook_url + "?arg1=" + String(search) +"&arg2=" + String(page*20);
 
         fetch(url)
             .then(function (response) {
@@ -285,12 +285,12 @@ const HomePageApp = (props) => {
 
     if (user_id !== user_login.userId && user_id) 
     {
-      console.log("=============user_id=============")
-      console.log(user_id)
-      console.log("=============user_login.userId=============")
-      console.log(user_login.userId)
-      console.log("=============post.user=============")
-      console.log(post.user)
+      //console.log("=============user_id=============")
+      //console.log(user_id)
+      //console.log("=============user_login.userId=============")
+      //console.log(user_login.userId)
+      //console.log("=============post.user=============")
+      //console.log(post.user)
       
       sendConversationMessage(user_id,"你好");
     }
