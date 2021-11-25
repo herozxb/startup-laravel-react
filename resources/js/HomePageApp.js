@@ -431,7 +431,7 @@ const HomePageApp = (props) => {
                                   : 
                                   (
                               posts_search.map((post_search) => ( 
-                                    <Card style={{ width: '15rem', transform:' translateX(25px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
+                                    <Card style={{ width: '13rem', transform:' translateX(25px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
                                       <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                                       <Card.Body>
                                         {
@@ -504,8 +504,6 @@ const HomePageApp = (props) => {
                 >
                   <Grid.Row centered>
                     <Pagination>
-                      <Pagination.First />
-                      <Pagination.Prev />
                       <Pagination.Item active={currentPage == 1} onClick={()=>change_paging(0)} >{1}</Pagination.Item>
                       <Pagination.Item active={currentPage == 2} onClick={()=>change_paging(1)} >{2}</Pagination.Item>
                       <Pagination.Item active={currentPage == 3} onClick={()=>change_paging(2)} >{3}</Pagination.Item>
@@ -516,8 +514,6 @@ const HomePageApp = (props) => {
                       <Pagination.Item active={currentPage == 8} onClick={()=>change_paging(7)} >{8}</Pagination.Item>
                       <Pagination.Item active={currentPage == 9} onClick={()=>change_paging(8)} >{9}</Pagination.Item>
                       <Pagination.Item active={currentPage == 10} onClick={()=>change_paging(9)} >{10}</Pagination.Item>
-                      <Pagination.Next />
-                      <Pagination.Last />
                     </Pagination>
                   </Grid.Row>
                   <Grid.Row centered>
