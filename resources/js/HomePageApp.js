@@ -244,6 +244,7 @@ const HomePageApp = (props) => {
                         setPosts_Search(movieJSON)
                     } else {
                         console.log("Fetched array has " + movieJSON.length + " entries");
+                        setPosts_Search([])
                         //txt += `<br><br><br><b><h3>Sadly you have no search results. Try checking your spelling or changing your search terms.</h3></b>`;
                     }
                 }  // end of ELSE
