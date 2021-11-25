@@ -422,7 +422,7 @@ const HomePageApp = (props) => {
               >
                 <Modal.Header closeButton>
                     <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(25px)'}}>
-                      <input type="text" value={search} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
+                      <input type="text" value={search} class="form-control" placeholder="搜索有天赋的人，搜索工作机会，地点，薪资" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
                       <div class="input-group-prepend">
                         <button class="btn btn-primary btn-lg" type="button" onClick={()=>search_get(0)}> 搜索 </button>
                       </div>

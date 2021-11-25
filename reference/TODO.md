@@ -42,6 +42,8 @@
 # 29 	(DONE)  glass the card
 # 30 	(DONE)  fix the chat don't update the message bug
 # 31 	(DONE)  Paging of the message
+# 32 	(DONE)  Search of the posts, position, salary messages
+# 31 	(DONE)  put the recent chat user on the top of all users
 
 
 
