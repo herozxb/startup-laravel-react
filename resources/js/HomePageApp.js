@@ -410,7 +410,7 @@ const HomePageApp = (props) => {
                   centered
               >
                 <Modal.Header closeButton>
-                    <div class="input-group mb-3" style={{ width: '80%' }}>
+                    <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(25px)'}}>
                       <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
                       <div class="input-group-prepend">
                         <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
@@ -432,7 +432,7 @@ const HomePageApp = (props) => {
                                   : 
                                   (
                               posts_search.map((post_search) => ( 
-                                    <Card style={{ width: '12rem', transform:' translateX(25px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
+                                    <Card style={{ width: '15rem', transform:' translateX(25px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
                                       <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                                       <Card.Body>
                                         {
