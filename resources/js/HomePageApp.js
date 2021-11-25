@@ -549,7 +549,7 @@ const HomePageApp = (props) => {
                   								    {
                                         post.person == "person"  &&
                                         <Card.Title> 
-                                          <Button variant="success" size="sm">
+                                          <Button variant="success" size="sm" style={{ transform:' translate(0px,-5px)'}} >
                                             个人
                                           </Button>{post.username}
                                         </Card.Title>
@@ -557,7 +557,7 @@ const HomePageApp = (props) => {
                                       {
                                         post.person == "company" &&
                                         <Card.Title>                                          
-                                          <Button variant="danger" size="sm">
+                                          <Button variant="danger" size="sm" style={{ transform:' translate(0px,-5px)'}} >
                                             公司
                                           </Button>{post.username}
                                         </Card.Title>
