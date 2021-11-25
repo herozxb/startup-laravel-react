@@ -219,11 +219,11 @@ const HomePageApp = (props) => {
     });;
   }
 
-  const search_get = () =>{
+  const search_get = (page) =>{
 
         let webhook_url = "https://ap-southeast-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/search_posts-atrvv/service/word_search/incoming_webhook/search";
     
-        let url = webhook_url + "?arg1=" + "北京" +"&arg2=0";
+        let url = webhook_url + "?arg1=" + string(search) +"&arg2="+string(page*20);
 
         fetch(url)
             .then(function (response) {
@@ -297,6 +297,7 @@ const HomePageApp = (props) => {
   }
 
   const valueRef = useRef('') //creating a refernce for TextField Component
+  const valueRef_search = useRef('') //creating a refernce for TextField Component
 
   const sendValue = () => {
       console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
@@ -304,6 +305,15 @@ const HomePageApp = (props) => {
       if(valueRef.current.value>0)
       {  
         change_paging(valueRef.current.value-1);
+      }
+  }
+
+  const sendValue_search = () => {
+      console.log(valueRef_search.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+      
+      if(valueRef_search.current.value>0)
+      {  
+        change_paging(valueRef_search.current.value-1);
       }
   }
 
@@ -411,9 +421,9 @@ const HomePageApp = (props) => {
               >
                 <Modal.Header closeButton>
                     <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(25px)'}}>
-                      <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
+                      <input type="text" value={search} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
                       <div class="input-group-prepend">
-                        <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
+                        <button class="btn btn-primary btn-lg" type="button" onClick={()=>search_get(0)}> 搜索 </button>
                       </div>
                     </div>
                 </Modal.Header>
@@ -503,16 +513,16 @@ const HomePageApp = (props) => {
                   <Grid.Row centered>
                     <Pagination>
                       <Pagination.First />
-                      <Pagination.Item active={currentPage == 1} onClick={()=>change_paging(0)} >{1}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 2} onClick={()=>change_paging(1)} >{2}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 3} onClick={()=>change_paging(2)} >{3}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 4} onClick={()=>change_paging(3)} >{4}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 5} onClick={()=>change_paging(4)} >{5}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 6} onClick={()=>change_paging(5)} >{6}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 7} onClick={()=>change_paging(6)} >{7}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 8} onClick={()=>change_paging(7)} >{8}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 9} onClick={()=>change_paging(8)} >{9}</Pagination.Item>
-                      <Pagination.Item active={currentPage == 10} onClick={()=>change_paging(9)} >{10}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 1} onClick={()=>search_get(0)} >{1}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 2} onClick={()=>search_get(1)} >{2}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 3} onClick={()=>search_get(2)} >{3}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 4} onClick={()=>search_get(3)} >{4}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 5} onClick={()=>search_get(4)} >{5}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 6} onClick={()=>search_get(5)} >{6}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 7} onClick={()=>search_get(6)} >{7}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 8} onClick={()=>search_get(7)} >{8}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 9} onClick={()=>search_get(8)} >{9}</Pagination.Item>
+                      <Pagination.Item active={currentPage == 10} onClick={()=>search_get(9)} >{10}</Pagination.Item>
                       <Pagination.Last />
                     </Pagination>
                   </Grid.Row>
@@ -523,10 +533,10 @@ const HomePageApp = (props) => {
                       defaultValue="1"
                       variant="outlined"
                       size="small"
-                      inputRef={valueRef}
+                      inputRef={valueRef_search}
                     />
                     <a style={{ marginLeft: '.5rem' }}></a>
-                    <Button variant="primary" onClick={sendValue}>搜索</Button> 
+                    <Button variant="primary" onClick={sendValue_search}>搜索</Button> 
 
                   </Grid.Row>
                 </Modal.Footer>
