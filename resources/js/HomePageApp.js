@@ -314,7 +314,7 @@ const HomePageApp = (props) => {
       
       if(valueRef_search.current.value>0)
       {  
-        change_paging(valueRef_search.current.value-1);
+        search_get(valueRef_search.current.value-1);
       }
   }
 
