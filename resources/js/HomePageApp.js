@@ -410,45 +410,46 @@ const HomePageApp = (props) => {
                   centered
               >
                 <Modal.Header closeButton>
-                    <div class="input-group" style={{ width: '80%',transform:' translateX(30px)'}}>
-                      <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
-                      <div class="input-group-prepend">
-                        <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
-                      </div>
-                    </div>
                 </Modal.Header>
                 <Modal.Body
                   style={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    transform:' translateX(15px)'
                   }}
                 >
                   <Grid.Row centered>
+                    <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(25px)'}}>
+                      <input type="text" value={texts} class="form-control" placeholder="搜索有天赋的人，搜索工作机会" aria-label="" aria-describedby="basic-addon1" onChange={on_change_for_search}  />
+                      <div class="input-group-prepend">
+                        <button class="btn btn-primary btn-lg" type="button" onClick={search_get}> 搜索 </button>
+                      </div>
+                    </div>
                     {
                        loading ?   (
                                      <h1>读取中...</h1> ) 
                                   : 
                                   (
                               posts_search.map((post_search) => ( 
-                                    <Card style={{ width: '13rem', transform:' translateX(25px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
+                                    <Card style={{ width: '12rem', transform:' translateX(25px)',  backgroundImage: 'linear-gradient(126.6deg, rgba(0, 0, 255, 0.12) 28.69%, rgba(0, 0, 255, 0) 100%)' , backdropFilter:'blur(140px)' }}>
                                       <Card.Img variant="top" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                                       <Card.Body>
                                         {
                                           post_search.person == "person"  &&
-                                          <Card.Title >
-                                              <Button variant="success" size="sm" style={{ transform:' translate(65px,-5px)'}} >
+                                          <Card.Title > 
+                                            <div class="input-group mb-3" style={{ width: '80%', transform:' translateX(25px)'}}>
+                                              <Button variant="success" size="sm">
                                                 个人
-                                              </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
+                                              </Button><div>{post_search.username}</div>
+                                            </div>
                                           </Card.Title>
                                         }
                                         {
                                           post_search.person == "company" &&
                                           <Card.Title>                                          
-                                            <Button variant="danger" size="sm" style={{ transform:' translate(65px,-5px)'}} >
+                                            <Button variant="danger" size="sm">
                                               公司
-                                            </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
+                                            </Button>{post_search.username}
                                           </Card.Title>
                                         }
                                         <Row style={{  transform:' translateX(50px)' }} >
@@ -463,28 +464,28 @@ const HomePageApp = (props) => {
                                             </Typography>
                                             <Rating name="half-rating-read" value={post_search.ability} precision={0.1} size="small" readOnly />
                                         </Row>
-                                        <Card.Text style={{  textAlign: "center" }}>
+                                        <Card.Text>
                                           {post_search.body}
                                         </Card.Text>
 
                                         {post_search.position && 
-                                          <Card.Text style={{  textAlign: "center" }} >
+                                          <Card.Text>
                                             <small>{post_search.position}</small>
                                           </Card.Text>}
 
                                         {post_search.salary && 
-                                          <Card.Text style={{  textAlign: "center" }}  > 
+                                          <Card.Text>
                                             <small>{post_search.salary}元每小时</small>
                                           </Card.Text>}
 
                                         { user_login &&  <a href="/video" >
-                                              { post_search.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post_search.user)}} style={{ transform:' translate(55px,0px)'}}>联系他</Button>  
+                                              { post_search.user !== user_login.userId && <Button variant="primary" onClick={()=>{ on_jump_to_other_user(post_search.user)}}>联系他</Button>  
                                              }
                                           </a>  
                                         }
 
 
-                                          <Card.Text style={{  textAlign: "center" }}  >
+                                          <Card.Text>
                                             <small className="text-muted">{moment(post_search.createdAt).fromNow(true)}</small>
                                           </Card.Text>
                                       </Card.Body>
@@ -503,6 +504,7 @@ const HomePageApp = (props) => {
                 >
                   <Grid.Row centered>
                     <Pagination>
+                      <Pagination.First />
                       <Pagination.Item active={currentPage == 1} onClick={()=>change_paging(0)} >{1}</Pagination.Item>
                       <Pagination.Item active={currentPage == 2} onClick={()=>change_paging(1)} >{2}</Pagination.Item>
                       <Pagination.Item active={currentPage == 3} onClick={()=>change_paging(2)} >{3}</Pagination.Item>
@@ -513,6 +515,7 @@ const HomePageApp = (props) => {
                       <Pagination.Item active={currentPage == 8} onClick={()=>change_paging(7)} >{8}</Pagination.Item>
                       <Pagination.Item active={currentPage == 9} onClick={()=>change_paging(8)} >{9}</Pagination.Item>
                       <Pagination.Item active={currentPage == 10} onClick={()=>change_paging(9)} >{10}</Pagination.Item>
+                      <Pagination.Last />
                     </Pagination>
                   </Grid.Row>
                   <Grid.Row centered>
@@ -548,7 +551,7 @@ const HomePageApp = (props) => {
                   								    {
                                         post.person == "person"  &&
                                         <Card.Title> 
-                                          <Button variant="success" size="sm" style={{ transform:' translate(0px,-5px)'}} >
+                                          <Button variant="success" size="sm">
                                             个人
                                           </Button>{post.username}
                                         </Card.Title>
@@ -556,7 +559,7 @@ const HomePageApp = (props) => {
                                       {
                                         post.person == "company" &&
                                         <Card.Title>                                          
-                                          <Button variant="danger" size="sm" style={{ transform:' translate(0px,-5px)'}} >
+                                          <Button variant="danger" size="sm">
                                             公司
                                           </Button>{post.username}
                                         </Card.Title>
