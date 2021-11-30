@@ -124,7 +124,7 @@ const Conversations = (props) => {
   const sendConversationMessage = useSendConversationMessage();
 
   const socket_ref = useRef();
-  const [user_on_server, setUser_On_Server] = useState([])
+  //const [user_on_server, setUser_On_Server] = useState([])
 
 
 
@@ -244,6 +244,7 @@ const Conversations = (props) => {
   //*/
 
 
+/*
   useEffect(() => {
 
       socket_ref.current.on("getUsers", (users) => {
@@ -254,7 +255,7 @@ const Conversations = (props) => {
       });
 
   }, [props.user_id]);
-
+//*/
   function search(user_id, myArray){
       for (var i=0; i < myArray.length; i++) {
           console.log("search")
@@ -277,9 +278,9 @@ const Conversations = (props) => {
           {conversations.map((c) => {
 
             console.log(c);
-            console.log(user_on_server);
+            //console.log(user_on_server);
 
-            var result_online = user_on_server.filter(x => x.user_name === handleRecipient(c.recipientObj).username);
+            var result_online = null; //user_on_server.filter(x => x.user_name === handleRecipient(c.recipientObj).username);
 
             console.log(result_online);
             console.log("====once=====");

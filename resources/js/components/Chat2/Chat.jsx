@@ -155,10 +155,10 @@ const Chat = (props) => {
 
     useEffect(() => {
         socket.current.emit("addUser", {user_ID: user_id, user_name: username});
-        socket.current.on("getUsers", (users) => {
+        //socket.current.on("getUsers", (users) => {
             //console.log("===all_user===");
             //console.log(users); 
-        });
+        //});
     }, [user_id,username]);
 
     //console.log("===props.me_props_1===");
