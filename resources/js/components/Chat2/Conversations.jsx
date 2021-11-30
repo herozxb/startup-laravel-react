@@ -297,7 +297,7 @@ const Conversations = (props) => {
               }}
             >
               <ListItemAvatar >
-                { result_online.length > 0 ? (
+                { result_online!==null ? (
                   <StyledBadge
                   overlap="circle"
                   anchorOrigin={{
