@@ -147,15 +147,15 @@
                 <nav class="login-signup navbar navbar-expand">
                     <ul class="navbar-nav">
                         
-                            <div class="d-flex align-items-center mr-2">
+                            <!--div class="d-flex align-items-center mr-2">
                                 <span style="font-size: 30px; color: orange;">
                                   <i class="fas fa-bell mr-2" data-toggle="modal" data-target="#exampleModal"></i>
                                 </span>
                                 <span class="badge badge-success" id="myBadge">0</span>
-                            </div>
+                            </div-->
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!--div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -182,7 +182,7 @@
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                            </div-->
                         
                         <li class="align-items-center h-auto ml-sm-3 float-right"><button
                                 class="btn btn-outline-primary shadow-none d-sm-block" Onclick="event.preventDefault();
