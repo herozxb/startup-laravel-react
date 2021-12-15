@@ -448,7 +448,7 @@ const HomePageApp = (props) => {
                                         {
                                           post_search.person == "person"  &&
                                           <Card.Title >
-                                              <Button variant="success" size="sm" style={{ transform:' translate(55px,-5px)'}} >
+                                              <Button variant="success" size="sm" style={{ transform:' translate(25px,-5px)'}} >
                                                 个人
                                               </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                           </Card.Title>
@@ -456,18 +456,18 @@ const HomePageApp = (props) => {
                                         {
                                           post_search.person == "company" &&
                                           <Card.Title>                                          
-                                            <Button variant="danger" size="sm" style={{ transform:' translate(55px,-5px)'}} >
+                                            <Button variant="danger" size="sm" style={{ transform:' translate(25px,-5px)'}} >
                                               公司
                                             </Button><div style={{  textAlign: "center" }} >{post_search.username}</div>
                                           </Card.Title>
                                         }
-                                        <Row style={{  transform:' translateX(30px)' }} >
+                                        <Row style={{  transform:' translateX(10px)' }} >
                                             <Typography variant="caption" display="block" gutterBottom>
                                               信誉
                                             </Typography>
                                             <Rating name="half-rating-read" value={post_search.honesty} precision={0.1} size="small" readOnly />
                                         </Row>
-                                        <Row style={{  transform:' translateX(30px)' }} >
+                                        <Row style={{  transform:' translateX(10px)' }} >
                                             <Typography variant="caption" display="block" gutterBottom>
                                               能力
                                             </Typography>
